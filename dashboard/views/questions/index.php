@@ -1,0 +1,34 @@
+<?php
+use yii\bootstrap4\Html;
+
+/* @var $this yii\web\View */
+/* @var $dataProvider yii\data\ActiveDataProvider */
+/* @var $filterModel common\models\Question */
+
+$this->title = Yii::t('app', 'Вопросы и ответы');
+?>
+
+<div class="question-index">
+    <h1><?= Html::encode($this->title) ?></h1>
+
+    <?php \yii\widgets\Pjax::begin(); ?>
+
+    <?= \yii\grid\GridView::widget([
+        'dataProvider' => $dataProvider,
+        'filterModel' => $filterModel,
+        'summary' => false,
+        'columns' => [
+            'id',
+            'text',
+            [
+                'attribute' => 'published',
+                'value' => function ($model) { return \common\enums\PublishedEnum::label($model->published); },
+                'filter' => \common\enums\PublishedEnum::labels(),
+            ],
+
+            ['class' => 'common\components\ActionColumn', 'template' => '{view} {delete}']
+        ]
+    ]); ?>
+
+    <?php \yii\widgets\Pjax::end(); ?>
+</div>
