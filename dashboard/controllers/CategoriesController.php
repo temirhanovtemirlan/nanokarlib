@@ -56,7 +56,7 @@ class CategoriesController extends AdminController
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
-        return $this->render('create', [
+        return $this->render('update', [
             'model' => $model,
             'dataProvider' => $model->parent_id ? $this->categoryService->getFilter()->search([]) : '',
         ]);

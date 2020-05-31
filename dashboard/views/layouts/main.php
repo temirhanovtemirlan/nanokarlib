@@ -3,11 +3,13 @@
 /* @var $this \yii\web\View */
 /* @var $content string */
 
+use common\enums\LanguagesEnum;
 use dashboard\assets\AppAsset;
 use yii\bootstrap4\Html;
 use yii\bootstrap4\Nav;
 use yii\bootstrap4\NavBar;
 use common\widgets\Alert;
+use yii\helpers\Url;
 
 AppAsset::register($this);
 ?>
@@ -50,6 +52,14 @@ AppAsset::register($this);
                 ['label' => Yii::t('app', 'Заявки на продление сроков чтения'), 'url' => \yii\helpers\Url::to(['/renewal-applications/index'])],
             ],
         ],
+        'language' => [
+            'label' => Yii::t('app', 'Язык'),
+            'items' => [
+                'ru' => ['label' => LanguagesEnum::label('ru'), 'url' => Url::current(['language' => 'ru'])],
+                'kk' => ['label' => LanguagesEnum::label('kk'), 'url' => Url::current(['language' => 'kk'])],
+                'en' => ['label' => LanguagesEnum::label('en'), 'url' => Url::current(['language' => 'en'])],
+            ]
+        ]
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];

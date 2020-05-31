@@ -16,11 +16,26 @@ $this->title = Yii::t('app', 'Редактировать раздел');
 
     <?= $form->field($model, 'type')->dropdownList(\common\enums\CategoriesEnum::labels()) ?>
 
-    <?= $form->field($model, 'description_ru')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'description_ru')->widget(\mihaildev\ckeditor\CKEditor::class, [
+        'editorOptions' => [
+            'preset' => 'standard',
+            'inline' => false,
+        ],
+    ]) ?>
 
-    <?= $form->field($model, 'description_kk')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'description_kk')->widget(\mihaildev\ckeditor\CKEditor::class, [
+        'editorOptions' => [
+            'preset' => 'standard',
+            'inline' => false,
+        ],
+    ]) ?>
 
-    <?= $form->field($model, 'description_en')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'description_en')->widget(\mihaildev\ckeditor\CKEditor::class, [
+        'editorOptions' => [
+            'preset' => 'standard',
+            'inline' => false,
+        ],
+    ]) ?>
 
     <?= $form->field($model, 'name_ru')->textInput() ?>
 

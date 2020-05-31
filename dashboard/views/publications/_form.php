@@ -15,13 +15,23 @@ use yii\bootstrap4\Html;
 
     <?= $form->field($model, 'category_id')->dropdownList($categories) ?>
 
-    <?= $form->field($model, 'announce')->textarea() ?>
+    <?= $form->field($model, 'announce')->widget(\mihaildev\ckeditor\CKEditor::class, [
+        'editorOptions' => [
+            'preset' => 'standard',
+            'inline' => false,
+        ],
+    ]) ?>
 
     <?= $form->field($model, 'title')->textInput() ?>
 
     <?= $form->field($model, 'canonical_title')->textInput() ?>
 
-    <?= $form->field($model, 'body')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'body')->widget(\mihaildev\ckeditor\CKEditor::class, [
+        'editorOptions' => [
+            'preset' => 'standard',
+            'inline' => false,
+        ],
+    ]) ?>
 
     <?= $form->field($model, 'published')->checkbox() ?>
 
