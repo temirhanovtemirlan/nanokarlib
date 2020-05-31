@@ -30,12 +30,26 @@ AppAsset::register($this);
     <?php
     NavBar::begin([
         'brandLabel' => Yii::$app->name,
-        'brandUrl' => Yii::$app->homeUrl,
+        'brandUrl' => ['/users/index'],
         'options' => [
             'class' => 'navbar navbar-expand-md navbar-light bg-dark',
         ],
     ]);
     $menuItems = [
+        'menu' => [
+            'label' => Yii::t('app', 'Меню'),
+            'items' => [
+                ['label' => Yii::t('app', 'Пользователи'), 'url' => \yii\helpers\Url::to(['/users/index'])],
+                ['label' => Yii::t('app', 'Настройки'), 'url' => \yii\helpers\Url::to(['/settings/index'])],
+                ['label' => Yii::t('app', 'Разделы'), 'url' => \yii\helpers\Url::to(['/categories/index'])],
+                ['label' => Yii::t('app', 'Публикации'), 'url' => \yii\helpers\Url::to(['/publications/index'])],
+                ['label' => Yii::t('app', 'Смарт-пространства'), 'url' => \yii\helpers\Url::to(['/smart-spaces/index'])],
+                ['label' => Yii::t('app', 'Вложения'), 'url' => \yii\helpers\Url::to(['/attachments/index'])],
+                ['label' => Yii::t('app', 'Отзывы'), 'url' => \yii\helpers\Url::to(['/feedbacks/index'])],
+                ['label' => Yii::t('app', 'Вопросы и ответы'), 'url' => \yii\helpers\Url::to(['/questions/index'])],
+                ['label' => Yii::t('app', 'Заявки на продление сроков чтения'), 'url' => \yii\helpers\Url::to(['/renewal-applications/index'])],
+            ],
+        ],
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
@@ -50,14 +64,13 @@ AppAsset::register($this);
             . '</li>';
     }
     echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
+        'options' => ['class' => 'navbar-nav'],
         'items' => $menuItems,
     ]);
     NavBar::end();
     ?>
 
     <div class="container">
-        <?= Yii::$app->user->isGuest ? '' : \dashboard\widgets\Navigation::widget() ?>
         <?= Alert::widget() ?>
         <?= $content ?>
     </div>

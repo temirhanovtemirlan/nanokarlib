@@ -22,6 +22,6 @@ class SiteController extends AdminController
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        return $this->redirect(['/users/index']);
     }
 }
