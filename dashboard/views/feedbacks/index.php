@@ -3,7 +3,6 @@ use yii\bootstrap4\Html;
 
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
-/* @var $filterModel common\models\Feedback */
 
 $this->title = Yii::t('app', 'Отзывы');
 ?>
@@ -15,7 +14,6 @@ $this->title = Yii::t('app', 'Отзывы');
 
     <?= \yii\grid\GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $filterModel,
         'summary' => false,
         'columns' => [
             'id',

@@ -2,8 +2,8 @@
 use yii\bootstrap4\Html;
 
 /* @var $this yii\web\View */
-/* @var $dataProvider yii\data\ActiveDataProvider */
-/* @var $filterModel common\filters\CategoryFilter */
+/* @var $dataProvider common\filters\CategoryFilter */
+/* @var $filterModel common\models\Category */
 
 $this->title = Yii::t('app', 'Категории');
 ?>
@@ -19,7 +19,6 @@ $this->title = Yii::t('app', 'Категории');
 
     <?= \yii\grid\GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $filterModel,
         'summary' => false,
         'columns' => [
             'id',

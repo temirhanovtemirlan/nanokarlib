@@ -3,7 +3,6 @@ use yii\bootstrap4\Html;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Category */
-
 $this->title = Yii::t('app', 'Раздел') . ': ' . $model->getAttribute('name_'.Yii::$app->language);
 ?>
 
@@ -32,7 +31,7 @@ $this->title = Yii::t('app', 'Раздел') . ': ' . $model->getAttribute('name
             'url_en',
             [
                 'attribute' => 'parent_id',
-                'value' => $model->getParent(),
+                'value' => $model->parent ? $model->parent->getAttribute('name_'.Yii::$app->language) : null,
             ],
             [
                 'attribute' => 'published',

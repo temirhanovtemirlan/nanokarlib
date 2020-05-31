@@ -14,12 +14,8 @@ class Menu extends Widget
 
     public function run()
     {
-        $parents = $this->categoryService->getParentCategories();
-        $children = $this->categoryService->getChildCategories();
-
         return $this->render('menu', [
-            'parents' => $parents,
-            'children' => $children,
+            'items' => $this->categoryService->getFilter()->menuItems()->getModels()
         ]);
     }
 

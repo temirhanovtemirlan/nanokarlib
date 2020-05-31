@@ -30,6 +30,7 @@ abstract class Service extends Component implements ServiceInterface
 
             $filter->query = $this->getModel()::find();
             $filter->query->orderBy('ts DESC');
+            $filter->sort = false;
         }
 
         return $filter;

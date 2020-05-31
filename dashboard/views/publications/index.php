@@ -3,8 +3,6 @@ use yii\bootstrap4\Html;
 
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
-/* @var $filterModel common\models\Publication */
-/* @var $categories array */
 
 $this->title = Yii::t('app', 'Публикации');
 ?>
@@ -19,7 +17,6 @@ $this->title = Yii::t('app', 'Публикации');
 
     <?= \yii\grid\GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $filterModel,
         'summary' => false,
         'columns' => [
             'id',
@@ -29,7 +26,6 @@ $this->title = Yii::t('app', 'Публикации');
                 'value' => function ($model) {
                     return $model->category->getAttribute('name_'.Yii::$app->language);
                 },
-                'filter' => $categories
             ],
 
             ['class' => 'common\components\ActionColumn']

@@ -7,13 +7,10 @@ use common\enums\CategoriesEnum;
 
 class CategoryFilter extends Filter
 {
-    public function menuChildren()
+    public function menuItems()
     {
-        return $this->queryWhere(['IS NOT', 'parent_id', null])->queryWhere(['type' => CategoriesEnum::TYPE_MENU]);
-    }
+        $this->query->where(['published' => true])->andWhere(['type' => CategoriesEnum::TYPE_MENU])->with(['children']);
 
-    public function menuParents()
-    {
-        return $this->search(['parent_id' => null, 'type' => CategoriesEnum::TYPE_MENU]);
+        return $this;
     }
 }

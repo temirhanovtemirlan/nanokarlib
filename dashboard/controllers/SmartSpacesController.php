@@ -21,7 +21,6 @@ class SmartSpacesController extends AdminController
     public function actionIndex()
     {
         return $this->render('index', [
-            'filterModel' => $this->smartSpaceService->getModel(),
             'dataProvider' => $this->smartSpaceService->getFilter()->search(\Yii::$app->request->queryParams)
         ]);
     }

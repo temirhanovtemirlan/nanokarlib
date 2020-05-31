@@ -31,7 +31,7 @@ $this->title = Yii::t('app', 'Публикация') . ': ' . $model->title;
             ],
             [
                 'attribute' => 'category_id',
-                'value' => $model->getCategory(),
+                'value' => $model->category->getAttribute('name_'.Yii::$app->language),
             ],
             'title',
             'canonical_title',

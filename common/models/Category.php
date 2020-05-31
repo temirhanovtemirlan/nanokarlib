@@ -45,7 +45,7 @@ class Category extends ActiveRecord
             ['description_kk', 'required', 'message' => \Yii::t('app', 'Необходимо заполнить описание на казахском')],
             ['description_en', 'required', 'message' => \Yii::t('app', 'Необходимо заполнить описание на английском')],
             ['published', 'boolean'],
-            ['parent_id', 'safe'],
+            ['parent_id', 'integer'],
         ];
     }
 
@@ -61,7 +61,7 @@ class Category extends ActiveRecord
             'name_en' => \Yii::t('app', 'Название на английском'),
             'url_ru' => \Yii::t('app', 'Ссылка на русском'),
             'url_kk' => \Yii::t('app', 'Ссылка на казахском'),
-            'url_en' => \Yii::t('app', 'Название на английском'),
+            'url_en' => \Yii::t('app', 'Ссылка на английском'),
             'parent_id' => \Yii::t('app', 'Родительский раздел'),
             'published' => \Yii::t('app', 'Опубликовано'),
         ];
@@ -69,10 +69,11 @@ class Category extends ActiveRecord
 
     public function getParent()
     {
-        if ($this->parent_id) {
-            return self::findOne($this->parent_id)->getAttribute('name_'.\Yii::$app->language);
-        }
+        return $this->hasOne(self::class, ['id' => 'parent_id']);
+    }
 
-        return null;
+    public function getChildren()
+    {
+        return $this->hasMany(self::class, ['parent_id' => 'id']);
     }
 }

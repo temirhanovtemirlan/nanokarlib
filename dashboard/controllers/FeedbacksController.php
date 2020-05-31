@@ -20,7 +20,6 @@ class FeedbacksController extends AdminController
     public function actionIndex()
     {
         return $this->render('index', [
-            'filterModel' => $this->feedbackService->getModel(),
             'dataProvider' => $this->feedbackService->getFilter()->search(\Yii::$app->request->queryParams)
         ]);
     }

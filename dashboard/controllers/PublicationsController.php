@@ -34,7 +34,6 @@ class PublicationsController extends AdminController
     public function actionIndex()
     {
         return $this->render('index', [
-            'filterModel' => $this->publicationService->getModel(),
             'dataProvider' => $this->publicationService->getFilter()->search(\Yii::$app->request->queryParams),
             'categories' => ArrayHelper::map($this->categoryService->getFilter()->search([])->getModels(), 'id', 'name_'.\Yii::$app->language),
         ]);

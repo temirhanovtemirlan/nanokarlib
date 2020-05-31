@@ -13,14 +13,4 @@ class CategoryService extends Service
         $model->parent_id = (int) $model->parent_id;
         return parent::save($model);
     }
-
-    public function getParentCategories()
-    {
-        return $this->getFilter()->menuParents();
-    }
-
-    public function getChildCategories()
-    {
-        return $this->getFilter()->menuChildren();
-    }
 }

@@ -22,7 +22,6 @@ $this->title = Yii::t('app', 'Вложения');
 
     <?= \yii\grid\GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $filterModel,
         'summary' => false,
         'columns' => [
             'id',

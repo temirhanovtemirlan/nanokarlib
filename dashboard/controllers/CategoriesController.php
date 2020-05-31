@@ -20,10 +20,8 @@ class CategoriesController extends AdminController
 
     public function actionIndex()
     {
-        $dataProvider = $this->categoryService->getFilter();
         return $this->render('index', [
-            'filterModel' => $dataProvider,
-            'dataProvider' => $dataProvider->search(\Yii::$app->request->queryParams)
+            'dataProvider' =>  $this->categoryService->getFilter()->search(\Yii::$app->request->queryParams)
         ]);
     }
 
@@ -46,7 +44,7 @@ class CategoriesController extends AdminController
     public function actionView($id)
     {
         return $this->render('view', [
-            'model' => $this->categoryService->findOne($id)
+            'model' => $this->categoryService->find()->where(['id' => $id])->with(['parent'])->one()
         ]);
     }
 

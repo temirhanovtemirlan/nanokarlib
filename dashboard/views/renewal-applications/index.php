@@ -15,7 +15,6 @@ $this->title = Yii::t('app', 'Заявки на продление книг');
 
     <?= \yii\grid\GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $filterModel,
         'summary' => false,
         'columns' => [
             'id',

@@ -25,7 +25,6 @@ class AttachmentsController extends AdminController
     {
         return $this->render('index', [
             'dataProvider' => $this->attachmentService->getFilter()->search(\Yii::$app->request->queryParams),
-            'filterModel' => $this->attachmentService->getModel()
         ]);
     }
 

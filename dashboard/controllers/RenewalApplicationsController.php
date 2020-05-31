@@ -21,7 +21,6 @@ class RenewalApplicationsController extends AdminController
     {
         return $this->render('index', [
             'dataProvider' => $this->renewalApplicationService->getFilter()->search(\Yii::$app->request->queryParams),
-            'filterModel' => $this->renewalApplicationService->getModel(),
         ]);
     }
 

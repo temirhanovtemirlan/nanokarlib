@@ -26,7 +26,7 @@ class m200517_022842_create_categories_table extends Migration
             'description_en' => $this->text()->notNull(),
             'parent_id' => $this->integer(),
             'published' => $this->smallInteger()->notNull()->defaultValue(0),
-            'ts' => $this->timestamp(),
+            'ts' => $this->timestamp()->notNull()->defaultValue(new \yii\db\Expression('NOW()')),
         ]);
 
         $this->createIndex('index-type-categories', 'categories', 'type');

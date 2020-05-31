@@ -15,7 +15,6 @@ $this->title = Yii::t('app', 'Вопросы и ответы');
 
     <?= \yii\grid\GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $filterModel,
         'summary' => false,
         'columns' => [
             'id',

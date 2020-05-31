@@ -21,7 +21,6 @@ class QuestionsController extends AdminController
     {
         return $this->render('index', [
             'dataProvider' => $this->questionService->getFilter(),
-            'filterModel' => $this->questionService->getModel()
         ]);
     }
 

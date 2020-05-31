@@ -19,7 +19,6 @@ $this->title = Yii::t('app', 'Smart-пространства');
 
     <?= \yii\grid\GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $filterModel,
         'summary' => false,
         'columns' => [
             'id',
