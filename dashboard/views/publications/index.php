@@ -26,8 +26,10 @@ $this->title = Yii::t('app', 'Публикации');
             'title',
             [
                 'attribute' => 'category_id',
-                'value' => function ($model) { return $model->getCategory(); },
-                'filter' => $categories,
+                'value' => function ($model) {
+                    return $model->category->getAttribute('name_'.Yii::$app->language);
+                },
+                'filter' => $categories
             ],
 
             ['class' => 'common\components\ActionColumn']

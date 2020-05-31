@@ -50,6 +50,6 @@ class Publication extends ActiveRecord
 
     public function getCategory()
     {
-        return Category::findOne($this->category_id)->getAttribute('name_'.\Yii::$app->language);
+        return $this->hasOne(Category::class, ['id' => 'category_id']);
     }
 }
