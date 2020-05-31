@@ -25,15 +25,7 @@ abstract class Service extends Component implements ServiceInterface
     public function getFilter()
     {
         $filterClass = DDDHelper::getRelatedClass(get_called_class(), 'filters', 'Filter');
-        $filter = new $filterClass;
-        if ($filter instanceof Filter) {
-
-            $filter->query = $this->getModel()::find();
-            $filter->query->orderBy('ts DESC');
-            $filter->sort = false;
-        }
-
-        return $filter;
+        return new $filterClass;
     }
 
     /**

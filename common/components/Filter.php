@@ -25,4 +25,10 @@ class Filter extends ActiveDataProvider
 
         return $this;
     }
+
+    public function init()
+    {
+        parent::init();
+        $this->sort = false;
+    }
 }
