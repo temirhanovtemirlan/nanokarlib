@@ -6,6 +6,7 @@ use common\components\Service;
 use common\enums\LanguagesEnum;
 use common\enums\SettingsEnum;
 use yii\caching\FileCache;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Url;
 
 class SettingService extends Service
@@ -54,6 +55,28 @@ class SettingService extends Service
     public function getLibraryMapWidth()
     {
         return (float) $this->find()->where(['type' => SettingsEnum::LIBRARY_MAP_WIDTH])->one()->content;
+    }
+
+    public function getLibrarySettings()
+    {
+        $settings = [
+            SettingsEnum::LIBRARY_BRAND_LABEL,
+            SettingsEnum::LIBRARY_SPACE_INFO,
+            SettingsEnum::LIBRARY_FOND_INFO,
+            SettingsEnum::LIBRARY_MAP_LATITUDE,
+            SettingsEnum::LIBRARY_MAP_LONGITUDE
+        ];
+        return ArrayHelper::map(
+            $this->find()
+                ->where(['in', 'type', $settings])
+                ->andWhere(['in', 'language', [
+                    LanguagesEnum::LANGUAGE_ALL,
+                    \Yii::$app->language
+                ]])
+                ->all(),
+            'type',
+            'content'
+        );
     }
 
     public function init()

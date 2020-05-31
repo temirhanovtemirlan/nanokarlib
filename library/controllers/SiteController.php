@@ -96,8 +96,7 @@ class SiteController extends Controller
             'title' => $this->settingService->getLibraryBrandLabel(),
             'authBlockBackground' => $this->attachmentService->getAuthBlockBackground(),
             'totalUsers' => $this->userService->getUsersCount(),
-            'librarySpace' => $this->settingService->getLibrarySpaceInfo(),
-            'libraryFond' => $this->settingService->getLibraryFondInfo(),
+            'settings' => $this->settingService->getLibrarySettings(),
             'smartSpacesProvider' => $this->smartSpaceService->getPublishedSmartSpaces(),
             'smartSpacesMap' => $this->attachmentService->getSmartSpacesMap(),
             'questionsProvider' => $this->questionService->getPublishedQuestions(),
@@ -148,6 +147,7 @@ class SiteController extends Controller
 
     /**
      * @param $token
+     * @return string
      * @throws NotFoundHttpException
      */
     public function actionVerify($token)
@@ -176,7 +176,7 @@ class SiteController extends Controller
 
         if ($model->load(\Yii::$app->request->post()) && $this->renewalApplicationService->sendRenewalApplication($model)) {
             \Yii::$app->session->setFlash('success', \Yii::t('app', 'Заявка успешно отправлена на обработку'));
-            return $this->refresh();
+            return $this->redirect(['index']);
         }
 
         return '';

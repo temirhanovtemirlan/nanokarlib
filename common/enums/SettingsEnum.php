@@ -19,8 +19,8 @@ class SettingsEnum extends Enum
     const LIBRARY_CONTACTS_EMAIL = 118;
     const LIBRARY_CONTACTS_PHONE = 119;
     const LIBRARY_CONTACTS_ADDRESS = 120;
-    const LIBRARY_MAP_HEIGHT = 121;
-    const LIBRARY_MAP_WIDTH = 122;
+    const LIBRARY_MAP_LATITUDE = 121;
+    const LIBRARY_MAP_LONGITUDE = 122;
 
     public static function labels()
     {
@@ -38,8 +38,8 @@ class SettingsEnum extends Enum
             self::LIBRARY_CONTACTS_EMAIL => \Yii::t('app', 'Электронная почта'),
             self::LIBRARY_CONTACTS_PHONE => \Yii::t('app', 'Контактный телефон'),
             self::LIBRARY_CONTACTS_ADDRESS => \Yii::t('app', 'Адрес'),
-            self::LIBRARY_MAP_HEIGHT => \Yii::t('app', 'Долгота метки в карте'),
-            self::LIBRARY_MAP_WIDTH => \Yii::t('app', 'Широта метки в карте'),
+            self::LIBRARY_MAP_LONGITUDE => \Yii::t('app', 'Долгота метки в карте'),
+            self::LIBRARY_MAP_LATITUDE => \Yii::t('app', 'Широта метки в карте'),
         ];
     }
 
