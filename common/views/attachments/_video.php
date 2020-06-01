@@ -1,10 +1,12 @@
+<?php /* @var $source string */ ?>
+<div class="video-item">
 <?= \lesha724\youtubewidget\Youtube::widget([
     'video' => $source,
     'iframeOptions'=>[
-        'class'=>'youtube-video'
+        'class' => 'youtube-video'
     ],
     'divOptions'=>[ /*for container div*/
-        'class'=>'youtube-video-div'
+        'class' => 'youtube-video-div'
     ],
     'height'=>390,
     'width'=>640,
@@ -17,3 +19,4 @@
         'disablekb' => 0
     ],
 ]); ?>
+</div>

@@ -4,7 +4,6 @@
 /* @var $menuItems common\models\Category[] */
 
 ?>
-<div class="main-header">
     <header class="site-header">
         <div class="header-top">
             <div class="hamburger-menu">
@@ -65,4 +64,3 @@
             </nav>
         </div>
     </header>
-</div>

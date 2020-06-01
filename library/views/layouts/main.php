@@ -28,7 +28,7 @@ AppAsset::register($this);
 
 <div>
     <?= \library\widgets\Navigation::widget() ?>
-    <div class="container">
+    <div>
         <?= Alert::widget() ?>
         <?= $content ?>
     </div>

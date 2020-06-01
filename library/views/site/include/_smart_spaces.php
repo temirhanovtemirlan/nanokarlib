@@ -1,18 +1,31 @@
 <?php
 /* @var $dataProvider common\filters\SmartSpaceFilter */
 /* @var $map string */
+/* @var $models common\models\SmartSpace[] */
 $models = $dataProvider->getModels();
 if ($models) :
 ?>
-<div class="smart-spaces">
-    <?php foreach ($models as $model): ?>
-    <div class="smart-space">
-
-    </div>
-    <?php endforeach;?>
-
-    <div class="smart-spaces-map">
-        <img src="<?= $map ?>">
-    </div>
-</div>
+    <section class="smart-spaces section_pd">
+        <header class="section-head ds-flex-align">
+            <h3 class="title"><?= Yii::t('app', 'Пространства Smart') ?></h3>
+        </header>
+        <div class="container">
+            <div class="spaces-list section-list_pd">
+                <?php foreach ($models as $model): ?>
+                    <div class="col-spaces">
+                        <div class="spaces-item">
+                            <div class="spaces-block">
+                                <?= $model->getAttribute('description_'.Yii::$app->language) ?>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach;?>
+            </div>
+            <div class="video-wrap plan-wrap">
+                <div class="decor-lines left"></div>
+                <div class="decor-lines right"></div>
+                <div class="decor-wrap"><img alt="#" src="/images/plan.png"></div>
+            </div>
+        </div>
+    </section>
 <?php endif; ?>
