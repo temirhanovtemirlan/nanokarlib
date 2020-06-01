@@ -60,6 +60,6 @@ class AttachmentService extends Service
             return $logo->source;
         }
 
-        return '';
+        return '/images/logo.png';
     }
 }

@@ -13,4 +13,14 @@ class CategoryService extends Service
         $model->parent_id = (int) $model->parent_id;
         return parent::save($model);
     }
+
+    public function getMenuItems()
+    {
+        return $this->find()
+            ->where(['published' => true])
+            ->andWhere(['type' => CategoriesEnum::TYPE_MENU])
+            ->andWhere(['parent_id' => 0])
+            ->with(['children'])
+            ->all();
+    }
 }

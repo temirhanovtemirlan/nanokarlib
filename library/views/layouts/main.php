@@ -26,7 +26,7 @@ AppAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
 
-<div class="wrap">
+<div>
     <?= \library\widgets\Navigation::widget() ?>
     <div class="container">
         <?= Alert::widget() ?>
@@ -34,12 +34,8 @@ AppAsset::register($this);
     </div>
 </div>
 
-<footer class="footer">
-    <div class="container">
-        <p class="pull-left">&copy; <?= Html::encode(Yii::$app->name) ?> <?= date('Y') ?></p>
+<footer>
 
-        <p class="pull-right"><?= Yii::powered() ?></p>
-    </div>
 </footer>
 
 <?php $this->endBody() ?>
