@@ -8,7 +8,7 @@ class LoginForm extends \yii\base\Model
 {
     public $username;
     public $password;
-    public $rememberMe;
+    public $rememberMe = true;
 
     private $_user;
 

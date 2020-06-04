@@ -1,35 +1,38 @@
 <?php
 
-/* @var $this yii\web\View */
-/* @var $form yii\bootstrap\ActiveForm */
-/* @var $login common\forms\LoginForm */
-
-use yii\helpers\Html;
-use yii\bootstrap\ActiveForm;
-
-$this->title = Yii::t('app', 'Войти');
+$this->title = Yii::t('app', 'Авторизация');
 ?>
-<div class="site-login">
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <p><?= Yii::t('app', 'Введите данные, чтобы войти:') ?></p>
-
-    <div class="row">
-        <div class="col-lg-5">
-            <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
-
-                <?= $form->field($login, 'username')->textInput(['autofocus' => true]) ?>
-
-                <?= $form->field($login, 'password')->passwordInput() ?>
-
-                <?= $form->field($login, 'rememberMe')->checkbox() ?>
-
-                <div class="form-group">
-                    <?= Html::submitButton(Yii::t('app', 'Войти'), ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
-                    <?= Html::a(Yii::t('app', 'Регистрация'), [\yii\helpers\Url::to(['/site/registration'])], ['class' => 'btn btn-success'])?>
-                </div>
-
-            <?php ActiveForm::end(); ?>
-        </div>
-    </div>
-</div>
+<section class="main-header mb-5">
+    <main class="site_content mb-5">
+        <section class="book-renewal section_pd">
+            <header class="section-head ds-flex-align">
+                <h3 class="title"><?= Yii::t('app', 'Авторизация') ?></h3>
+            </header>
+            <div class="container">
+                <form class="renewal-form" method="post" action="/site/auth">
+                    <div class="form-content">
+                        <input type="hidden" name="<?=Yii::$app->request->csrfParam; ?>" value="<?=Yii::$app->request->getCsrfToken(); ?>" />
+                        <div class="form-data">
+                            <div class="input-wrap">
+                                <label class="required"><?= Yii::t('app', 'Логин') ?></label>
+                                <input class="input form-input" type="text" name="LoginForm[username]">
+                            </div>
+                            <div class="input-wrap">
+                                <label class="required"><?= Yii::t('app', 'Пароль') ?></label>
+                                <input class="input form-input" type="password" name="LoginForm[password]">
+                            </div>
+                        </div>
+                        <div class="form-btn justify-content-end">
+                            <button class="btn submit" type="submit">
+                                <?= Yii::t('app', 'Войти')?>
+                            </button>
+                            <a class="btn submit" href="<?= \yii\helpers\Url::to(['/site/registration']) ?>">
+                                <?= Yii::t('app', 'Регистрация') ?>
+                            </a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+</section>

@@ -37,9 +37,15 @@
                 </div>
             </div>
             <div class="form-btn justify-content-center">
+                <?php if (Yii::$app->user->isGuest): ?>
                 <a class="btn leading-link fade-in-fwd wow fadeIn" href="<?= \yii\helpers\Url::to(['/site/auth']) ?>" data-wow-delay=".3s">
                     <?= Yii::t('app', 'Авторизация') ?>
                 </a>
+                <?php else: ?>
+                <a class="btn leading-link fade-in-fwd wow fadeIn" data-wow-delay=".3s" href="<?= \yii\helpers\Url::to(['/site/logout']) ?>" data-method="post">
+                    <?= Yii::t('app', 'Выйти') ?>
+                </a>
+                <?php endif; ?>
             </div>
         </div>
     </div>

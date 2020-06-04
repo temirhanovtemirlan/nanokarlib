@@ -20,8 +20,7 @@ class RenewalApplicationService extends Service
     public function sendRenewalApplication(RenewalApplication $model)
     {
         if ($model->validate()) {
-            $model->save();
-            return $this->sendEmailToModerator($model);
+            return $model->save();
         }
 
         return false;

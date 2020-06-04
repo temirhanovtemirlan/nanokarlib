@@ -30,7 +30,6 @@ AppAsset::register($this);
 <div>
     <?= \library\widgets\Navigation::widget() ?>
     <div>
-        <?= Alert::widget() ?>
         <?= $content ?>
     </div>
 </div>

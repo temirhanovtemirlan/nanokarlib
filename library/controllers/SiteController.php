@@ -13,6 +13,7 @@ use common\services\SettingService;
 use common\services\SmartSpaceService;
 use common\services\UserService;
 use yii\base\Exception;
+use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\web\ForbiddenHttpException;
@@ -126,9 +127,7 @@ class SiteController extends Controller
             return $this->goBack();
         }
 
-        return $this->render('auth', [
-            'login' => $login,
-        ]);
+        return $this->render('auth');
     }
 
     /**
@@ -172,7 +171,7 @@ class SiteController extends Controller
     }
 
     /**
-     * @throws ForbiddenHttpException
+     * @throws ForbiddenHttpException|BadRequestHttpException
      */
     public function actionSendRenewalApplication()
     {
@@ -183,11 +182,10 @@ class SiteController extends Controller
         $model->user_id = \Yii::$app->user->id;
 
         if ($model->load(\Yii::$app->request->post()) && $this->renewalApplicationService->sendRenewalApplication($model)) {
-            \Yii::$app->session->setFlash('success', \Yii::t('app', 'Заявка успешно отправлена на обработку'));
             return $this->redirect(['index']);
         }
 
-        return '';
+        throw new BadRequestHttpException(\Yii::t('app', 'Данные введены неверно'));
     }
 
     public function actionLogout()

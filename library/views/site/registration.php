@@ -1,34 +1,38 @@
 <?php
-
-/* @var $this yii\web\View */
-/* @var $form yii\bootstrap\ActiveForm */
-/* @var $model common\forms\RegistrationForm */
-
-use yii\helpers\Html;
-use yii\bootstrap\ActiveForm;
-
 $this->title = Yii::t('app', 'Регистрация');
 ?>
-<div class="site-login">
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <p><?= Yii::t('app', 'Введите данные, чтобы зарегистрироваться:') ?></p>
-
-    <div class="row">
-        <div class="col-lg-5">
-            <?php $form = ActiveForm::begin(['id' => 'registration-form']); ?>
-
-            <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
-
-            <?= $form->field($model, 'email')->textInput(['type' => 'email']) ?>
-
-            <?= $form->field($model, 'password')->passwordInput() ?>
-
-            <div class="form-group">
-                <?= Html::submitButton(Yii::t('app', 'Подтвердить'), ['class' => 'btn btn-primary', 'name' => 'registration-button']) ?>
+<section class="main-header mb-5">
+    <main class="site_content mb-5">
+        <section class="book-renewal section_pd">
+            <header class="section-head ds-flex-align">
+                <h3 class="title"><?= Yii::t('app', 'Регистрация') ?></h3>
+            </header>
+            <div class="container">
+                <form class="renewal-form" method="post" action="/site/registration">
+                    <div class="form-content">
+                        <input type="hidden" name="<?=Yii::$app->request->csrfParam; ?>" value="<?=Yii::$app->request->getCsrfToken(); ?>" />
+                        <div class="form-data">
+                            <div class="input-wrap">
+                                <label class="required"><?= Yii::t('app', 'Логин') ?></label>
+                                <input class="input form-input" type="text" name="RegistrationForm[username]">
+                            </div>
+                            <div class="input-wrap">
+                                <label class="required"><?= Yii::t('app', 'Электронная почта') ?></label>
+                                <input class="input form-input" type="email" name="RegistrationForm[email]">
+                            </div>
+                            <div class="input-wrap">
+                                <label class="required"><?= Yii::t('app', 'Пароль') ?></label>
+                                <input class="input form-input" type="password" name="RegistrationForm[password]">
+                            </div>
+                        </div>
+                        <div class="form-btn justify-content-end">
+                            <button class="btn submit" type="submit">
+                                <?= Yii::t('app', 'Подтвердить')?>
+                            </button>
+                        </div>
+                    </div>
+                </form>
             </div>
-
-            <?php ActiveForm::end(); ?>
-        </div>
-    </div>
-</div>
+        </section>
+    </main>
+</section>
