@@ -31,6 +31,7 @@ class Navigation extends Widget
             'brandLabel' => $this->settingService->getLibraryBrandLabel(),
             'languages' => $this->settingService->getLanguagesSettings(),
             'menuItems' => $this->categoryService->getMenuItems(),
+            'socialLinks' => $this->settingService->getSocialLinks(),
         ];
         return $this->render('navigation', $data);
     }

@@ -3,6 +3,7 @@
 namespace dashboard\controllers;
 
 use common\components\AdminController;
+use common\enums\CategoriesEnum;
 use common\models\Category;
 use common\services\CategoryService;
 
@@ -36,7 +37,7 @@ class CategoriesController extends AdminController
 
         return $this->render('create', [
             'model' => $model,
-            'dataProvider' => $child ? $this->categoryService->getFilter()->search([]) : '',
+            'dataProvider' => $child ? $this->categoryService->getFilter()->search(['type' => CategoriesEnum::TYPE_MENU]) : '',
             'child' => $child ?? false,
         ]);
     }

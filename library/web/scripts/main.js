@@ -33,44 +33,22 @@ $(function () {
         /* Слайдер на главной странице - блок отзывы */
         $(".review-slide").slick({
             dots: true,
-            arrows: false,
-            asNavFor: '.review-social-slide'
+            arrows: false
         });
 
-        /* Слайдер на главной странице - блок отзывы (соц. сети) */
-        $(".review-social-slide").slick({
-            fade: true,
-            arrows: false,
-            asNavFor: '.review-slide'
-        });
-
-        /* Главный слайдер на странице товара */
-        let product_slide = $(".product-slide"),
-            nav = $(".product-color-nav");
-        $.each(nav, function () {
-            let item = $(this);
-        });
-        product_slide.slick({
-            centerMode: true,
-            centerPadding: '128px',
-            responsive: [
-                {breakpoint: 768, settings: {centerPadding: '80px',}},
-                {breakpoint: 640, settings: {centerPadding: '40px',}},
-            ]
-        });
     }
 
 
     /* Scroll filter to footer
         * ---------------------------------------------------- */
 
-    function scrollToFooter() {
-        let element = $('#footer'),
-            filter = $('.mobile-filter');
+    function scrollToTop() {
+        let element = $('.main-video'),
+            filter = $('.scroll-top');
         $(window).scroll(function () {
-            let scroll = $(window).scrollTop() + $(window).height(),
+            let scroll = $(window).scrollTop(),
                 offset = element.offset().top;
-            (scroll > offset) ? filter.addClass('--foot') : filter.removeClass('--foot');
+            (scroll > offset) ? filter.addClass('show') : filter.removeClass('show');
         });
     }
 
@@ -125,7 +103,7 @@ $(function () {
             iconImageOffset: [-32, -64],
             balloonContentSize: [320, 120],
             balloonLayout: "default#imageWithContent",
-            balloonImageHref: 'assets/images/map-label.png',
+            balloonImageHref: '/images/map-label.png',
             balloonImageOffset: [-65, -89],
             balloonImageSize: [310, 110],
             balloonShadow: false,
@@ -140,5 +118,8 @@ $(function () {
     (function Init() {
         libsSlides();
         ymaps.ready(maps);
+        scrollToTop();
+
+        new WOW().init();
     })();
 });

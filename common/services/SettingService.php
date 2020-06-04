@@ -12,11 +12,6 @@ use yii\helpers\Url;
 class SettingService extends Service
 {
     /**
-     * @var FileCache
-     */
-    private $cache;
-
-    /**
      * @return array[]
      */
     public function getLanguagesSettings()
@@ -35,26 +30,6 @@ class SettingService extends Service
     public function getLibraryBrandLabel()
     {
         return $this->find()->where(['type' => SettingsEnum::LIBRARY_BRAND_LABEL])->andWhere(['language' => \Yii::$app->language])->one()->content;
-    }
-
-    public function getLibrarySpaceInfo()
-    {
-        return $this->find()->where(['type' => SettingsEnum::LIBRARY_SPACE_INFO])->one()->content;
-    }
-
-    public function getLibraryFondInfo()
-    {
-        return $this->find()->where(['type' => SettingsEnum::LIBRARY_FOND_INFO])->one()->content;
-    }
-
-    public function getLibraryMapHeight()
-    {
-        return (float) $this->find()->where(['type' => SettingsEnum::LIBRARY_MAP_HEIGHT])->one()->content;
-    }
-
-    public function getLibraryMapWidth()
-    {
-        return (float) $this->find()->where(['type' => SettingsEnum::LIBRARY_MAP_WIDTH])->one()->content;
     }
 
     public function getLibrarySettings()
@@ -79,9 +54,8 @@ class SettingService extends Service
         );
     }
 
-    public function init()
+    public function getSocialLinks()
     {
-        parent::init();
-        $this->cache = \Yii::$app->cache;
+        return $this->find()->where(['in', 'type', array_keys(SettingsEnum::socialLinks())])->all();
     }
 }
