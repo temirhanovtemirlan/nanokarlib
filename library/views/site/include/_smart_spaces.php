@@ -24,7 +24,7 @@ if ($models) :
             <div class="video-wrap plan-wrap">
                 <div class="decor-lines left"></div>
                 <div class="decor-lines right"></div>
-                <div class="decor-wrap"><img alt="#" src="/images/plan.png"></div>
+                <div class="decor-wrap"><img alt="#" src="<?= $map ?>"></div>
             </div>
         </div>
     </section>

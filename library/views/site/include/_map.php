@@ -1,38 +1,18 @@
 <?php
 /* @var $latitude float */
 /* @var $longitude float */
-
-echo \phpnt\yandexMap\YandexMaps::widget([
-    'myPlacemarks' => [
-        [
-            'latitude' => $latitude,
-            'longitude' => $longitude,
-            'options' => [
-                [
-                    'hintContent' => 'Подсказка при наведении на маркет',
-                    'balloonContentHeader' => 'Заголовок после нажатия на маркер',
-                    'balloonContentBody' => 'Контент после нажатия на маркер',
-                    'balloonContentFooter' => 'Футер после нажатия на маркер',
-                ],
-                [
-                    'preset' => 'islands#icon',
-                    'iconColor' => '#19a111'
-                ]
-            ]
-        ]
-    ],
-    'mapOptions' => [
-        'center' => [52, 59],
-        'zoom' => 3,
-        'controls' => ['zoomControl',  'fullscreenControl', 'searchControl'],
-        'control' => [
-            'zoomControl' => [
-                'top' => 75,
-                'left' => 5
-            ],
-        ],
-    ],
-    'disableScroll' => true,
-    'windowWidth' => '100%',
-    'windowHeight' => '400px',
-]);
+?>
+<section class="maps section_pd">
+    <header class="section-head ds-flex-align">
+        <h3 class="title"><?= Yii::t('app', 'Карта проезда и адресные данные') ?></h3>
+    </header>
+    <div class="video-wrap container">
+        <div class="decor-lines left"></div>
+        <div class="decor-lines right"></div>
+        <div class="section-list_pd">
+            <div class="maps-wrap decor-wrap">
+                <div id="map"></div>
+            </div>
+        </div>
+    </div>
+</section>

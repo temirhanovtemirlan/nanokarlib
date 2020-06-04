@@ -55,7 +55,7 @@ use yii\helpers\Url;
                         <?php foreach ($socialLinks as $link):?>
                             <li class="dropdown-item-1">
                                 <a href="<?= $link->content ?>">
-                                    <i class="fa fa-<?= \common\enums\SettingsEnum::socialLinks()[$link->type] ?>"></i>
+                                    <i class="fa fa-<?= \common\enums\SettingsEnum::socialLinks()[$link->type] ?> fa-2x"></i>
                                     <svg class="bi bi-chevron-left" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
                                     </svg>
@@ -69,15 +69,31 @@ use yii\helpers\Url;
         <nav class="site-nav">
             <ul class="nav-menu site-menu">
                 <li class="wow fadeIn" data-wow-delay=".3s" data-wow-duration=".5s">
-                    <a href="/"><?= Yii::t('app', 'Главная') ?></a>
+                    <a href="/">
+                        <?= Yii::t('app', 'Главная') ?>
+                    </a>
                 </li>
                 <li class="wow fadeIn" data-wow-delay=".3s" data-wow-duration=".5s">
-                    <a href="#"><?= Yii::t('app', 'Электронный архив') ?></a>
+                    <a href="#">
+                        <?= Yii::t('app', 'Электронный архив') ?>
+                    </a>
                 </li>
-                <li class="wow fadeIn" data-wow-delay=".3s" data-wow-duration=".5s"><a href="#">ARCHIVE</a></li>
+                <li class="wow fadeIn" data-wow-delay=".3s" data-wow-duration=".5s">
+                    <a href="#">
+                        ARCHIVE
+                    </a>
+                </li>
                 <li class="wow fadeIn" data-wow-delay=".3s" data-wow-duration=".5s"><a href="#">GALLERY</a></li>
-                <li class="wow fadeIn" data-wow-delay=".3s" data-wow-duration=".5s"><a href="#">CATEGORIES</a></li>
-                <li class="wow fadeIn" data-wow-delay=".3s" data-wow-duration=".5s"><a href="#">CONTACT</a></li>
+                <li class="wow fadeIn" data-wow-delay=".3s" data-wow-duration=".5s">
+                    <a href="#">
+                        CATEGORIES
+                    </a>
+                </li>
+                <li class="wow fadeIn" data-wow-delay=".3s" data-wow-duration=".5s">
+                    <a href="#">
+                        CONTACT
+                    </a>
+                </li>
             </ul>
         </nav>
     </div>

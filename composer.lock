@@ -4,14 +4,14 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "47605ca7674ca49ec8a175329ab7769d",
+    "content-hash": "733ae2cb22730a069a2277c0e7de1ab2",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
             "version": "v3.4.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/twbs/bootstrap.git",
+                "url": "git@github.com:twbs/bootstrap.git",
                 "reference": "68b0d231a13201eb14acd3dc84e51543d16e5f7e"
             },
             "dist": {
@@ -633,51 +633,6 @@
             "license": [
                 "MIT"
             ]
-        },
-        {
-            "name": "phpnt/yandex-map",
-            "version": "0.0.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/phpnt/yandex-map.git",
-                "reference": "38e48bafa496202f29dd3776d138e53ec0303374"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/phpnt/yandex-map/zipball/38e48bafa496202f29dd3776d138e53ec0303374",
-                "reference": "38e48bafa496202f29dd3776d138e53ec0303374",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.0",
-                "yiisoft/yii2": "*"
-            },
-            "type": "yii2-extension",
-            "autoload": {
-                "psr-4": {
-                    "phpnt\\yandexMap\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "phpNT",
-                    "email": "phpnt@phpnt.com",
-                    "homepage": "http://phpnt.com"
-                }
-            ],
-            "description": "Yii2 Yandex Map widget",
-            "keywords": [
-                "map",
-                "phpnt",
-                "widget",
-                "yandex",
-                "yii2"
-            ],
-            "time": "2017-04-28T16:29:40+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",

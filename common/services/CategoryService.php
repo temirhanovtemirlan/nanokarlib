@@ -23,4 +23,12 @@ class CategoryService extends Service
             ->with(['children'])
             ->all();
     }
+
+    public function getAdditionalSections()
+    {
+        return $this->getFilter()->search([
+            'published' => true,
+            'type' => CategoriesEnum::TYPE_ADDITIONAL
+        ]);
+    }
 }

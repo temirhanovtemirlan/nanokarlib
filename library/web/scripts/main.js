@@ -98,7 +98,7 @@ $(function () {
 
         var placemark = new ymaps.Placemark([49.815983, 73.099758], {
             balloonContent: '<div class="ballon"><div class="logo"></div><div class="ball-00">Гоголя, 34 көшесі <br>+7 (7212) 56-70-84 <br>langcenterkar@mail.ru</div></div>',
-            iconImageHref: '../../images/map-label.png',
+            iconImageHref: '../images/map-label.png',
             iconImageSize: [64, 64],
             iconImageOffset: [-32, -64],
             balloonContentSize: [320, 120],

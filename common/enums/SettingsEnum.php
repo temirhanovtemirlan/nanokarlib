@@ -47,7 +47,7 @@ class SettingsEnum extends Enum
     {
         return [
             self::LIBRARY_SOCIAL_VIBER => 'whatsapp',
-            self::LIBRARY_SOCIAL_TELEGRAM => 'telegram',
+            self::LIBRARY_SOCIAL_TELEGRAM => 'paper-plane',
             self::LIBRARY_SOCIAL_FACEBOOK => 'facebook',
             self::LIBRARY_SOCIAL_TWITTER => 'twitter',
             self::LIBRARY_SOCIAL_VK => 'vk',

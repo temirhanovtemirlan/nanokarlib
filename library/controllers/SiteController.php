@@ -5,6 +5,7 @@ use common\forms\LoginForm;
 use common\forms\RegistrationForm;
 use common\models\RenewalApplication;
 use common\services\AttachmentService;
+use common\services\CategoryService;
 use common\services\FeedbackService;
 use common\services\QuestionService;
 use common\services\RenewalApplicationService;
@@ -59,6 +60,11 @@ class SiteController extends Controller
     private $renewalApplicationService;
 
     /**
+     * @var CategoryService
+     */
+    private $categoryService;
+
+    /**
      * {@inheritdoc}
      */
     public function behaviors()
@@ -101,6 +107,8 @@ class SiteController extends Controller
             'smartSpacesMap' => $this->attachmentService->getSmartSpacesMap(),
             'questionsProvider' => $this->questionService->getPublishedQuestions(),
             'feedbackProvider' => $this->feedbackService->getPublishedRecords(),
+            'additionalSections' => $this->categoryService->getAdditionalSections(),
+            'renewalApplication' => $this->renewalApplicationService->getModel(),
         ]);
     }
 
@@ -199,5 +207,6 @@ class SiteController extends Controller
         $this->questionService = \Yii::$app->questionService;
         $this->feedbackService = \Yii::$app->feedbackService;
         $this->renewalApplicationService = \Yii::$app->renewalApplicationService;
+        $this->categoryService = \Yii::$app->categoryService;
     }
 }

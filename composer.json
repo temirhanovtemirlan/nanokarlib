@@ -22,7 +22,6 @@
         "unclead/yii2-multiple-input": "~2.0",
         "ext-json": "*",
         "codemix/yii2-localeurls": "^1.7",
-        "phpnt/yandex-map": "^0.0.3",
         "lesha724/yii2-youtube-widget": "^1.0",
         "kartik-v/yii2-widget-fileinput": "^1.0",
         "mihaildev/yii2-ckeditor": "*"

@@ -8,6 +8,8 @@
 /* @var $feedbackProvider common\filters\FeedbackFilter */
 /* @var $smartSpacesMap string */
 /* @var $settings array */
+/* @var $additionalSections common\filters\CategoryFilter */
+/* @var $renewalApplication common\models\RenewalApplication */
 
 $this->title = $settings[\common\enums\SettingsEnum::LIBRARY_BRAND_LABEL];
 ?>
@@ -25,7 +27,12 @@ $this->title = $settings[\common\enums\SettingsEnum::LIBRARY_BRAND_LABEL];
             'dataProvider' => $smartSpacesProvider,
             'map' => $smartSpacesMap,
         ]) ?>
-        <?= $this->render('include/_additional_sections') ?>
+        <?= $this->render('include/_additional_sections', [
+            'dataProvider' => $additionalSections,
+        ]) ?>
+        <?= $this->render('include/_renewal_application', [
+            'model' => $renewalApplication,
+        ]) ?>
         <?= $this->render('include/_map', [
             'longitude' => $settings[\common\enums\SettingsEnum::LIBRARY_MAP_LONGITUDE],
             'latitude' => $settings[\common\enums\SettingsEnum::LIBRARY_MAP_LATITUDE]

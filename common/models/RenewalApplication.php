@@ -30,4 +30,15 @@ class RenewalApplication extends ActiveRecord
             ['email', 'email'],
         ];
     }
+
+    public function attributeLabels()
+    {
+        return [
+            'full_name' => \Yii::t('app', 'ФИО'),
+            'user_id' => \Yii::t('app', 'ID пользователя'),
+            'card_number' => \Yii::t('app', 'Номер карточки'),
+            'book_name' => \Yii::t('app', 'Название книги'),
+            'email' => \Yii::t('app', 'Почта'),
+        ];
+    }
 }

@@ -1,4 +1,4 @@
 <?php /* @var $source string */ ?>
 <div class="video-item">
-    <img src="<?= $source ?>" alt="<?= $source ?>">
+    <video class="with-video" src="#" poster="<?= $source ?>"></video>
 </div>
