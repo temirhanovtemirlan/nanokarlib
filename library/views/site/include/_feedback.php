@@ -14,9 +14,6 @@ $models = $dataProvider->getModels();?>
                 <?php foreach ($models as $model): ?>
                     <div class="review-item">
                         <div class="review-wrap">
-                            <div class="review-img">
-                                <img alt="#" src="/images/review-img.png">
-                            </div>
                             <div class="review-text ds-menu-center">
                                 <p class="text">
                                     <?= $model->message ?>

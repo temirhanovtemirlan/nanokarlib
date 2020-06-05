@@ -9,16 +9,13 @@ use yii\helpers\Html;
 
 $this->title = $name;
 ?>
-<div class="site-error">
-    <main class="site_content">
-        <section class="section_pd">
-            <header class="section-head ds-flex-align">
-                <h3 class="title"><?= $name ?></h3>
-            </header>
-
-            <div class="alert alert-danger">
-                <?= nl2br(Html::encode($message)) ?>
-            </div>
-        </section>
-    </main>
-</div>
+<section class="section_pd main-content">
+    <header class="section-head ds-flex-align">
+        <h3 class="title"><?= $name ?></h3>
+    </header>
+    <div class="container content">
+        <div class="alert alert-danger">
+            <?= nl2br(Html::encode($message)) ?>
+        </div>
+    </div>
+</section>

@@ -25,6 +25,9 @@ class PublicationService extends Service
 
     public function searchByQuery($query)
     {
-        return $this->getFilter()->queryWhere(['ilike', 'title', $query])->queryWhere(['ilike', 'body', $query]);
+        if (empty($query)) {
+            return $this->getFilter()->search(['published' => true]);
+        }
+        return $this->getFilter()->queryWhere(['like', 'title', $query])->queryWhere(['like', 'body', $query])->queryWhere(['published' => true]);
     }
 }

@@ -25,6 +25,9 @@ $models = $dataProvider->getModels();
                 <div class="collapse show" id="collapse1" data-parent="#accordion">
                     <div class="card-body">
                         <p><?= $model->getAttribute('description_'.Yii::$app->language)?></p>
+                        <a class="btn submit" href="<?= \yii\helpers\Url::to(['/site/section', 'url' => $model->getAttribute('url_'.Yii::$app->language)]) ?>">
+                            <?= Yii::t('app', 'Перейти') ?>
+                        </a>
                     </div>
                 </div>
             </div>

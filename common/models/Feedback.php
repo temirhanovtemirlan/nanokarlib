@@ -28,7 +28,8 @@ class Feedback extends ActiveRecord
             [['full_name', 'message'], 'string'],
             ['full_name', 'required', 'message' => \Yii::t('app', 'Необходимо заполнить ФИО')],
             ['message', 'required', 'message' => \Yii::t('app', 'Необходимо заполнить текст отзыва')],
-            ['published', 'boolean']
+            ['published', 'boolean'],
+            ['message', 'string', 'min' => 50]
         ];
     }
 

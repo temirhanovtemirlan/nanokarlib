@@ -3,7 +3,13 @@
 
 $this->title = Yii::t('app', 'Подтверждение почты');
 ?>
-
-<div class="alert alert-success">
-    <?= Yii::t('app', 'Поздравляем! Вы успешно подтвердили свою почту.') ?>
-</div>
+<section class="section_pd main-content">
+    <header class="section-head ds-flex-align">
+        <h3 class="title"><?= Yii::t('app', 'Подтверждение почты') ?></h3>
+    </header>
+    <div class="container content">
+        <div class="alert alert-success">
+            <?= Yii::t('app', 'Поздравляем! Вы успешно подтвердили свою почту.') ?>
+        </div>
+    </div>
+</section>

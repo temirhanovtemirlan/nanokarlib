@@ -194,12 +194,17 @@ class SiteController extends Controller
         $model->user_id = \Yii::$app->user->id;
 
         if ($model->load(\Yii::$app->request->post()) && $this->renewalApplicationService->sendRenewalApplication($model)) {
+            \Yii::$app->session->setFlash('success', \Yii::t('app', 'Вы успешно подали заявку'));
             return $this->redirect(['index']);
         }
 
         throw new BadRequestHttpException(\Yii::t('app', 'Данные введены неверно'));
     }
 
+    /**
+     * @return string|Response
+     * @throws ForbiddenHttpException
+     */
     public function actionAsk()
     {
         if (\Yii::$app->user->isGuest) {
@@ -209,12 +214,19 @@ class SiteController extends Controller
         $model->user_id = \Yii::$app->user->id;
 
         if ($model->load(\Yii::$app->request->post()) && $this->questionService->sendQuestion($model)) {
+            \Yii::$app->session->setFlash('success', \Yii::t('app', 'Вопрос успешно отправлен модератору'));
             return $this->redirect(['index']);
         }
 
-        return $this->render('ask');
+        return $this->render('ask', [
+            'model' => $model
+        ]);
     }
 
+    /**
+     * @return string|Response
+     * @throws ForbiddenHttpException
+     */
     public function actionReview()
     {
         if (\Yii::$app->user->isGuest) {
@@ -225,10 +237,13 @@ class SiteController extends Controller
         $model->user_id = \Yii::$app->user->id;
 
         if ($model->load(\Yii::$app->request->post()) && $model->save()) {
+            \Yii::$app->session->setFlash('app', 'Вы успешно отправили отзыв');
             return $this->redirect(['index']);
         }
 
-        return $this->render('review');
+        return $this->render('review', [
+            'model' => $model
+        ]);
     }
 
     /**
