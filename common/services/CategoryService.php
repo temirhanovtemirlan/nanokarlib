@@ -5,6 +5,7 @@ namespace common\services;
 use common\components\ActiveRecord;
 use common\components\Service;
 use common\enums\CategoriesEnum;
+use common\models\Category;
 
 class CategoryService extends Service
 {
@@ -30,5 +31,18 @@ class CategoryService extends Service
             'published' => true,
             'type' => CategoriesEnum::TYPE_ADDITIONAL
         ]);
+    }
+
+    /**
+     * @param $url
+     * @return array|\yii\db\ActiveRecord|null|Category
+     */
+    public function getSectionByUrl($url)
+    {
+        return $this->find()->where(['published' => true])
+            ->andWhere(['url_kk' => $url])
+            ->orWhere(['url_ru' => $url])
+            ->orWhere(['url_en' => $url])
+            ->one();
     }
 }

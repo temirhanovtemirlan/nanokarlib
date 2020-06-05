@@ -13,4 +13,13 @@ class PublicationService extends Service
 
         return $filter;
     }
+
+    public function getPublicationByCanonicalTitle($canonical_title)
+    {
+        return $this->find()
+            ->where(['published' => true])
+            ->andWhere(['canonical_title' => $canonical_title])
+            ->with(['category', 'attachments'])
+            ->one();
+    }
 }

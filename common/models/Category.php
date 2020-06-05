@@ -76,4 +76,9 @@ class Category extends ActiveRecord
     {
         return $this->hasMany(self::class, ['parent_id' => 'id']);
     }
+
+    public function getPublication()
+    {
+        return $this->hasMany(Publication::class, ['category_id' => 'id'])->onCondition(['published' => true]);
+    }
 }

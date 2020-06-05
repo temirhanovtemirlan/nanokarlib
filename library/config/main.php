@@ -46,6 +46,8 @@ return [
             'showScriptName' => false,
             'rules' => [
                 '<action>' => 'site/<action>',
+                'section/<url>' => 'site/section',
+                'publication/<canonical_title>' => 'site/publication',
             ],
             'languages' => ['en', 'ru', 'kk'],
         ],

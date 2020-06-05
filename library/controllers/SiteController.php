@@ -3,16 +3,21 @@ namespace library\controllers;
 
 use common\forms\LoginForm;
 use common\forms\RegistrationForm;
+use common\models\Feedback;
+use common\models\Publication;
+use common\models\Question;
 use common\models\RenewalApplication;
 use common\services\AttachmentService;
 use common\services\CategoryService;
 use common\services\FeedbackService;
+use common\services\PublicationService;
 use common\services\QuestionService;
 use common\services\RenewalApplicationService;
 use common\services\SettingService;
 use common\services\SmartSpaceService;
 use common\services\UserService;
 use yii\base\Exception;
+use yii\data\ActiveDataProvider;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
@@ -64,6 +69,11 @@ class SiteController extends Controller
      * @var CategoryService
      */
     private $categoryService;
+
+    /**
+     * @var PublicationService
+     */
+    private $publicationService;
 
     /**
      * {@inheritdoc}
@@ -188,6 +198,70 @@ class SiteController extends Controller
         throw new BadRequestHttpException(\Yii::t('app', 'Данные введены неверно'));
     }
 
+    public function actionAsk()
+    {
+        if (\Yii::$app->user->isGuest) {
+            throw new ForbiddenHttpException(\Yii::t('app', 'Необходимо авторизоваться'));
+        }
+        $model = new Question();
+        $model->user_id = \Yii::$app->user->id;
+
+        if ($model->load(\Yii::$app->request->post()) && $this->questionService->sendQuestion($model)) {
+            return $this->redirect(['index']);
+        }
+
+        return $this->render('ask');
+    }
+
+    public function actionReview()
+    {
+        if (\Yii::$app->user->isGuest) {
+            throw new ForbiddenHttpException(\Yii::t('app', 'Необходимо авторизоваться'));
+        }
+
+        $model = new Feedback();
+        $model->user_id = \Yii::$app->user->id;
+
+        if ($model->load(\Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['index']);
+        }
+
+        return $this->render('review');
+    }
+
+    /**
+     * @param $url
+     * @return string
+     * @throws NotFoundHttpException
+     */
+    public function actionSection($url)
+    {
+        $section = $this->categoryService->getSectionByUrl($url);
+
+        if (!$section) {
+            throw new NotFoundHttpException(\Yii::t('app', 'Страница не найдена'));
+        }
+
+        $provider = new ActiveDataProvider([
+            'query' => Publication::find()->where(['category_id' => $section->id])->andWhere(['published' => true])->orderBy('ts DESC'),
+            'pagination' => [
+                'pageSize' => 10
+            ]
+        ]);
+
+        return $this->render('section', [
+            'model' => $section,
+            'provider' => $provider,
+        ]);
+    }
+
+    public function actionPublication($canonical_title)
+    {
+        return $this->render('publication', [
+            'model' => $this->publicationService->getPublicationByCanonicalTitle($canonical_title)
+        ]);
+    }
+
     public function actionLogout()
     {
         $this->userService->logout();
@@ -206,5 +280,6 @@ class SiteController extends Controller
         $this->feedbackService = \Yii::$app->feedbackService;
         $this->renewalApplicationService = \Yii::$app->renewalApplicationService;
         $this->categoryService = \Yii::$app->categoryService;
+        $this->publicationService = \Yii::$app->publicationService;
     }
 }

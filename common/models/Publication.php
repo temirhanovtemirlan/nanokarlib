@@ -3,6 +3,7 @@
 namespace common\models;
 
 use common\components\ActiveRecord;
+use common\enums\AttachmentsEnum;
 
 /**
  * Class Publication
@@ -51,5 +52,10 @@ class Publication extends ActiveRecord
     public function getCategory()
     {
         return $this->hasOne(Category::class, ['id' => 'category_id']);
+    }
+
+    public function getAttachments()
+    {
+        return $this->hasMany(Attachment::class, ['relative_id' => 'id'])->onCondition(['relative_type' => AttachmentsEnum::RELATION_PUBLICATION]);
     }
 }
