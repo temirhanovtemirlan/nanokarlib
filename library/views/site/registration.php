@@ -4,13 +4,11 @@ use yii\bootstrap4\ActiveForm;
 
 $this->title = Yii::t('app', 'Регистрация');
 ?>
-<section class="main-header mb-5">
-    <main class="site_content mb-5">
-        <section class="book-renewal section_pd">
+<section class="section_pd main-content">
             <header class="section-head ds-flex-align">
                 <h3 class="title"><?= Yii::t('app', 'Регистрация') ?></h3>
             </header>
-            <div class="container">
+            <div class="container content">
                 <?php $form = ActiveForm::begin([
                     'action' => '/site/registration',
                     'method' => 'post',
@@ -39,6 +37,4 @@ $this->title = Yii::t('app', 'Регистрация');
                 </div>
                 <?php $form::end() ?>
             </div>
-        </section>
-    </main>
 </section>

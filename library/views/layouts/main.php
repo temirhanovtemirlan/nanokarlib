@@ -28,7 +28,9 @@ AppAsset::register($this);
 <?php $this->beginBody() ?>
 
 <?= \library\widgets\Navigation::widget() ?>
-<?= $content ?>
+<main class="site_content">
+    <?= $content ?>
+</main>
 
 <footer class="site-footer">
     <div class="footer-top">
