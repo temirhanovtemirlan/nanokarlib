@@ -43,12 +43,29 @@ $(function () {
         * ---------------------------------------------------- */
 
     function scrollToTop() {
-        let element = $('.main-video'),
-            filter = $('.scroll-top');
-        $(window).scroll(function () {
-            let scroll = $(window).scrollTop(),
-                offset = element.offset().top;
-            (scroll > offset) ? filter.addClass('show') : filter.removeClass('show');
+        let element = $('.scroll-top');
+
+        $(window).scroll(function() {
+            if($(this).scrollTop() > 100){
+                element.stop().animate({
+                    bottom: '30px'
+                }, 750);
+            }
+            else{
+                element.stop().animate({
+                    bottom: '-100px'
+                }, 750);
+            }
+        });
+
+        element.click(function() {
+            $('html, body').stop().animate({
+                scrollTop: 0
+            }, 750, function() {
+                element.stop().animate({
+                    bottom: '-100px'
+                }, 750);
+            });
         });
     }
 

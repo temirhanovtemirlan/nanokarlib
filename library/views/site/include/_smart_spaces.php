@@ -9,7 +9,7 @@ $models = $dataProvider->getModels();
         <h3 class="title"><?= Yii::t('app', 'Пространства Smart') ?></h3>
     </header>
     <div class="container">
-        <div class="spaces-list section-list_pd">
+        <div class="<?= (!$models) ? '' : 'spaces-list' ?> section-list_pd">
             <?php if ($models): ?>
             <?php foreach ($models as $model): ?>
                 <div class="col-spaces">

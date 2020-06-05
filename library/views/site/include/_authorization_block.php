@@ -4,7 +4,7 @@
 /* @var $libraryFond string */
 /* @var $background string */
 ?>
-<section class="main-header">
+<section class="main-header main-content">
     <div class="leading">
         <div class="leading-wrap">
             <div class="leading-row row">
