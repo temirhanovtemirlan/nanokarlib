@@ -40,7 +40,7 @@ class AttachmentService extends Service
             return $background->source;
         }
 
-        return '';
+        return '/images/leading/leading_bg.png';
     }
 
     public function getSmartSpacesMap()

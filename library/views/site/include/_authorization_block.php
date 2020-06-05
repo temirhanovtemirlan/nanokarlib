@@ -5,7 +5,7 @@
 /* @var $background string */
 ?>
 <section class="main-header main-content">
-    <div class="leading">
+    <div class="leading" style="background-image: url('<?= $background ?>')">
         <div class="leading-wrap">
             <div class="leading-row row">
                 <div class="col-leading">
