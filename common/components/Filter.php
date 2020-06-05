@@ -26,6 +26,13 @@ class Filter extends ActiveDataProvider
         return $this;
     }
 
+    public function setPageSize($size)
+    {
+        $this->pagination->setPageSize($size);
+
+        return $this;
+    }
+
     public function init()
     {
         parent::init();

@@ -264,6 +264,13 @@ class SiteController extends Controller
         ]);
     }
 
+    public function actionSearch($query)
+    {
+        return $this->render('search', [
+            'dataProvider' => $this->publicationService->searchByQuery($query)->setPageSize(20),
+        ]);
+    }
+
     public function actionLogout()
     {
         $this->userService->logout();

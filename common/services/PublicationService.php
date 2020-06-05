@@ -22,4 +22,9 @@ class PublicationService extends Service
             ->with(['category', 'attachments'])
             ->one();
     }
+
+    public function searchByQuery($query)
+    {
+        return $this->getFilter()->queryWhere(['ilike', 'title', $query])->queryWhere(['ilike', 'body', $query]);
+    }
 }
