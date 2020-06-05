@@ -50,7 +50,7 @@ class AttachmentService extends Service
             return $map->source;
         }
 
-        return '';
+        return '/images/plan.png';
     }
 
     public function getLibraryLogo()

@@ -9,8 +9,8 @@ $models = $dataProvider->getModels();?>
     </header>
     <div class="container">
         <div class="section-list_pd">
-            <?php if ($models): ?>
             <div class="review-slide slide">
+                <?php if ($models): ?>
                 <?php foreach ($models as $model): ?>
                     <div class="review-item">
                         <div class="review-wrap">
@@ -25,8 +25,8 @@ $models = $dataProvider->getModels();?>
                         </div>
                     </div>
                 <?php endforeach; ?>
+                <?php endif; ?>
             </div>
-            <?php endif; ?>
             <div class="form-btn justify-content-center">
                 <a class="btn submit" href="<?= \yii\helpers\Url::to(['/site/review']) ?>">
                     <?= Yii::t('app', 'Оставить отзыв') ?>
