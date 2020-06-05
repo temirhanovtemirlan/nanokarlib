@@ -137,7 +137,9 @@ class SiteController extends Controller
             return $this->goBack();
         }
 
-        return $this->render('auth');
+        return $this->render('auth', [
+            'model' => $login
+        ]);
     }
 
     /**
