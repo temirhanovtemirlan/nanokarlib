@@ -10,6 +10,7 @@
 /* @var $settings array */
 /* @var $additionalSections common\filters\CategoryFilter */
 /* @var $renewalApplication common\models\RenewalApplication */
+/* @var $socialLinks common\models\Setting[] */
 
 $this->title = $settings[\common\enums\SettingsEnum::LIBRARY_BRAND_LABEL];
 ?>
@@ -40,4 +41,5 @@ $this->title = $settings[\common\enums\SettingsEnum::LIBRARY_BRAND_LABEL];
 ]) ?>
 <?= $this->render('include/_feedback', [
     'dataProvider' => $feedbackProvider,
+    'socialLinks' => $socialLinks,
 ]) ?>

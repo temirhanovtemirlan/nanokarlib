@@ -6,7 +6,7 @@ $models = $dataProvider->getModels();
 ?>
 <section class="smart-spaces section_pd">
     <header class="section-head ds-flex-align">
-        <h3 class="title"><?= Yii::t('app', 'Пространства Smart') ?></h3>
+        <h3 class="title"><?= Yii::t('app', 'Smart-пространства') ?></h3>
     </header>
     <div class="container">
         <div class="<?= (!$models) ? '' : 'spaces-list' ?> section-list_pd">

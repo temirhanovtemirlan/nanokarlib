@@ -120,6 +120,7 @@ class SiteController extends Controller
             'feedbackProvider' => $this->feedbackService->getPublishedRecords(),
             'additionalSections' => $this->categoryService->getAdditionalSections(),
             'renewalApplication' => $this->renewalApplicationService->getModel(),
+            'socialLinks' => $this->settingService->getSocialLinks(),
         ]);
     }
 
