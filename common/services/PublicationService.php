@@ -19,7 +19,7 @@ class PublicationService extends Service
         return $this->find()
             ->where(['published' => true])
             ->andWhere(['canonical_title' => $canonical_title])
-            ->with(['category', 'attachments'])
+            ->with(['attachments'])
             ->one();
     }
 

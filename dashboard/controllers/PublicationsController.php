@@ -7,6 +7,7 @@ use common\models\Publication;
 use common\services\AttachmentService;
 use common\services\CategoryService;
 use common\services\PublicationService;
+use dashboard\filters\PublicationsFilter;
 use yii\helpers\ArrayHelper;
 
 class PublicationsController extends AdminController
@@ -33,9 +34,10 @@ class PublicationsController extends AdminController
 
     public function actionIndex()
     {
+        $model = new PublicationsFilter();
         return $this->render('index', [
-            'dataProvider' => $this->publicationService->getFilter()->search(\Yii::$app->request->queryParams),
-            'categories' => ArrayHelper::map($this->categoryService->getFilter()->search([])->getModels(), 'id', 'name_'.\Yii::$app->language),
+            'dataProvider' => $model->search(\Yii::$app->request->queryParams),
+            'filterModel' => $model,
         ]);
     }
 

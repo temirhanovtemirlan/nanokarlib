@@ -4,6 +4,7 @@ namespace dashboard\controllers;
 
 use common\components\AdminController;
 use common\services\RenewalApplicationService;
+use dashboard\filters\RenewalApplicationsFilter;
 
 class RenewalApplicationsController extends AdminController
 {
@@ -19,8 +20,11 @@ class RenewalApplicationsController extends AdminController
 
     public function actionIndex()
     {
+        $model = new RenewalApplicationsFilter();
+
         return $this->render('index', [
-            'dataProvider' => $this->renewalApplicationService->getFilter()->search(\Yii::$app->request->queryParams),
+            'dataProvider' => $model->search(\Yii::$app->request->queryParams),
+            'filterModel' => $model
         ]);
     }
 

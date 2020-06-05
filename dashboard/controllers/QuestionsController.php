@@ -4,6 +4,7 @@ namespace dashboard\controllers;
 
 use common\components\AdminController;
 use common\services\QuestionService;
+use dashboard\filters\QuestionsFilter;
 
 class QuestionsController extends AdminController
 {
@@ -19,8 +20,10 @@ class QuestionsController extends AdminController
 
     public function actionIndex()
     {
+        $model = new QuestionsFilter();
         return $this->render('index', [
-            'dataProvider' => $this->questionService->getFilter(),
+            'dataProvider' => $model->search(\Yii::$app->request->queryParams),
+            'filterModel' => $model
         ]);
     }
 
