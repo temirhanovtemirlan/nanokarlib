@@ -51,19 +51,22 @@ class SettingService extends Service
 
     public function getLibrarySettings()
     {
-        $settings = [
+        $types = [
             SettingsEnum::LIBRARY_BRAND_LABEL,
             SettingsEnum::LIBRARY_SPACE_INFO,
             SettingsEnum::LIBRARY_FOND_INFO
         ];
+
+        $settings = $this->find()
+            ->where(['in', 'type', $types])
+            ->andWhere(['in', 'language', [
+                LanguagesEnum::LANGUAGE_ALL,
+                \Yii::$app->language
+            ]])
+            ->all();
+
         return ArrayHelper::map(
-            $this->find()
-                ->where(['in', 'type', $settings])
-                ->andWhere(['in', 'language', [
-                    LanguagesEnum::LANGUAGE_ALL,
-                    \Yii::$app->language
-                ]])
-                ->all(),
+            $settings,
             'type',
             'content'
         );

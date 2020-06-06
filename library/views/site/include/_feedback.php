@@ -36,7 +36,7 @@ $models = $dataProvider->getModels();?>
                         <ul class="site-menu ds-menu-center">
                             <?php foreach ($socialLinks as $link): ?>
                                 <li>
-                                    <a href="<?= $link->content ?>" title="<?= \common\enums\SettingsEnum::label($link->type) ?>">
+                                    <a target="_blank" href="<?= $link->content ?>" title="<?= \common\enums\SettingsEnum::label($link->type) ?>">
                                         <i class="fa fa-<?= \common\enums\SettingsEnum::socialLinks()[$link->type] ?> fa-2x icons ds-flex-align"></i>
                                     </a>
                                 </li>
