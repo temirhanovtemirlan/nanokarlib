@@ -17,4 +17,12 @@ class LanguagesEnum extends \common\components\Enum
             self::LANGUAGE_RUSSIAN => \Yii::t('app', 'Русский'),
         ];
     }
+
+    public static function forSelect()
+    {
+        $languages = self::labels();
+        unset($languages[\Yii::$app->language]);
+
+        return $languages;
+    }
 }

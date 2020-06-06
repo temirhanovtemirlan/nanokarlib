@@ -121,6 +121,7 @@ class SiteController extends Controller
             'additionalSections' => $this->categoryService->getAdditionalSections(),
             'renewalApplication' => $this->renewalApplicationService->getModel(),
             'socialLinks' => $this->settingService->getSocialLinks(),
+            'mapSettings' => $this->settingService->getMapSettings(),
         ]);
     }
 

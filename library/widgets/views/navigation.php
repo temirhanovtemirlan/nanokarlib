@@ -42,9 +42,15 @@ use yii\helpers\Url;
         </div>
         <div class="top-right">
             <div class="language-menu">
-                <select>Выбор языка
-                    <option>Казахский</option>
-                    <option>Русский</option>
+                <select onchange="window.location.href=this.options[this.selectedIndex].value">
+                    <option value="<?= Url::current() ?>">
+                        <?= \common\enums\LanguagesEnum::label(Yii::$app->language) ?>
+                    </option>
+                    <?php foreach (\common\enums\LanguagesEnum::forSelect() as $language => $label): ?>
+                    <option value="<?= Url::current(['language' => $language]) ?>">
+                        <?= $label ?>
+                    </option>
+                    <?php endforeach; ?>
                 </select>
             </div>
             <div class="search-input">
