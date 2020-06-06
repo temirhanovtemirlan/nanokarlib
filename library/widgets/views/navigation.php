@@ -99,18 +99,7 @@ use yii\helpers\Url;
                 </li>
                 <li class="wow fadeIn" data-wow-delay=".3s" data-wow-duration=".5s">
                     <a href="#">
-                        ARCHIVE
-                    </a>
-                </li>
-                <li class="wow fadeIn" data-wow-delay=".3s" data-wow-duration=".5s"><a href="#">GALLERY</a></li>
-                <li class="wow fadeIn" data-wow-delay=".3s" data-wow-duration=".5s">
-                    <a href="#">
-                        CATEGORIES
-                    </a>
-                </li>
-                <li class="wow fadeIn" data-wow-delay=".3s" data-wow-duration=".5s">
-                    <a href="#">
-                        CONTACT
+                        <?= Yii::t('app', 'Версия для слабовидящих') ?>
                     </a>
                 </li>
             </ul>
