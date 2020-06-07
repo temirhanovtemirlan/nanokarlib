@@ -6,6 +6,7 @@ use common\components\AdminController;
 use common\enums\CategoriesEnum;
 use common\models\Category;
 use common\services\CategoryService;
+use dashboard\filters\CategoriesFilter;
 
 class CategoriesController extends AdminController
 {
@@ -21,8 +22,10 @@ class CategoriesController extends AdminController
 
     public function actionIndex()
     {
+        $model = new CategoriesFilter();
         return $this->render('index', [
-            'dataProvider' =>  $this->categoryService->getFilter()->search(\Yii::$app->request->queryParams)
+            'dataProvider' =>  $model->search(\Yii::$app->request->queryParams),
+            'filterModel' => $model
         ]);
     }
 

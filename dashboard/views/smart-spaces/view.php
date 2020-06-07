@@ -15,6 +15,7 @@ $this->title = Yii::t('app', 'Smart-пространство') . ': ' . $model->
             'data-confirm' => \Yii::t('yii', 'Вы уверены, что хотите удалить эту запись?'),
             'data-method' => 'post'])
         ?>
+        <?= Html::a(Yii::t('app', 'Добавить фото'), ['/attachments/create', 't' => \common\enums\AttachmentsEnum::TYPE_IMAGE, 'rt' => \common\enums\AttachmentsEnum::RELATION_SMART_SPACE, 'rid' => $model->id, 'rUrl' => '/smart-spaces/view?id='.$model->id], ['class' => 'btn btn-primary']) ?>
     </p>
 
     <?= \yii\widgets\DetailView::widget([

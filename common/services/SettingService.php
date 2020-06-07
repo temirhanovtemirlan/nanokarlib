@@ -32,23 +32,41 @@ class SettingService extends Service
         return $this->find()->where(['type' => SettingsEnum::LIBRARY_BRAND_LABEL])->andWhere(['language' => \Yii::$app->language])->one()->content;
     }
 
+    public function getMapSettings()
+    {
+        $settings = $this->find()->where([
+            'in', 'type', [
+                SettingsEnum::LIBRARY_MAP_LATITUDE,
+                SettingsEnum::LIBRARY_MAP_LONGITUDE,
+                SettingsEnum::LIBRARY_CONTACTS_ADDRESS,
+                SettingsEnum::LIBRARY_CONTACTS_EMAIL,
+                SettingsEnum::LIBRARY_CONTACTS_PHONE
+            ]
+        ])->andWhere([
+            'in', 'language', ['all', \Yii::$app->language]
+        ])->all();
+
+        return ArrayHelper::map($settings, 'type', 'content');
+    }
+
     public function getLibrarySettings()
     {
-        $settings = [
+        $types = [
             SettingsEnum::LIBRARY_BRAND_LABEL,
             SettingsEnum::LIBRARY_SPACE_INFO,
-            SettingsEnum::LIBRARY_FOND_INFO,
-            SettingsEnum::LIBRARY_MAP_LATITUDE,
-            SettingsEnum::LIBRARY_MAP_LONGITUDE
+            SettingsEnum::LIBRARY_FOND_INFO
         ];
+
+        $settings = $this->find()
+            ->where(['in', 'type', $types])
+            ->andWhere(['in', 'language', [
+                LanguagesEnum::LANGUAGE_ALL,
+                \Yii::$app->language
+            ]])
+            ->all();
+
         return ArrayHelper::map(
-            $this->find()
-                ->where(['in', 'type', $settings])
-                ->andWhere(['in', 'language', [
-                    LanguagesEnum::LANGUAGE_ALL,
-                    \Yii::$app->language
-                ]])
-                ->all(),
+            $settings,
             'type',
             'content'
         );

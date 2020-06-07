@@ -1,6 +1,7 @@
 <?php
 /* @var $dataProvider common\filters\FeedbackFilter */
 /* @var $models common\models\Feedback[] */
+/* @var $socialLinks common\models\Setting[] */
 
 $models = $dataProvider->getModels();?>
 <section class="reviews">
@@ -33,13 +34,13 @@ $models = $dataProvider->getModels();?>
                 <div class="review-social-slide">
                     <div class="social-item">
                         <ul class="site-menu ds-menu-center">
-                            <li><a href="#" title="facebook"><i class="fa fa-whatsapp fa-2x icons ds-flex-align"></i></a></li>
-                            <li><a href="#" title="google-plus"><i class="fa fa-paper-plane fa-2x icons ds-flex-align"></i></a></li>
-                            <li><a href="#" title="maps"><i class="fa fa-facebook fa-2x icons ds-flex-align"></i></a></li>
-                            <li><a href="#" title="vk"><i class="fa fa-twitter fa-2x icons ds-flex-align"></i></a></li>
-                            <li><a href="#" title="instagram"><i class="fa fa-vk fa-2x icons ds-flex-align"></i></a></li>
-                            <li><a href="#" title="123"><i class="fa fa-odnoklassniki fa-2x icons ds-flex-align"></i></a></li>
-                            <li><a href="#" title="456"><i class="fa fa-youtube fa-2x icons ds-flex-align"></i></a></li>
+                            <?php foreach ($socialLinks as $link): ?>
+                                <li>
+                                    <a target="_blank" href="<?= $link->content ?>" title="<?= \common\enums\SettingsEnum::label($link->type) ?>">
+                                        <i class="fa fa-<?= \common\enums\SettingsEnum::socialLinks()[$link->type] ?> fa-2x icons ds-flex-align"></i>
+                                    </a>
+                                </li>
+                            <?php endforeach; ?>
                         </ul>
                     </div>
                 </div>

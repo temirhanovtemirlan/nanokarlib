@@ -42,9 +42,15 @@ use yii\helpers\Url;
         </div>
         <div class="top-right">
             <div class="language-menu">
-                <select>Выбор языка
-                    <option>Казахский</option>
-                    <option>Русский</option>
+                <select onchange="window.location.href=this.options[this.selectedIndex].value">
+                    <option value="<?= Url::current() ?>">
+                        <?= \common\enums\LanguagesEnum::label(Yii::$app->language) ?>
+                    </option>
+                    <?php foreach (\common\enums\LanguagesEnum::forSelect() as $language => $label): ?>
+                    <option value="<?= Url::current(['language' => $language]) ?>">
+                        <?= $label ?>
+                    </option>
+                    <?php endforeach; ?>
                 </select>
             </div>
             <div class="search-input">
@@ -70,7 +76,7 @@ use yii\helpers\Url;
                 <ul class="social-menu site-menu social-dropdown">
                     <?php foreach ($socialLinks as $key => $link): ?>
                         <li class="dropdown-item-<?= $key+1 ?>">
-                            <a href="<?= $link->content ?>">
+                            <a target="_blank" href="<?= $link->content ?>">
                                 <svg class="bi bi-chevron-left" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/></svg>
                                 <i class="fa fa-<?= \common\enums\SettingsEnum::socialLinks()[$link->type] ?> fa-2x icons ds-flex-align"></i>
                             </a>
@@ -93,18 +99,7 @@ use yii\helpers\Url;
                 </li>
                 <li class="wow fadeIn" data-wow-delay=".3s" data-wow-duration=".5s">
                     <a href="#">
-                        ARCHIVE
-                    </a>
-                </li>
-                <li class="wow fadeIn" data-wow-delay=".3s" data-wow-duration=".5s"><a href="#">GALLERY</a></li>
-                <li class="wow fadeIn" data-wow-delay=".3s" data-wow-duration=".5s">
-                    <a href="#">
-                        CATEGORIES
-                    </a>
-                </li>
-                <li class="wow fadeIn" data-wow-delay=".3s" data-wow-duration=".5s">
-                    <a href="#">
-                        CONTACT
+                        <?= Yii::t('app', 'Версия для слабовидящих') ?>
                     </a>
                 </li>
             </ul>

@@ -8,8 +8,10 @@
 /* @var $feedbackProvider common\filters\FeedbackFilter */
 /* @var $smartSpacesMap string */
 /* @var $settings array */
+/* @var $mapSettings array */
 /* @var $additionalSections common\filters\CategoryFilter */
 /* @var $renewalApplication common\models\RenewalApplication */
+/* @var $socialLinks common\models\Setting[] */
 
 $this->title = $settings[\common\enums\SettingsEnum::LIBRARY_BRAND_LABEL];
 ?>
@@ -32,12 +34,16 @@ $this->title = $settings[\common\enums\SettingsEnum::LIBRARY_BRAND_LABEL];
     'model' => $renewalApplication,
 ]) ?>
 <?= $this->render('include/_map', [
-    'longitude' => $settings[\common\enums\SettingsEnum::LIBRARY_MAP_LONGITUDE],
-    'latitude' => $settings[\common\enums\SettingsEnum::LIBRARY_MAP_LATITUDE]
+    'longitude' => $mapSettings[\common\enums\SettingsEnum::LIBRARY_MAP_LONGITUDE],
+    'latitude' => $mapSettings[\common\enums\SettingsEnum::LIBRARY_MAP_LATITUDE],
+    'address' => $mapSettings[\common\enums\SettingsEnum::LIBRARY_CONTACTS_ADDRESS],
+    'phone' => $mapSettings[\common\enums\SettingsEnum::LIBRARY_CONTACTS_PHONE],
+    'email' => $mapSettings[\common\enums\SettingsEnum::LIBRARY_CONTACTS_EMAIL]
 ]) ?>
 <?= $this->render('include/_questions', [
     'dataProvider' => $questionsProvider,
 ]) ?>
 <?= $this->render('include/_feedback', [
     'dataProvider' => $feedbackProvider,
+    'socialLinks' => $socialLinks,
 ]) ?>

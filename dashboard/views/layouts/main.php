@@ -45,7 +45,7 @@ AppAsset::register($this);
                 ['label' => Yii::t('app', 'Настройки'), 'url' => \yii\helpers\Url::to(['/settings/index'])],
                 ['label' => Yii::t('app', 'Разделы'), 'url' => \yii\helpers\Url::to(['/categories/index'])],
                 ['label' => Yii::t('app', 'Публикации'), 'url' => \yii\helpers\Url::to(['/publications/index'])],
-                ['label' => Yii::t('app', 'Смарт-пространства'), 'url' => \yii\helpers\Url::to(['/smart-spaces/index'])],
+                ['label' => Yii::t('app', 'Smart-пространства'), 'url' => \yii\helpers\Url::to(['/smart-spaces/index'])],
                 ['label' => Yii::t('app', 'Вложения'), 'url' => \yii\helpers\Url::to(['/attachments/index'])],
                 ['label' => Yii::t('app', 'Отзывы'), 'url' => \yii\helpers\Url::to(['/feedbacks/index'])],
                 ['label' => Yii::t('app', 'Вопросы и ответы'), 'url' => \yii\helpers\Url::to(['/questions/index'])],

@@ -77,6 +77,14 @@ class Attachment extends ActiveRecord
                     $model->delete();
                 }
             }
+            if ($this->relative_type == AttachmentsEnum::RELATION_SMART_SPACE) {
+                $model = self::find()->where(['relative_type' => $this->relative_type])
+                    ->andWhere(['relative_id' => $this->relative_id])
+                    ->one();
+                if ($model) {
+                    $model->delete();
+                }
+            }
         }
 
         return parent::beforeSave($insert);

@@ -45,9 +45,9 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                '<action>' => 'site/<action>',
                 'section/<url>' => 'site/section',
                 'publication/<canonical_title>' => 'site/publication',
+                '<action>' => 'site/<action>',
             ],
             'languages' => ['en', 'ru', 'kk'],
         ],

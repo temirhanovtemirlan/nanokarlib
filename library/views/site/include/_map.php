@@ -1,6 +1,9 @@
 <?php
 /* @var $latitude float */
 /* @var $longitude float */
+/* @var $address string */
+/* @var $phone string */
+/* @var $email string */
 /* @var $this yii\web\View */
 ?>
 <section class="maps section_pd">
@@ -19,36 +22,33 @@
 </section>
 
 <?php
-$js = <<< JS
+$js = "
 function maps(){
-        // Создание карты.
-        var myMap = new ymaps.Map("map", {
-            // Координаты центра карты.
-            // Порядок по умолчнию: «широта, долгота».
-            center: [49.815983, 73.099758],
-            // Уровень масштабирования. Допустимые значения:
-            // от 0 (весь мир) до 19.
+        var myMap = new ymaps.Map(\"map\", {
+            center: [{$latitude}, {$longitude}],
             zoom: 17
         });
 
-        var placemark = new ymaps.Placemark([49.815983, 73.099758], {
-            balloonContent: '<div class="ballon"><div class="logo"></div><div class="ball-00">Гоголя, 34 көшесі <br>+7 (7212) 56-70-84 <br>langcenterkar@mail.ru</div></div>',
-            iconImageHref: '../images/map-label.png',
+        var placemark = new ymaps.Placemark([{$latitude}, {$longitude}], {
+            balloonContent: '<div class=\"ballon\"><div class=\"logo\"></div><div class=\"ball-00\">{$address}<br>{$phone} <br>{$email}</div></div>',
+            iconImageHref: '/images/map-label.png',
             iconImageSize: [64, 64],
             iconImageOffset: [-32, -64],
             balloonContentSize: [320, 120],
-            balloonLayout: "default#imageWithContent",
+            balloonLayout: \"default#imageWithContent\",
             balloonImageHref: '/images/map-label.png',
             balloonImageOffset: [-65, -89],
             balloonImageSize: [310, 110],
             balloonShadow: false,
             balloonAutoPan: false
         });
+        
 
         myMap.geoObjects.add(placemark);
+        placemark.balloon.open();
     }
 ymaps.ready(maps);
-JS;
+";
 
 $this->registerJs($js);
 ?>

@@ -56,6 +56,6 @@ class Publication extends ActiveRecord
 
     public function getAttachments()
     {
-        return $this->hasMany(Attachment::class, ['relative_id' => 'id'])->onCondition(['relative_type' => AttachmentsEnum::RELATION_PUBLICATION]);
+        return $this->hasMany(Attachment::class, ['relative_id' => 'id'])->onCondition(['relative_type' => AttachmentsEnum::RELATION_PUBLICATION, 'published' => true]);
     }
 }

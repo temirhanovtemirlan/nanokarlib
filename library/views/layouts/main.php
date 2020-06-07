@@ -44,9 +44,9 @@ AppAsset::register($this);
                 <li>
                     <a href="#"><?= Yii::t('app', 'Электронный архив') ?></a>
                 </li>
-                <li><a href="#">GALLERY</a></li>
-                <li><a href="#">GALLERY</a></li>
-                <li><a href="#">CATEGORIES</a></li>
+                <li>
+                    <a href="#"><?= Yii::t('app', 'Версия для слабовидящих') ?></a>
+                </li>
             </ul>
         </div>
     </div>

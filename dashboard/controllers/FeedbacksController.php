@@ -4,6 +4,7 @@ namespace dashboard\controllers;
 
 use common\components\AdminController;
 use common\services\FeedbackService;
+use dashboard\filters\FeedbacksFilter;
 
 class FeedbacksController extends AdminController
 {
@@ -19,8 +20,10 @@ class FeedbacksController extends AdminController
 
     public function actionIndex()
     {
+        $model = new FeedbacksFilter();
         return $this->render('index', [
-            'dataProvider' => $this->feedbackService->getFilter()->search(\Yii::$app->request->queryParams)
+            'dataProvider' => $model->search(\Yii::$app->request->queryParams),
+            'filterModel' => $model,
         ]);
     }
 

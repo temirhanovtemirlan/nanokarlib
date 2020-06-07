@@ -5,6 +5,7 @@ namespace dashboard\controllers;
 use common\components\AdminController;
 use common\models\SmartSpace;
 use common\services\SmartSpaceService;
+use dashboard\filters\SmartSpacesFilter;
 
 class SmartSpacesController extends AdminController
 {
@@ -20,8 +21,10 @@ class SmartSpacesController extends AdminController
 
     public function actionIndex()
     {
+        $model = new SmartSpacesFilter();
         return $this->render('index', [
-            'dataProvider' => $this->smartSpaceService->getFilter()->search(\Yii::$app->request->queryParams)
+            'dataProvider' => $model->search(\Yii::$app->request->queryParams),
+            'filterModel' => $model,
         ]);
     }
 

@@ -6,6 +6,7 @@ use common\components\AdminController;
 use common\enums\AttachmentsEnum;
 use common\models\Attachment;
 use common\services\AttachmentService;
+use dashboard\filters\AttachmentsFilter;
 use yii\helpers\Json;
 use yii\web\UploadedFile;
 
@@ -23,8 +24,10 @@ class AttachmentsController extends AdminController
 
     public function actionIndex()
     {
+        $model = new AttachmentsFilter();
         return $this->render('index', [
-            'dataProvider' => $this->attachmentService->getFilter()->search(\Yii::$app->request->queryParams),
+            'dataProvider' => $model->search(\Yii::$app->request->queryParams),
+            'filterModel' => $model
         ]);
     }
 
