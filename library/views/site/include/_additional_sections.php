@@ -6,9 +6,9 @@ $models = $dataProvider->getModels();
 <section class="smart-dropdown section_pd">
     <div class="container">
         <div class="accordion" id="accordion">
-            <?php foreach ($models as $model): ?>
+            <?php foreach ($models as $key => $model): ?>
             <div class="card">
-                <div class="card-header collapsed ds-flex" data-toggle="collapse" data-target="#collapse1" aria-expanded="true">
+                <div class="card-header ds-flex <?= ($key != 0) ?: 'collapsed' ?>" data-toggle="collapse" data-target="#collapse<?=$key?>" aria-expanded="true">
                     <div class="accordion-item">
                         <img alt="#" src="/images/icons/icons-category.png">
                         <span><?= $model->getAttribute('name_'.Yii::$app->language) ?></span>
@@ -22,7 +22,7 @@ $models = $dataProvider->getModels();
                         </svg>
                     </span>
                 </div>
-                <div class="collapse show" id="collapse1" data-parent="#accordion">
+                <div class="collapse <?= ($key != 0) ?: 'show' ?>" id="collapse<?=$key?>" data-parent="#accordion">
                     <div class="card-body">
                         <p><?= $model->getAttribute('description_'.Yii::$app->language)?></p>
                         <a class="btn submit" href="<?= \yii\helpers\Url::to(['/site/section', 'url' => $model->getAttribute('url_'.Yii::$app->language)]) ?>">

@@ -23,14 +23,15 @@
 
 <?php
 $js = "
-function maps(){
+    function maps(){
         var myMap = new ymaps.Map(\"map\", {
-            center: [{$latitude}, {$longitude}],
+// TODO: center надо передавать числовое значение
+            center: ['49.8019', '73.1021'],
             zoom: 17
         });
 
-        var placemark = new ymaps.Placemark([{$latitude}, {$longitude}], {
-            balloonContent: '<div class=\"ballon\"><div class=\"logo\"></div><div class=\"ball-00\">{$address}<br>{$phone} <br>{$email}</div></div>',
+        var placemark = new ymaps.Placemark(['49.8019', '73.1021'], {
+            balloonContent: '<div class=\"ballon\"><div class=\"logo\"></div><div class=\"ball-00\">{$address}<br>{$phone}<br>{$email}</div></div>',
             iconImageHref: '/images/map-label.png',
             iconImageSize: [64, 64],
             iconImageOffset: [-32, -64],
@@ -47,7 +48,7 @@ function maps(){
         myMap.geoObjects.add(placemark);
         placemark.balloon.open();
     }
-ymaps.ready(maps);
+    ymaps.ready(maps);
 ";
 
 $this->registerJs($js);
