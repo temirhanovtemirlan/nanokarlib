@@ -9,18 +9,20 @@ $models = $dataProvider->getModels();
         <h3 class="title"><?= Yii::t('app', 'Пространства Smart') ?></h3>
     </header>
     <div class="container">
-        <div class="<?= (!$models) ? '' : 'spaces-list' ?> section-list_pd">
-            <?php if ($models): ?>
-            <?php foreach ($models as $model): ?>
-                <div class="col-spaces">
-                    <div class="spaces-item">
-                        <div class="spaces-block">
-                            <?= $model->getAttribute('description_' . Yii::$app->language) ?>
+        <div class="<?= (!$models) ? '' : 'spaces-wrap' ?>">
+            <div class="spaces-list section-list_pd">
+                <?php if ($models): ?>
+                    <?php foreach ($models as $model): ?>
+                        <div class="col-spaces">
+                            <div class="spaces-item">
+                                <div class="spaces-block">
+                                    <?= $model->getAttribute('description_' . Yii::$app->language) ?>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            <?php endforeach; ?>
-            <?php endif; ?>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </div>
         </div>
         <div class="video-wrap plan-wrap">
             <div class="decor-lines left"></div>
