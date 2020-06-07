@@ -13,9 +13,9 @@ $models = $dataProvider->getModels();
     <div class="container content">
         <div class="accordion" id="accordion">
             <?php if ($models): ?>
-                <?php foreach ($models as $model): ?>
+                <?php foreach ($models as $key => $model): ?>
                     <div class="card">
-                        <div class="card-header collapsed ds-flex" data-toggle="collapse" data-target="#collapse1"
+                        <div class="card-header ds-flex <?= ($key != 0) ?: 'collapsed' ?>" data-toggle="collapse" data-target="#collapse<?= $key ?>"
                              aria-expanded="true">
                             <div class="accordion-item">
                                 <span><?= $model->title ?></span>
@@ -33,7 +33,7 @@ $models = $dataProvider->getModels();
                         </svg>
                     </span>
                         </div>
-                        <div class="collapse show" id="collapse1" data-parent="#accordion">
+                        <div class="collapse <?= ($key != 0) ?: 'show' ?>" id="collapse<?= $key ?>" data-parent="#accordion">
                             <div class="card-body">
                                 <p><?= $model->announce ?></p>
                                 <a class="btn submit" href="<?= \yii\helpers\Url::to(['/site/publication', 'canonical_title' => $model->canonical_title]) ?>">
@@ -43,9 +43,11 @@ $models = $dataProvider->getModels();
                         </div>
                     </div>
                 <?php endforeach; ?>
-                <?= \yii\bootstrap4\LinkPager::widget([
-                    'pagination' => $dataProvider->pagination
-                ]) ?>
+                <div class="section_pd">
+                    <?= \yii\bootstrap4\LinkPager::widget([
+                        'pagination' => $dataProvider->pagination
+                    ]) ?>
+                </div>
             <?php else: ?>
                 <div>
                     <?= Yii::t('app', 'Ничего не найдено') ?>

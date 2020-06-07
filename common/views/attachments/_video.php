@@ -6,7 +6,7 @@
         'class' => 'youtube-video'
     ],
     'divOptions'=>[ /*for container div*/
-        'class' => 'youtube-video-div'
+        'class' => 'youtube-video-div text-center'
     ],
     'height'=>390,
     'width'=>640,

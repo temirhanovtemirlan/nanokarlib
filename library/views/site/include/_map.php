@@ -5,6 +5,15 @@
 /* @var $phone string */
 /* @var $email string */
 /* @var $this yii\web\View */
+
+if (is_string($latitude)) {
+    $latitude = 49.809144;
+}
+
+if (is_string($longitude)) {
+    $longitude = 73.092268;
+}
+
 ?>
 <section class="maps section_pd">
     <header class="section-head ds-flex-align">
@@ -25,7 +34,6 @@
 $js = "
     function maps(){
         var myMap = new ymaps.Map(\"map\", {
-// TODO: center надо передавать числовое значение
             center: ['49.8019', '73.1021'],
             zoom: 17
         });

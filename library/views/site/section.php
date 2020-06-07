@@ -16,9 +16,9 @@ $publications = $provider->getModels();
         </p>
         <div class="accordion" id="accordion">
             <?php if ($publications): ?>
-                <?php foreach ($publications as $publication): ?>
+                <?php foreach ($publications as $key => $publication): ?>
                     <div class="card">
-                        <div class="card-header collapsed ds-flex" data-toggle="collapse" data-target="#collapse1"
+                        <div class="card-header ds-flex <?= ($key != 0) ?: 'collapsed' ?>" data-toggle="collapse" data-target="#collapse<?= $key ?>"
                              aria-expanded="true">
                             <div class="accordion-item">
                                 <span><?= $publication->title ?></span>
@@ -36,7 +36,7 @@ $publications = $provider->getModels();
                         </svg>
                     </span>
                         </div>
-                        <div class="collapse show" id="collapse1" data-parent="#accordion">
+                        <div class="collapse <?= ($key != 0) ?: 'show' ?>" id="collapse<?= $key ?>" data-parent="#accordion">
                             <div class="card-body">
                                 <p><?= $publication->announce ?></p>
                                 <a class="btn submit" href="<?= \yii\helpers\Url::to(['/site/publication', 'canonical_title' => $publication->canonical_title]) ?>">
@@ -46,9 +46,11 @@ $publications = $provider->getModels();
                         </div>
                     </div>
                 <?php endforeach; ?>
-                <?= \yii\bootstrap4\LinkPager::widget([
-                    'pagination' => $provider->pagination
-                ]) ?>
+                <div class="section_pd">
+                    <?= \yii\bootstrap4\LinkPager::widget([
+                        'pagination' => $provider->pagination
+                    ]) ?>
+                </div>
             <?php else: ?>
                 <div>
                     <?= Yii::t('app', 'Ничего не найдено') ?>
