@@ -7,7 +7,7 @@ use yii\helpers\Url;
 /* @var $menuItems common\models\Category[] */
 /* @var $socialLinks common\models\Setting[] */
 ?>
-<header class="site-header">
+<header class="site-header header-pd">
     <div class="header-top">
         <div class="hamburger-menu">
             <button class="menu__btn btn"><span></span></button>
@@ -107,3 +107,16 @@ use yii\helpers\Url;
         </nav>
     </div>
 </header>
+<header class="header-clone the-header header-pd"><a class="logotype ds-flex" href="/"><img src="<?= $logo ?>"></a><a class="menu-toggle" href="#0">
+        Меню <span class="icon-menu"><svg class="bi bi-list-nested" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">  <path fill-rule="evenodd" d="M4.5 11.5A.5.5 0 0 1 5 11h10a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zm-2-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm-2-4A.5.5 0 0 1 1 3h10a.5.5 0 0 1 0 1H1a.5.5 0 0 1-.5-.5z"/>
+        </svg></span></a></header>
+<nav class="nav-wrapper"><a class="nav-close" href="#0"><svg class="bi bi-backspace-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M15.683 3a2 2 0 0 0-2-2h-7.08a2 2 0 0 0-1.519.698L.241 7.35a1 1 0 0 0 0 1.302l4.843 5.65A2 2 0 0 0 6.603 15h7.08a2 2 0 0 0 2-2V3zM5.829 5.854a.5.5 0 1 1 .707-.708l2.147 2.147 2.146-2.147a.5.5 0 1 1 .707.708L9.39 8l2.146 2.146a.5.5 0 0 1-.707.708L8.683 8.707l-2.147 2.147a.5.5 0 0 1-.707-.708L7.976 8 5.829 5.854z"/>
+        </svg></a>
+    <ul class="main-nav site-menu">
+        <li><a href="#">Главная</a></li>
+        <li><a href="#">тест</a></li>
+        <li><a href="#">456</a></li>
+        <li><a href="#">Smart spaces</a></li>
+    </ul>
+</nav>
