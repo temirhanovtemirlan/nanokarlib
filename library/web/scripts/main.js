@@ -43,12 +43,13 @@ $(function () {
         * ---------------------------------------------------- */
 
     function scrollToTop() {
-        let element = $('.scroll-top');
+        let element = $('.scroll-top'),
+            win = ($win.width() > 768) ? '120px' : '44px';
 
         $(window).scroll(function() {
             if($(this).scrollTop() > 100){
                 element.stop().animate({
-                    bottom: '30px'
+                    bottom: win
                 }, 750);
             }
             else{
