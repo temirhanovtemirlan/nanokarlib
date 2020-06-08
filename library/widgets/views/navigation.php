@@ -41,17 +41,18 @@ use yii\helpers\Url;
             <h1 class="text-img"><?= $brandLabel ?></h1>
         </div>
         <div class="top-right">
-            <div class="language-menu">
-                <select onchange="window.location.href=this.options[this.selectedIndex].value">
-                    <option value="<?= Url::current() ?>">
-                        <?= \common\enums\LanguagesEnum::label(Yii::$app->language) ?>
-                    </option>
+            <div class="dropdown language-menu">
+                <a class="ds-center current-lang lang-link" href="<?= Url::current() ?>" data-toggle="dropdown">
+                    <?= \common\enums\LanguagesEnum::label(Yii::$app->language) ?>
+                    <i class="icons-small arrow-down">
+                        <svg width="14" height="7" viewBox="0 0 14 7" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M14 1.52125L12.6503 -7.61229e-08L7 4.42233L1.34975 -5.89994e-08L-2.39484e-07 1.52125L7 7L14 1.52125Z" fill="#9C9C9F"/></svg>
+                    </i>
+                </a>
+                <div class="dropdown-body dropdown-menu">
                     <?php foreach (\common\enums\LanguagesEnum::forSelect() as $language => $label): ?>
-                    <option value="<?= Url::current(['language' => $language]) ?>">
-                        <?= $label ?>
-                    </option>
+                        <a class="lang-link" href="<?= Url::current(['language' => $language]) ?>"><?= $label ?></a>
                     <?php endforeach; ?>
-                </select>
+                </div>
             </div>
             <div class="search-input">
                 <form action="/search" method="get">

@@ -24,10 +24,12 @@ $models = $dataProvider->getModels();
                 <?php endif; ?>
             </div>
         </div>
-        <div class="video-wrap plan-wrap mt-4">
-            <div class="decor-lines left"></div>
-            <div class="decor-lines right"></div>
-            <div class="decor-wrap"><img alt="#" src="<?= $map ?>"></div>
+        <div class="section_pd">
+            <div class="video-wrap plan-wrap mt-4">
+                <div class="decor-lines left"></div>
+                <div class="decor-lines right"></div>
+                <div class="decor-wrap"><img alt="#" src="<?= $map ?>"></div>
+            </div>
         </div>
     </div>
 </section>
