@@ -34,11 +34,11 @@ if (is_string($longitude)) {
 $js = "
     function maps(){
         var myMap = new ymaps.Map(\"map\", {
-            center: ['49.8019', '73.1021'],
+            center: [{$latitude}, {$longitude}],
             zoom: 17
         });
 
-        var placemark = new ymaps.Placemark(['49.8019', '73.1021'], {
+        var placemark = new ymaps.Placemark([{$latitude}, {$longitude}], {
             balloonContent: '<div class=\"ballon\"><div class=\"logo\"></div><div class=\"ball-00\">{$address}<br>{$phone}<br>{$email}</div></div>',
             iconImageHref: '/images/map-label.png',
             iconImageSize: [64, 64],

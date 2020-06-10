@@ -17,21 +17,21 @@ use yii\helpers\Url;
                         <a href="<?= Url::to(['/site/section', 'url' => $item->getAttribute('url_' . Yii::$app->language)]) ?>">
                             <?= $item->getAttribute('name_' . Yii::$app->language) ?>
                         </a>
+                        <?php if ($item->children): ?>
+                            <div class="dropdown-cat">
+                                <ul class="dropdown-cat-list">
+                                    <?php foreach ($item->children as $child): ?>
+                                        <li class="dropdown-cat-item">
+                                            <a class="parent"
+                                               href="<?= Url::to(['/site/section', 'url' => $child->getAttribute('url_' . Yii::$app->language)]) ?>">
+                                                <?= $child->getAttribute('name_' . Yii::$app->language) ?>
+                                            </a>
+                                        </li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            </div>
+                        <?php endif; ?>
                     </li>
-                    <?php if ($item->children): ?>
-                        <div class="dropdown-cat">
-                            <ul class="dropdown-cat-list">
-                                <?php foreach ($item->children as $child): ?>
-                                    <li class="dropdown-cat-item">
-                                        <a class="parent"
-                                           href="<?= Url::to(['/site/section', 'url' => $child->getAttribute('url_' . Yii::$app->language)]) ?>">
-                                            <?= $child->getAttribute('name_' . Yii::$app->language) ?>
-                                        </a>
-                                    </li>
-                                <?php endforeach; ?>
-                            </ul>
-                        </div>
-                    <?php endif; ?>
                 <?php endforeach; ?>
             </ul>
         </div>
@@ -114,9 +114,20 @@ use yii\helpers\Url;
             <path fill-rule="evenodd" d="M15.683 3a2 2 0 0 0-2-2h-7.08a2 2 0 0 0-1.519.698L.241 7.35a1 1 0 0 0 0 1.302l4.843 5.65A2 2 0 0 0 6.603 15h7.08a2 2 0 0 0 2-2V3zM5.829 5.854a.5.5 0 1 1 .707-.708l2.147 2.147 2.146-2.147a.5.5 0 1 1 .707.708L9.39 8l2.146 2.146a.5.5 0 0 1-.707.708L8.683 8.707l-2.147 2.147a.5.5 0 0 1-.707-.708L7.976 8 5.829 5.854z"/>
         </svg></a>
     <ul class="main-nav site-menu">
-        <li><a href="#">Главная</a></li>
-        <li><a href="#">тест</a></li>
-        <li><a href="#">456</a></li>
-        <li><a href="#">Smart spaces</a></li>
+        <li>
+            <a href="/">
+                <?= Yii::t('app', 'Главная') ?>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <?= Yii::t('app', 'Электронный архив') ?>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <?= Yii::t('app', 'Версия для слабовидящих') ?>
+            </a>
+        </li>
     </ul>
 </nav>

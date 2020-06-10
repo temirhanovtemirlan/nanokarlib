@@ -50,7 +50,7 @@ $this->title = Yii::t('app', 'Редактировать раздел');
     <?= $form->field($model, 'url_en')->textInput() ?>
 
     <?php if ($model->parent_id): ?>
-        <?= $form->field($model, 'parent_id')->dropdownList(array_merge([], \yii\helpers\ArrayHelper::map($dataProvider->getModels(), 'id', 'name_'.Yii::$app->language))) ?>
+        <?= $form->field($model, 'parent_id')->dropdownList(\yii\helpers\ArrayHelper::map($dataProvider->getModels(), 'id', 'name_'.Yii::$app->language)) ?>
     <?php endif; ?>
     <?= $form->field($model, 'published')->checkbox() ?>
 

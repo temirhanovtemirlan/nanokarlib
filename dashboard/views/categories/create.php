@@ -50,7 +50,7 @@ $this->title = Yii::t('app', 'Создать новый раздел');
     <?= $form->field($model, 'url_en')->textInput() ?>
 
     <?php if ($child): ?>
-        <?= $form->field($model, 'parent_id')->dropdownList(array_merge([0 => Yii::t('app', 'Не задано')], \yii\helpers\ArrayHelper::map($dataProvider->getModels(), 'id', 'name_'.Yii::$app->language))) ?>
+        <?= $form->field($model, 'parent_id')->dropdownList(\yii\helpers\ArrayHelper::map($dataProvider->getModels(), 'id', 'name_'.Yii::$app->language)) ?>
     <?php endif; ?>
     <?= $form->field($model, 'published')->checkbox() ?>
 
