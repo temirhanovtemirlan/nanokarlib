@@ -9264,8 +9264,7 @@ a.text-dark:hover, a.text-dark:focus {
     .card-body {
         padding: 24px 70px 40px 24px; } }
 .card-body p {
-    font-size: 1.3rem;
-    color: #999999; }
+    font-size: 1.3rem; }
 @media (min-width: 640px) {
     .card-body p {
         font-size: 2rem; } }
