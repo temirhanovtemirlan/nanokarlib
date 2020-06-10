@@ -8,7 +8,7 @@ $this->title = $model->title;
         <h3 class="title"><?= $model->title ?></h3>
     </header>
     <div class="container content">
-        <p class="leading-text wow fadeIn p-4">
+        <p class="title">
             <?= $model->body ?>
         </p>
         <?php if ($model->attachments): ?>

@@ -11,7 +11,7 @@ $publications = $provider->getModels();
         <h3 class="title"><?= $model->getAttribute('name_'.Yii::$app->language) ?></h3>
     </header>
     <div class="container content">
-        <p class="leading-text wow fadeIn p-4">
+        <p class="title">
             <?= $model->getAttribute('description_'.Yii::$app->language) ?>
         </p>
         <div class="accordion" id="accordion">

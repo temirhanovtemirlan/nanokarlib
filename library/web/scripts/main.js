@@ -22,6 +22,7 @@ $(function () {
             dots: true,
             autoPlay: true,
             autoplaySpeed: 6000,
+            focusOnSelect: true,
             prevArrow: '<button class="slide-left"></button>',
             nextArrow: '<button class="slide-right"></button>',
             responsive: [
