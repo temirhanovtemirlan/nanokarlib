@@ -10,18 +10,28 @@ $models = $dataProvider->getModels();
     </header>
     <div class="container">
         <div class="<?= (!$models) ? '' : 'spaces-wrap' ?>">
-            <div class="spaces-list section-list_pd">
-                <?php if ($models): ?>
-                    <?php foreach ($models as $model): ?>
-                        <div class="col-spaces">
-                            <div class="spaces-item">
-                                <div class="spaces-block">
-                                    <?= $model->getAttribute('description_' . Yii::$app->language) ?>
+            <div class="direction-reveal direction-reveal--grid-bootstrap direction-reveal--demo-bootstrap">
+                <div class="spaces-list section-list_pd direction-reveal">
+                    <?php if ($models): ?>
+                        <?php foreach ($models as $model): ?>
+                            <div class="col-spaces">
+                                <div class="spaces-item direction-reveal__card swing--out-left" style="background-image: url('<?= $model->attachment->source ?>')">
+                                    <div class="direction-reveal__overlay-head spaces-block">
+                                        <h5 class="direction-reveal__title-head">
+                                            <?= $model->getAttribute('name_' . Yii::$app->language) ?>
+                                        </h5>
+                                    </div>
+                                    <div class="direction-reveal__overlay">
+                                        <h5 class="direction-reveal__title"><?= $model->getAttribute('name_' . Yii::$app->language) ?></h5>
+                                        <p class="direction-reveal__text">
+                                            <?= $model->getAttribute('description_' . Yii::$app->language) ?>
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    <?php endforeach; ?>
-                <?php endif; ?>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                </div>
             </div>
         </div>
         <div class="section_pd">
