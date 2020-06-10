@@ -40,7 +40,7 @@ $this->title = Yii::t('app', 'Вложения');
                 'filter' => false,
             ],
 
-            ['class' => 'common\components\ActionColumn']
+            ['class' => 'common\components\ActionColumn', 'template' => '{view} {delete}']
         ]
     ]); ?>
 
