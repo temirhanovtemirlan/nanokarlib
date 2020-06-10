@@ -22,6 +22,14 @@ $(function () {
             dots: true,
             prevArrow: '<button class="slide-left"></button>',
             nextArrow: '<button class="slide-right"></button>',
+            responsive: [
+                {
+                    breakpoint: 640,
+                    settings: {
+                        arrows: false
+                    }
+                },
+            ]
         });
 
         /* Слайдер на главной странице - блок FAQ */
@@ -43,12 +51,13 @@ $(function () {
         * ---------------------------------------------------- */
 
     function scrollToTop() {
-        let element = $('.scroll-top');
+        let element = $('.scroll-top'),
+            win = ($win.width() > 768) ? '120px' : '44px';
 
         $(window).scroll(function() {
             if($(this).scrollTop() > 100){
                 element.stop().animate({
-                    bottom: '30px'
+                    bottom: win
                 }, 750);
             }
             else{
@@ -68,6 +77,51 @@ $(function () {
             });
         });
     }
+
+
+    /* Header clone sticky
+       * ---------------------------------------------------- */
+
+    function headhesive() {
+        let options = {
+            classes: {
+                clone: 'header-clone',
+                stick: 'header-stick',
+                unstick: 'header-unstick'
+            }
+        };
+        let headhesive = new Headhesive('.the-header', options);
+        $('.header-clone').removeClass('the-origin-header');
+    }
+
+
+    /* Navigation menu
+        * ---------------------------------------------------- */
+
+    function navMenu() {
+        let menu_btn = $(".the-header .menu-toggle"),
+            nav_close = $(".nav-close"),
+            nav = $(".nav-wrapper");
+
+        nav_close.on('click', function (e) {
+            nav.removeClass('nav-opened');
+        });
+        menu_btn.on("click", function (e) {
+            nav.toggleClass('nav-opened');
+        });
+
+        // $(document).on('click', function(f){
+        //     if(!(
+        //         ($(f.target).parents('.nav-wrapper').length)
+        //         || ($(f.target).hasClass('.nav-wrapper'))
+        //         || ($(f.target).hasClass('.the-header .menu-toggle')))
+        //     ) {
+        //         nav.removeClass('nav-opened');
+        //     }
+        // });
+
+    }
+
 
     /* Custom modal
         * ---------------------------------------------------- */
@@ -104,6 +158,8 @@ $(function () {
     (function Init() {
         libsSlides();
         scrollToTop();
+        headhesive();
+        navMenu();
 
         new WOW().init();
     })();

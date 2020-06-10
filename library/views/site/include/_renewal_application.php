@@ -5,7 +5,7 @@ use yii\bootstrap4\ActiveForm;
 $disabled = Yii::$app->user->isGuest;
 ?>
 
-<section class="book-renewal">
+<section class="book-renewal section_pd">
     <header class="section-head ds-flex-align">
         <h3 class="title"><?= Yii::t('app', 'Продление сроков чтения книг') ?></h3>
     </header>
