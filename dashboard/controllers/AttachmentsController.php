@@ -96,7 +96,7 @@ class AttachmentsController extends AdminController
         $image->saveAs($path);
 
         return Json::encode([
-            'path' => '/web/uploads/' . $image->baseName . '.' . $image->extension,
+            'path' => '/uploads/' . $image->baseName . '.' . $image->extension,
             'name' => $image->baseName . '.' . $image->extension,
             'deleteUrl' => 'img-delete?name' . $image->baseName . '.' . $image->extension,
         ]);
@@ -104,8 +104,8 @@ class AttachmentsController extends AdminController
 
     public function actionRemove($name)
     {
-        if (file_exists(\Yii::getAlias('@library') . '/' . $name)) {
-            unlink(\Yii::getAlias('@library') . '/' . $name);
+        if (file_exists(\Yii::getAlias('@libraryUploadPath') . '/' . $name)) {
+            unlink(\Yii::getAlias('@libraryUploadPath') . '/' . $name);
             return $this->goBack();
         }
 
