@@ -3,6 +3,7 @@
 namespace common\models;
 
 use common\components\ActiveRecord;
+use common\enums\AttachmentsEnum;
 
 /**
  * Class SmartSpace
@@ -50,5 +51,10 @@ class SmartSpace extends ActiveRecord
             'name_en' => \Yii::t('app', 'Название на английском'),
             'published' => \Yii::t('app', 'Опубликовано'),
         ];
+    }
+
+    public function getAttachment()
+    {
+        return $this->hasOne(Attachment::class, ['relative_id' => 'id'])->onCondition(['relative_type' => AttachmentsEnum::RELATION_SMART_SPACE, 'published' => true]);
     }
 }
