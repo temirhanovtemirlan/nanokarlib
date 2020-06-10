@@ -40,7 +40,9 @@ class CategoriesController extends AdminController
 
         return $this->render('create', [
             'model' => $model,
-            'dataProvider' => $child ? $this->categoryService->getFilter()->search(['type' => CategoriesEnum::TYPE_MENU]) : '',
+            'dataProvider' => $child ? $this->categoryService->getFilter()
+                ->queryWhere(['type' => CategoriesEnum::TYPE_MENU])
+                ->queryWhere(['parent_id' => 0]) : '',
             'child' => $child ?? false,
         ]);
     }
@@ -62,7 +64,9 @@ class CategoriesController extends AdminController
 
         return $this->render('update', [
             'model' => $model,
-            'dataProvider' => $model->parent_id ? $this->categoryService->getFilter()->search([]) : '',
+            'dataProvider' => $model->parent_id ? $this->categoryService->getFilter()
+                ->queryWhere(['type' => CategoriesEnum::TYPE_MENU])
+                ->queryWhere(['parent_id' => 0]) : '',
         ]);
     }
 

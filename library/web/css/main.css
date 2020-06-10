@@ -8883,7 +8883,6 @@ a.text-dark:hover, a.text-dark:focus {
     padding: .5rem 1rem;
     color: #4c4c4c; }
 .dropdown-cat-item a:hover, .dropdown-cat-item a:focus {
-    color: #021D3A;
     background-color: rgba(2, 29, 58, 0.15); }
 .dropdown-cat-item a.parent {
     font-weight: 600; }
