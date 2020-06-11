@@ -115,17 +115,17 @@ use yii\helpers\Url;
         </svg></a>
     <ul class="main-nav site-menu">
         <li>
-            <a href="/">
+            <a href="/" class="scroll-to">
                 <?= Yii::t('app', 'Главная') ?>
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="#"  class="scroll-to">
                 <?= Yii::t('app', 'Электронный архив') ?>
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="#"  class="scroll-to">
                 <?= Yii::t('app', 'Версия для слабовидящих') ?>
             </a>
         </li>

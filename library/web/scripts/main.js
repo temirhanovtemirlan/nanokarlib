@@ -117,16 +117,30 @@ $(function () {
             nav.toggleClass('nav-opened');
         });
 
-        // $(document).on('click', function(f){
-        //     if(!(
-        //         ($(f.target).parents('.nav-wrapper').length)
-        //         || ($(f.target).hasClass('.nav-wrapper'))
-        //         || ($(f.target).hasClass('.the-header .menu-toggle')))
-        //     ) {
-        //         nav.removeClass('nav-opened');
-        //     }
-        // });
+        $(document).mouseup(function (e){ // событие клика по веб-документу
+            if (!nav.is(e.target) // если клик был не по нашему блоку
+                && nav.has(e.target).length === 0) { // и не по его дочерним элементам
+                nav.removeClass('nav-opened');
+            }
+        });
+    }
 
+
+    /* Custom Smooth Scroll For an Anchor
+        * ---------------------------------------------------- */
+
+    function scrollAnchor() {
+        $('a.scroll-to').click(function() {
+            if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+                let target = $(this.hash);
+                if (target.length) {
+                    $('html,body').animate({
+                        scrollTop: target.offset().top - 50
+                    }, 1000);
+                    return false;
+                }
+            }
+        });
     }
 
 
@@ -159,6 +173,9 @@ $(function () {
         });
     }
 
+
+    /* Direction reveal
+        * ---------------------------------------------------- */
 
     function directionReveal() {
         (function() {
@@ -415,6 +432,7 @@ $(function () {
     (function Init() {
         libsSlides();
         scrollToTop();
+        scrollAnchor();
         headhesive();
         directionReveal();
         navMenu();
