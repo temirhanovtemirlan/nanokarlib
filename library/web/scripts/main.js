@@ -86,6 +86,18 @@ $(function () {
     }
 
 
+    /* Preloader of site
+       * ---------------------------------------------------- */
+
+    function sitePreloader() {
+        window.onload = function () {
+            $("#cube-loader").delay(150).fadeOut('slow', function() {
+                $(this).hide();
+            });
+        };
+    }
+
+
     /* Header clone sticky
        * ---------------------------------------------------- */
 
@@ -142,36 +154,6 @@ $(function () {
 
                 $(".nav-wrapper").removeClass('nav-opened');
             }
-        });
-    }
-
-
-    /* Custom modal
-        * ---------------------------------------------------- */
-
-    function customModal(popup) {
-        let overlay = $('.modal_overlay');
-        popup.addClass('popup--active');
-
-        overlay.css({
-            'visibility': 'visible',
-            'opacity': 1
-        });
-        $(this).css({
-            'z-index': '-1'
-        });
-
-        popup.find('.close').on('click', function () {
-            $(this).parent().siblings('.btn').css({
-                'z-index': '1'
-            });
-            popup.removeClass('popup--active');
-            setTimeout(function () {
-                overlay.css({
-                    'visibility': 'hidden',
-                    'opacity': 0
-                });
-            }, 200)
         });
     }
 
@@ -429,28 +411,46 @@ $(function () {
     }
 
 
-    /* Preloader of site
+    /* Custom modal
         * ---------------------------------------------------- */
 
-    function sitePreloader() {
-        window.onload = function () {
-            $("#cube-loader").delay(150).fadeOut('slow', function() {
-                $(this).hide();
+    function customModal(popup) {
+        let overlay = $('.modal_overlay');
+        popup.addClass('popup--active');
+
+        overlay.css({
+            'visibility': 'visible',
+            'opacity': 1
+        });
+        $(this).css({
+            'z-index': '-1'
+        });
+
+        popup.find('.close').on('click', function () {
+            $(this).parent().siblings('.btn').css({
+                'z-index': '1'
             });
-        };
+            popup.removeClass('popup--active');
+            setTimeout(function () {
+                overlay.css({
+                    'visibility': 'hidden',
+                    'opacity': 0
+                });
+            }, 200)
+        });
     }
 
 
     /* Initialize
    * ------------------------------------------------------ */
     (function Init() {
-        sitePreloader();
         libsSlides();
         scrollToTop();
-        scrollAnchor();
+        sitePreloader();
         headhesive();
-        directionReveal();
         navMenu();
+        scrollAnchor();
+        directionReveal();
 
         new WOW().init();
     })();
