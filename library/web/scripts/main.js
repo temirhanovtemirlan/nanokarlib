@@ -139,7 +139,7 @@ $(function () {
                     }, 1000);
                     return false;
                 }
-                
+
                 $(".nav-wrapper").removeClass('nav-opened');
             }
         });
@@ -429,19 +429,28 @@ $(function () {
     }
 
 
+    /* Preloader of site
+        * ---------------------------------------------------- */
+
+    function sitePreloader() {
+        window.onload = function () {
+            $("#cube-loader").delay(150).fadeOut('slow', function() {
+                $(this).hide();
+            });
+        };
+    }
+
+
     /* Initialize
    * ------------------------------------------------------ */
     (function Init() {
+        sitePreloader();
         libsSlides();
         scrollToTop();
         scrollAnchor();
         headhesive();
         directionReveal();
         navMenu();
-
-        window.onload = function () {
-            $("#cube-loader").hide(100);
-        };
 
         new WOW().init();
     })();
