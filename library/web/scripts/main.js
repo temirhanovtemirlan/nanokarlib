@@ -139,6 +139,8 @@ $(function () {
                     }, 1000);
                     return false;
                 }
+                
+                $(".nav-wrapper").removeClass('nav-opened');
             }
         });
     }
