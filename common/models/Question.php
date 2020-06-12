@@ -43,6 +43,6 @@ class Question extends ActiveRecord
 
     public function getUser()
     {
-        return User::findOne($this->user_id)->username;
+        return $this->hasOne(User::class, ['id' => 'user_id']);
     }
 }

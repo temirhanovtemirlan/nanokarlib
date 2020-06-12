@@ -34,7 +34,7 @@ class QuestionsController extends AdminController
      */
     public function actionView($id)
     {
-        $model = $this->questionService->findOne($id);
+        $model = $this->questionService->find()->where(['id' => $id])->with(['user'])->one();
 
         if ($model->load(\Yii::$app->request->post()) && $this->questionService->save($model)) {
             return $this->refresh();

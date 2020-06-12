@@ -11,7 +11,7 @@ $this->title = Yii::t('app', 'Раздел') . ': ' . $model->getAttribute('name
     <p>
         <?= Html::a(Yii::t('app', 'Редактировать'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a(Yii::t('app', 'Удалить'), ['delete', 'id' => $model->id], ['class' => 'btn btn-danger',
-            'data-confirm' => \Yii::t('yii', 'Вы уверены, что хотите удалить эту запись?'),
+            'data-confirm' => \Yii::t('app', 'Вы уверены, что хотите удалить эту запись?'),
             'data-method' => 'post'])
         ?>
     </p>

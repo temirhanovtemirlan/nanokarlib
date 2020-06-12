@@ -35,7 +35,7 @@ class FeedbacksController extends AdminController
     public function actionView($id)
     {
         return $this->render('view', [
-            'model' => $this->feedbackService->findOne($id),
+            'model' => $this->feedbackService->find()->where(['id' => $id])->with(['user'])->one(),
         ]);
     }
 

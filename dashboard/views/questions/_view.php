@@ -18,7 +18,7 @@ use yii\bootstrap4\Html;
             'id',
             [
                 'attribute' => 'user_id',
-                'value' => $model->getUser()
+                'value' => $model->user->username,
             ],
             [
                 'attribute' => 'published',

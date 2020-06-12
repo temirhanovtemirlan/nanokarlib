@@ -38,7 +38,12 @@ class RenewalApplication extends ActiveRecord
             'user_id' => \Yii::t('app', 'ID пользователя'),
             'card_number' => \Yii::t('app', 'Номер карточки'),
             'book_name' => \Yii::t('app', 'Название книги'),
-            'email' => \Yii::t('app', 'Почта'),
+            'email' => \Yii::t('app', 'Электронная почта'),
         ];
+    }
+
+    public function getUser()
+    {
+        return $this->hasOne(User::class, ['id' => 'user_id']);
     }
 }

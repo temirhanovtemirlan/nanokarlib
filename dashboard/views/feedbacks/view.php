@@ -32,7 +32,7 @@ $this->title = Yii::t('app', 'Отзыв');
             'id',
             [
                 'attribute' => 'user_id',
-                'value' => $model->getUser()
+                'value' => $model->user->username,
             ],
             'full_name',
             'message:ntext',

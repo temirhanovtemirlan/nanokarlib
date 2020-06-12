@@ -25,8 +25,8 @@ class AttachmentsEnum extends Enum
             self::RELATION_SLIDER => \Yii::t('app', 'К слайдеру'),
             self::RELATION_SMART_SPACE => \Yii::t('app', 'К смарт-пространству'),
             self::RELATION_SMART_SPACES_MAP =>  \Yii::t('app', 'Карта смарт-пространств'),
-            self::RELATION_AUTH_BLOCK_BACKGROUND => \Yii::t('app', ''),
-            self::RELATION_LIBRARY_LOGO => \Yii::t('app', ''),
+            self::RELATION_AUTH_BLOCK_BACKGROUND => \Yii::t('app', 'Фон блока авторизации'),
+            self::RELATION_LIBRARY_LOGO => \Yii::t('app', 'Логотип библиотеки'),
         ];
     }
 

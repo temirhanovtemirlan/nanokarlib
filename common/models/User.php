@@ -160,7 +160,7 @@ class User extends ActiveRecord implements IdentityInterface
     {
         return [
             'username' => \Yii::t('app', 'Логин'),
-            'email' => \Yii::t('app', 'Почта'),
+            'email' => \Yii::t('app', 'Электронная почта'),
             'roles' => \Yii::t('app', 'Роли'),
             'status' => \Yii::t('app', 'Статус'),
         ];
