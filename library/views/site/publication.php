@@ -8,7 +8,7 @@ $this->title = $model->title;
         <h3 class="title"><?= $model->title ?></h3>
     </header>
     <div class="container content">
-        <p class="title">
+        <p class="lead">
             <?= $model->body ?>
         </p>
         <?php if ($model->attachments): ?>

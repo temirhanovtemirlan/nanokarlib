@@ -7,15 +7,6 @@ use common\models\Feedback;
 use common\models\Publication;
 use common\models\Question;
 use common\models\RenewalApplication;
-use common\services\AttachmentService;
-use common\services\CategoryService;
-use common\services\FeedbackService;
-use common\services\PublicationService;
-use common\services\QuestionService;
-use common\services\RenewalApplicationService;
-use common\services\SettingService;
-use common\services\SmartSpaceService;
-use common\services\UserService;
 use yii\base\Exception;
 use yii\data\ActiveDataProvider;
 use yii\web\BadRequestHttpException;
@@ -30,51 +21,6 @@ use yii\web\Response;
  */
 class SiteController extends Controller
 {
-    /**
-     * @var UserService
-     */
-    private $userService;
-
-    /**
-     * @var SettingService
-     */
-    private $settingService;
-
-    /**
-     * @var AttachmentService
-     */
-    private $attachmentService;
-
-    /**
-     * @var SmartSpaceService
-     */
-    private $smartSpaceService;
-
-    /**
-     * @var QuestionService
-     */
-    private $questionService;
-
-    /**
-     * @var FeedbackService
-     */
-    private $feedbackService;
-
-    /**
-     * @var RenewalApplicationService
-     */
-    private $renewalApplicationService;
-
-    /**
-     * @var CategoryService
-     */
-    private $categoryService;
-
-    /**
-     * @var PublicationService
-     */
-    private $publicationService;
-
     /**
      * {@inheritdoc}
      */
@@ -110,18 +56,18 @@ class SiteController extends Controller
     public function actionIndex()
     {
         return $this->render('index', [
-            'title' => $this->settingService->getLibraryBrandLabel(),
-            'authBlockBackground' => $this->attachmentService->getAuthBlockBackground(),
-            'totalUsers' => $this->userService->getUsersCount(),
-            'settings' => $this->settingService->getLibrarySettings(),
-            'smartSpacesProvider' => $this->smartSpaceService->getPublishedSmartSpaces(),
-            'smartSpacesMap' => $this->attachmentService->getSmartSpacesMap(),
-            'questionsProvider' => $this->questionService->getPublishedQuestions(),
-            'feedbackProvider' => $this->feedbackService->getPublishedRecords(),
-            'additionalSections' => $this->categoryService->getAdditionalSections(),
-            'renewalApplication' => $this->renewalApplicationService->getModel(),
-            'socialLinks' => $this->settingService->getSocialLinks(),
-            'mapSettings' => $this->settingService->getMapSettings(),
+            'title' => \Yii::$app->settingService->getLibraryBrandLabel(),
+            'authBlockBackground' => \Yii::$app->attachmentService->getAuthBlockBackground(),
+            'totalUsers' => \Yii::$app->user->getUsersCount(),
+            'settings' => \Yii::$app->settingService->getLibrarySettings(),
+            'smartSpacesProvider' => \Yii::$app->smartSpaceService->getPublishedSmartSpaces(),
+            'smartSpacesMap' => \Yii::$app->attachmentService->getSmartSpacesMap(),
+            'questionsProvider' => \Yii::$app->questionService->getPublishedQuestions(),
+            'feedbackProvider' => \Yii::$app->feedbackService->getPublishedRecords(),
+            'additionalSections' => \Yii::$app->categoryService->getAdditionalSections(),
+            'renewalApplication' => \Yii::$app->renewalApplicationService->getModel(),
+            'socialLinks' => \Yii::$app->settingService->getSocialLinks(),
+            'mapSettings' => \Yii::$app->settingService->getMapSettings(),
         ]);
     }
 
@@ -130,12 +76,12 @@ class SiteController extends Controller
      */
     public function actionAuth()
     {
-        if (!$this->userService->isGuest) {
+        if (!\Yii::$app->user->isGuest) {
             return $this->redirect(['index']);
         }
         $login = new LoginForm();
 
-        if ($login->load(\Yii::$app->request->post()) && $this->userService->authorizeUser($login)) {
+        if ($login->load(\Yii::$app->request->post()) && \Yii::$app->user->authorizeUser($login)) {
             return $this->goBack();
         }
 
@@ -150,13 +96,13 @@ class SiteController extends Controller
      */
     public function actionRegistration()
     {
-        if (!$this->userService->isGuest) {
+        if (!\Yii::$app->user->isGuest) {
             return $this->redirect(['index']);
         }
 
         $model = new RegistrationForm();
 
-        if ($model->load(\Yii::$app->request->post()) && $this->userService->createNewUser($model)) {
+        if ($model->load(\Yii::$app->request->post()) && \Yii::$app->user->createNewUser($model)) {
             \Yii::$app->session->setFlash('success', \Yii::t('app', 'На указанную вами почту отправлено письмо с подтверждением.'));
             return $this->goBack();
         }
@@ -173,13 +119,13 @@ class SiteController extends Controller
      */
     public function actionVerify($token)
     {
-        $user = $this->userService->findUserByToken($token);
+        $user = \Yii::$app->user->findUserByToken($token);
 
         if (!$user) {
             throw new NotFoundHttpException(\Yii::t('app', 'Страница не найдена'));
         }
 
-        $this->userService->verifyEmail($user);
+        \Yii::$app->user->verifyEmail($user);
 
         return $this->render('verify');
     }
@@ -195,7 +141,7 @@ class SiteController extends Controller
         $model = new RenewalApplication();
         $model->user_id = \Yii::$app->user->id;
 
-        if ($model->load(\Yii::$app->request->post()) && $this->renewalApplicationService->sendRenewalApplication($model)) {
+        if ($model->load(\Yii::$app->request->post()) && \Yii::$app->renewalApplicationService->sendRenewalApplication($model)) {
             \Yii::$app->session->setFlash('success', \Yii::t('app', 'Вы успешно подали заявку'));
             return $this->redirect(['index']);
         }
@@ -215,7 +161,7 @@ class SiteController extends Controller
         $model = new Question();
         $model->user_id = \Yii::$app->user->id;
 
-        if ($model->load(\Yii::$app->request->post()) && $this->questionService->sendQuestion($model)) {
+        if ($model->load(\Yii::$app->request->post()) && \Yii::$app->questionService->sendQuestion($model)) {
             \Yii::$app->session->setFlash('success', \Yii::t('app', 'Вопрос успешно отправлен модератору'));
             return $this->redirect(['index']);
         }
@@ -255,7 +201,7 @@ class SiteController extends Controller
      */
     public function actionSection($url)
     {
-        $section = $this->categoryService->getSectionByUrl($url);
+        $section = \Yii::$app->categoryService->getSectionByUrl($url);
 
         if (!$section) {
             throw new NotFoundHttpException(\Yii::t('app', 'Страница не найдена'));
@@ -277,35 +223,21 @@ class SiteController extends Controller
     public function actionPublication($canonical_title)
     {
         return $this->render('publication', [
-            'model' => $this->publicationService->getPublicationByCanonicalTitle($canonical_title)
+            'model' => \Yii::$app->publicationService->getPublicationByCanonicalTitle($canonical_title)
         ]);
     }
 
     public function actionSearch($query)
     {
         return $this->render('search', [
-            'dataProvider' => $this->publicationService->searchByQuery($query)->setPageSize(20),
+            'dataProvider' => \Yii::$app->publicationService->searchByQuery($query)->setPageSize(20),
         ]);
     }
 
     public function actionLogout()
     {
-        $this->userService->logout();
+        \Yii::$app->user->logout();
 
         return $this->goBack();
-    }
-
-    public function init()
-    {
-        parent::init();
-        $this->userService = \Yii::$app->user;
-        $this->settingService = \Yii::$app->settingService;
-        $this->attachmentService = \Yii::$app->attachmentService;
-        $this->smartSpaceService = \Yii::$app->smartSpaceService;
-        $this->questionService = \Yii::$app->questionService;
-        $this->feedbackService = \Yii::$app->feedbackService;
-        $this->renewalApplicationService = \Yii::$app->renewalApplicationService;
-        $this->categoryService = \Yii::$app->categoryService;
-        $this->publicationService = \Yii::$app->publicationService;
     }
 }
