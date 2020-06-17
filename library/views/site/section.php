@@ -1,10 +1,7 @@
 <?php
 /* @var $model common\models\Category */
-/* @var $provider yii\data\ActiveDataProvider */
-/* @var $publications common\models\Publication[] */
 
 $this->title = $model->getAttribute('name_'.Yii::$app->language);
-$publications = $provider->getModels();
 ?>
 <section class="section_pd main-content">
     <header class="section-head ds-flex-align">
@@ -15,8 +12,8 @@ $publications = $provider->getModels();
             <?= $model->getAttribute('description_'.Yii::$app->language) ?>
         </p>
         <div class="accordion" id="accordion">
-            <?php if ($publications): ?>
-                <?php foreach ($publications as $key => $publication): ?>
+            <?php if ($model->publication): ?>
+                <?php foreach ($model->publication as $key => $publication): ?>
                     <div class="card">
                         <div class="card-header ds-flex <?= ($key != 0) ?: 'collapsed' ?>" data-toggle="collapse" data-target="#collapse<?= $key ?>"
                              aria-expanded="true">
@@ -48,7 +45,10 @@ $publications = $provider->getModels();
                 <?php endforeach; ?>
                 <div class="section_pd">
                     <?= \yii\bootstrap4\LinkPager::widget([
-                        'pagination' => $provider->pagination
+                        'pagination' => new \yii\data\Pagination([
+                            'totalCount' => sizeof($model->publication),
+                            'pageSize' => 10
+                        ])
                     ]) ?>
                 </div>
             <?php else: ?>

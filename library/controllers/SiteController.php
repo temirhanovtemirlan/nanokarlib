@@ -207,16 +207,8 @@ class SiteController extends Controller
             throw new NotFoundHttpException(\Yii::t('app', 'Страница не найдена'));
         }
 
-        $provider = new ActiveDataProvider([
-            'query' => Publication::find()->where(['category_id' => $section->id])->andWhere(['published' => true])->orderBy('ts DESC'),
-            'pagination' => [
-                'pageSize' => 10
-            ]
-        ]);
-
         return $this->render('section', [
             'model' => $section,
-            'provider' => $provider,
         ]);
     }
 

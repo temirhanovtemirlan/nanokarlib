@@ -43,6 +43,7 @@ class CategoryService extends Service
             ->andWhere(['url_kk' => $url])
             ->orWhere(['url_ru' => $url])
             ->orWhere(['url_en' => $url])
+            ->with(['publication'])
             ->one();
     }
 }

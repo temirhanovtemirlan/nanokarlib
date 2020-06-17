@@ -35,9 +35,8 @@ use yii\helpers\Url;
                 <?php endforeach; ?>
             </ul>
         </div>
-        <div class="site-logo wow fadeInUp" data-wow-delay=".6s" data-wow-duration=".8s"><a class="logotype ds-flex"
-                                                                                            href="/"><img
-                        src="<?= $logo ?>"></a>
+        <div class="site-logo wow fadeInUp text-center" data-wow-delay=".6s" data-wow-duration=".8s">
+            <a class="logotype ds-flex" href="/"><img src="<?= $logo ?>"></a>
             <h1 class="text-img"><?= $brandLabel ?></h1>
         </div>
         <div class="top-right">

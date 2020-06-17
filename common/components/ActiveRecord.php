@@ -32,7 +32,7 @@ class ActiveRecord extends \yii\db\ActiveRecord
         foreach ($values as $attribute => $value) {
             if (is_string($value)) {
                 $this->setAttribute($attribute, strip_tags($value,
-                    '<a><ol><li><ul><b><em><u><sub><sup><span><table><hr>'));
+                    '<a><ol><li><ul><b><em><u><sub><sup><span><table><hr><br>'));
             }
         }
         foreach ($this->arrayAttributes() as $attribute) {
