@@ -3,7 +3,7 @@
 <?= \lesha724\youtubewidget\Youtube::widget([
     'video' => $source,
     'iframeOptions'=>[
-        'class' => 'youtube-video'
+        'class' => 'youtube-video mw-100'
     ],
     'divOptions'=>[ /*for container div*/
         'class' => 'youtube-video-div text-center'
