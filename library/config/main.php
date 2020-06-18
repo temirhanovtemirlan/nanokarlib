@@ -47,6 +47,7 @@ return [
             'rules' => [
                 'section/<url>' => 'site/section',
                 'publication/<canonical_title>' => 'site/publication',
+                '' => 'site/index',
                 '<action>' => 'site/<action>',
             ],
             'languages' => ['en', 'ru', 'kk'],

@@ -1,6 +1,6 @@
 <?php
 
-namespace library\widgets;
+namespace common\widgets;
 
 use common\enums\AttachmentsEnum;
 use yii\bootstrap4\Widget;
