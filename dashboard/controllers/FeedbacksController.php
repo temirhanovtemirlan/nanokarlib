@@ -57,14 +57,14 @@ class FeedbacksController extends AdminController
     {
         $this->feedbackService->publishOnMainPage($id);
 
-        return $this->refresh();
+        return $this->redirect(\Yii::$app->request->referrer);
     }
 
     public function actionUnpublish($id)
     {
         $this->feedbackService->unpublishFromMainPage($id);
 
-        return $this->refresh();
+        return $this->redirect(\Yii::$app->request->referrer);
     }
 
     public function init()
