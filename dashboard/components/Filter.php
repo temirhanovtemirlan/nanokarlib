@@ -35,6 +35,11 @@ class Filter extends ActiveRecord
     {
         $query = $this->getModel()::find();
         $query->orderBy(['ts' => SORT_DESC]);
+        foreach ($this->getModel()->attributes as $attribute => $value) {
+            if (!empty($value)) {
+                $query->andFilterWhere([$attribute => $value]);
+            }
+        }
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,

@@ -43,6 +43,9 @@ return [
         ],
         'renewalApplicationService' => [
             'class' => 'common\services\RenewalApplicationService'
+        ],
+        'literatureService' => [
+            'class' => 'common\services\LiteratureService'
         ]
     ],
 ];

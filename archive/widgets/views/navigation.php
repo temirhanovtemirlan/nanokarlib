@@ -31,7 +31,7 @@ use yii\helpers\Url;
         </div>
         <div class="site-logo wow fadeInUp text-center" data-wow-delay=".6s" data-wow-duration=".8s">
             <a class="logotype ds-flex" href="/"><img src="<?= $logo ?>"></a>
-            <h1 class="text-img"><?= Yii::$app->name ?></h1>
+            <h1 class="text-img"><?= Yii::t('app', 'Электронный архив') ?></h1>
         </div>
         <div class="top-right">
             <div class="dropdown language-menu">

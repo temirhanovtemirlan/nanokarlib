@@ -20,7 +20,7 @@ AppAsset::register($this);
     <meta charset="<?= Yii::$app->charset ?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <?php $this->registerCsrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
@@ -41,15 +41,18 @@ AppAsset::register($this);
         'menu' => [
             'label' => Yii::t('app', 'Меню'),
             'items' => [
-                ['label' => Yii::t('app', 'Пользователи'), 'url' => \yii\helpers\Url::to(['/users/index'])],
-                ['label' => Yii::t('app', 'Настройки'), 'url' => \yii\helpers\Url::to(['/settings/index'])],
-                ['label' => Yii::t('app', 'Разделы'), 'url' => \yii\helpers\Url::to(['/categories/index'])],
-                ['label' => Yii::t('app', 'Публикации'), 'url' => \yii\helpers\Url::to(['/publications/index'])],
-                ['label' => Yii::t('app', 'Smart-пространства'), 'url' => \yii\helpers\Url::to(['/smart-spaces/index'])],
-                ['label' => Yii::t('app', 'Вложения'), 'url' => \yii\helpers\Url::to(['/attachments/index'])],
-                ['label' => Yii::t('app', 'Отзывы'), 'url' => \yii\helpers\Url::to(['/feedbacks/index'])],
-                ['label' => Yii::t('app', 'Вопросы и ответы'), 'url' => \yii\helpers\Url::to(['/questions/index'])],
-                ['label' => Yii::t('app', 'Заявки на продление сроков чтения'), 'url' => \yii\helpers\Url::to(['/renewal-applications/index'])],
+                ['label' => Yii::t('app', 'Пользователи'), 'url' => Url::to(['/users/index'])],
+                ['label' => Yii::t('app', 'Настройки'), 'url' => Url::to(['/settings/index'])],
+                ['label' => Yii::t('app', 'Разделы'), 'url' => Url::to(['/categories/index'])],
+                ['label' => Yii::t('app', 'Публикации'), 'url' => Url::to(['/publications/index'])],
+                ['label' => Yii::t('app', 'Smart-пространства'), 'url' => Url::to(['/smart-spaces/index'])],
+                ['label' => Yii::t('app', 'Вложения'), 'url' => Url::to(['/attachments/index'])],
+                ['label' => Yii::t('app', 'Отзывы'), 'url' => Url::to(['/feedbacks/index'])],
+                ['label' => Yii::t('app', 'Вопросы и ответы'), 'url' => Url::to(['/questions/index'])],
+                ['label' => Yii::t('app', 'Заявки на продление сроков чтения'), 'url' => Url::to(['/renewal-applications/index'])],
+                ['label' => Yii::t('app', 'Книги'), 'url' => Url::to(['/literature/books/index'])],
+                ['label' => Yii::t('app', 'Газеты'), 'url' => Url::to(['/literature/newspapers/index'])],
+                ['label' => Yii::t('app', 'Журналы'), 'url' => Url::to(['/literature/magazines/index'])],
             ],
         ],
         'language' => [
