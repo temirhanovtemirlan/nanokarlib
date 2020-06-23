@@ -27,6 +27,21 @@ class SiteController extends \common\controllers\SiteController
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        return $this->render('index', [
+            'authBlock' => Yii::$app->settingService->getLibrarySettings(),
+            'authBlockBackground' => Yii::$app->attachmentService->getAuthBlockBackground(),
+            'booksProvider' => Yii::$app->literatureService->getBooksProvider(),
+            'newspapersProvider' => Yii::$app->literatureService->getNewspapersProvider(),
+            'magazinesProvider' => Yii::$app->literatureService->getMagazinesProvider(),
+        ]);
+    }
+
+    public function actionSearch()
+    {
+        $param = Yii::$app->request->get('search');
+
+        return $this->render('search', [
+            'dataProvider' => Yii::$app->literatureService
+        ]);
     }
 }

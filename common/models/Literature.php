@@ -5,6 +5,9 @@ namespace common\models;
 use common\components\ActiveRecord;
 use common\enums\AttachmentsEnum;
 use common\enums\LiteratureEnum;
+use common\models\literature\Book;
+use common\models\literature\Magazine;
+use common\models\literature\Newspaper;
 
 /**
  * Class Literature
@@ -85,5 +88,26 @@ class Literature extends ActiveRecord
             default:
                 return '@common/views/literature/_default';
         }
+    }
+
+    public static function instantiate($row)
+    {
+        $models = [
+            LiteratureEnum::TYPE_BOOK => Book::class,
+            LiteratureEnum::TYPE_NEWSPAPER => Newspaper::class,
+            LiteratureEnum::TYPE_MAGAZINE => Magazine::class
+        ];
+
+        return new $models[$row['type']]();
+    }
+
+    public function getViews()
+    {
+        return $this->hasMany(View::class, ['literature_id' => 'id']);
+    }
+
+    public function getDownloads()
+    {
+        return $this->hasMany(Download::class, ['literature_id' => 'id']);
     }
 }

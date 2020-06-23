@@ -22,6 +22,7 @@ return [
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,
             'identityCookie' => ['name' => '_identity-frontend', 'httpOnly' => true],
+            'class' => 'common\services\UserService'
         ],
         'session' => [
             // this is the name of the session cookie used for login on the frontend
@@ -46,6 +47,10 @@ return [
             'rules' => [
                 '' => 'site/index',
                 '<action>' => 'site/<action>',
+                '<contoller>' => '<controller>/index',
+                'books/<canonical_title>/view' => 'books/view',
+                'newspapers/<canonical_title>/view' => 'newspapers/view',
+                'magazines/<canonical_title>/view' => 'magazines/view',
             ],
             'languages' => ['ru', 'kk'],
         ],

@@ -1,5 +1,4 @@
 <?php
-/* @var $totalUsers string */
 /* @var $librarySpace string */
 /* @var $libraryFond string */
 /* @var $background string */
@@ -21,7 +20,7 @@
                     <img class="wow fadeIn" alt="#" src="/images/leading/leading_2.png" data-wow-delay=".6s" data-wow-duration=".6s">
                     <p class="leading-text wow fadeIn" data-wow-delay=".3s" data-wow-duration=".5s">
                         <span>
-                            <?= $totalUsers ?>+
+                            <?= Yii::$app->user->getUsersCount() ?>+
                         </span>
                         <?= Yii::t('app', 'Читателей') ?>
                     </p>
