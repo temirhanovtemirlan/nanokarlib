@@ -2,6 +2,9 @@
 
 namespace common\services;
 
+use archive\filters\BooksFilter;
+use archive\filters\MagazinesFilter;
+use archive\filters\NewspapersFilter;
 use common\components\ActiveRecord;
 use common\components\Service;
 use common\enums\LiteratureEnum;
@@ -36,12 +39,28 @@ class LiteratureService extends Service
 
     public function findNewspaper($canonical_title)
     {
+        $newspaper = $this->findByCanonicalTitle($canonical_title)
+            ->with(['image', 'source', 'views', 'downloads'])
+            ->one();
 
+        if (!$newspaper) {
+            throw new NotFoundHttpException(\Yii::t('app', 'Страница не найдена'));
+        }
+
+        return $newspaper;
     }
 
     public function findMagazine($canonical_title)
     {
+        $magazine = $this->findByCanonicalTitle($canonical_title)
+            ->with(['image', 'source', 'views', 'downloads'])
+            ->one();
 
+        if (!$magazine) {
+            throw new NotFoundHttpException(\Yii::t('app', 'Страница не найдена'));
+        }
+
+        return $magazine;
     }
 
     /**
@@ -222,19 +241,44 @@ class LiteratureService extends Service
         }
     }
 
-    public function getProviderBySearch($search)
+    public function getSearchProvider($search)
     {
         $query = Literature::find()
             ->where(['published' => true])
             ->andFilterWhere(['ilike', 'title', $search])
-            ->orFilterWhere(['ilike', 'description', $search])
+            ->orFilterWhere(['ilike', 'description_'.\Yii::$app->language, $search])
             ->with(['image', 'source', 'views', 'downloads']);
 
-        return new ActiveDataProvider([
-            'query' => $query,
-            'pagination' => [
-                'pageSize' => 20
-            ]
-        ]);
+        return $this->getLiteratureProvider($query);
+    }
+
+    public function getBooksProviderBySearch($search)
+    {
+        return $this->getBooksFilter()->search($search);
+    }
+
+    public function getNewspapersProviderBySearch($search)
+    {
+        return $this->getBooksFilter()->search($search);
+    }
+
+    public function getMagazinesProviderBySearch($search)
+    {
+        return $this->getMagazinesFilter()->search($search);
+    }
+
+    public function getBooksFilter()
+    {
+        return new BooksFilter();
+    }
+
+    public function getNewspapersFilter()
+    {
+        return new NewspapersFilter();
+    }
+
+    public function getMagazinesFilter()
+    {
+        return new MagazinesFilter();
     }
 }

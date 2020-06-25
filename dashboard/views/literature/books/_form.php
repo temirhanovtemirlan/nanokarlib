@@ -31,7 +31,13 @@ use yii\bootstrap4\Html;
         ],
     ]) ?>
 
+    <?= $form->field($model, 'rating')->textInput() ?>
+
     <?= $form->field($model, 'published')->checkbox() ?>
+
+    <?= $form->field($model, 'recommended')->checkbox() ?>
+
+    <?= $form->field($model, 'latest')->checkbox() ?>
 
     <?= $form->field($model, 'readable')->checkbox() ?>
 

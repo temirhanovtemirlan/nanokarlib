@@ -27,7 +27,7 @@ $models = $provider->getModels();
                                 <?= $model->getAttribute('description_'.Yii::$app->language) ?>
                             </p>
                             <p><i class="fa fa-star text-secondary"></i>
-                                <?= Yii::t('app', 'Рейтинг: {count}', ['count' => 5]) ?>
+                                <?= Yii::t('app', 'Рейтинг: {count}', ['count' => $model->rating]) ?>
                             </p>
                             <p><i class="fa fa-eye text-secondary"></i>
                                 <?= Yii::t('app', 'Просмотров: {count}', ['count' => count($model->views)]) ?>

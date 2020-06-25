@@ -8,7 +8,11 @@ class MagazinesController extends Controller
 {
     public function actionIndex()
     {
-        return $this->render('index');
+        $dataProvider = \Yii::$app->literatureService->getMagazinesProviderBySearch(\Yii::$app->request->queryParams);
+        return $this->render('index', [
+            'dataProvider' => $dataProvider,
+            'filter' => \Yii::$app->literatureService->getMagazinesFilter()
+        ]);
     }
 
     public function actionView($canonical_title)

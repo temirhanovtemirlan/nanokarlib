@@ -13,17 +13,17 @@ use yii\helpers\Url;
             <button class="menu__btn btn"><span></span></button>
             <ul class="dropdown-catalog-list">
                 <li class="dropdown-catalog-item">
-                    <a href="#">
+                    <a href="<?= Url::to(['/books/index']) ?>">
                         <?= Yii::t('app', 'Книги') ?>
                     </a>
                 </li>
                 <li class="dropdown-catalog-item">
-                    <a href="#">
+                    <a href="<?= Url::to(['/newspapers/index']) ?>">
                         <?= Yii::t('app', 'Газеты') ?>
                     </a>
                 </li>
                 <li class="dropdown-catalog-item">
-                    <a href="#">
+                    <a href="<?= Url::to(['/magazines/index']) ?>">
                         <?= Yii::t('app', 'Журналы') ?>
                     </a>
                 </li>
@@ -92,7 +92,7 @@ use yii\helpers\Url;
                     </a>
                 </li>
                 <li class="wow fadeIn" data-wow-delay=".3s" data-wow-duration=".5s">
-                    <a href="#">
+                    <a href="<?= Url::to(['/site/auth']) ?>">
                         <?= Yii::t('app', 'Авторизация') ?>
                     </a>
                 </li>

@@ -8,9 +8,10 @@ class BooksController extends Controller
 {
     public function actionIndex()
     {
-        $dataProvider = \Yii::$app->literatureService->getBooksProvider();
+        $dataProvider = \Yii::$app->literatureService->getBooksProviderBySearch(\Yii::$app->request->queryParams);
         return $this->render('index', [
-            'dataProvider' => $dataProvider
+            'dataProvider' => $dataProvider,
+            'filter' => \Yii::$app->literatureService->getBooksFilter()
         ]);
     }
 

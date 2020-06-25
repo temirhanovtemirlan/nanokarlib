@@ -19,6 +19,9 @@ use common\models\literature\Newspaper;
  * @property string $author
  * @property string $description_ru
  * @property string $description_kk
+ * @property string $rating
+ * @property int $recommended
+ * @property int $latest
  * @property string $publish_date
  * @property bool $published
  * @property bool $readable
@@ -35,8 +38,8 @@ class Literature extends ActiveRecord
     public function rules()
     {
         return [
-            [['type', 'published', 'readable', 'downloadable'], 'integer'],
-            [['image', 'title', 'canonical_title', 'author', 'description_ru', 'description_kk', 'source', 'publish_date'], 'string'],
+            [['type', 'published', 'readable', 'downloadable', 'recommended', 'latest'], 'integer'],
+            [['image', 'title', 'canonical_title', 'author', 'description_ru', 'description_kk', 'source', 'publish_date', 'rating'], 'string'],
             ['canonical_title', 'unique']
         ];
     }
@@ -54,6 +57,9 @@ class Literature extends ActiveRecord
             'description_ru' => \Yii::t('app', 'Описание на русском'),
             'description_kk' => \Yii::t('app', 'Описание на казахском'),
             'publish_date' => \Yii::t('app', 'Дата публикации'),
+            'rating' => \Yii::t('app', 'Рейтинг'),
+            'recommended' => \Yii::t('app', 'Рекомендуемый'),
+            'latest' => \Yii::t('app', 'Новинка')
         ];
     }
 

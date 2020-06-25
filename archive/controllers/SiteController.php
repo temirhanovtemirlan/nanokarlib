@@ -41,7 +41,7 @@ class SiteController extends \common\controllers\SiteController
         $param = Yii::$app->request->get('search');
 
         return $this->render('search', [
-            'dataProvider' => Yii::$app->literatureService
+            'dataProvider' => Yii::$app->literatureService->getSearchProvider(\Yii::$app->request->get('search'))
         ]);
     }
 }
