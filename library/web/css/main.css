@@ -110,6 +110,9 @@
 
 .section_pd {
     padding-top: 52px; }
+@media (max-width: 640px) {
+    .section_pd.main-content {
+        padding-top: 0; }}
 @media (min-width: 640px) {
     .section_pd {
         padding-top: 85px; } }
@@ -8234,9 +8237,15 @@ a.text-dark:hover, a.text-dark:focus {
     .main-header {
         height: 100vh; } }
 
+@media (min-width: 640px) {
+    .main-content {
+        padding-top: 18.25rem; } }
 @media (min-width: 768px) {
     .main-content {
-        padding-top: 16.125rem; } }
+        padding-top: 19.9rem; } }
+@media (min-width: 992px) {
+    .main-content {
+        padding-top: 16.9rem; } }
 
 .site-header {
     background-color: white;
@@ -9324,6 +9333,8 @@ a.text-dark:hover, a.text-dark:focus {
 .renewal-form label {
     margin-bottom: 20px; }
 
+.form-content.no_pd {
+    padding-top: 0; }
 .form-content {
     padding-top: 2.8rem;
     max-width: 36.4rem; }

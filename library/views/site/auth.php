@@ -19,7 +19,7 @@ $this->title = Yii::t('app', 'Авторизация');
             ]
         ]) ?>
 
-        <div class="form-content">
+        <div class="form-content no_pd">
             <div class="form-data">
                 <div class="input-wrap">
                     <?= $form->field($model, 'username')->textInput(['class' => 'input form-input']) ?>
