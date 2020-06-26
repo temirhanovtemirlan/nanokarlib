@@ -31,6 +31,18 @@ $this->title = Yii::t('app', 'Авторизация');
                     <?= $form->field($model, 'rememberMe')->checkbox() ?>
                 </div>
             </div>
+            <div class="main-filter row">
+                <div class="col-md-9">
+                    <input type="text" placeholder="Поиск" class="input form-input" name="search" />
+                </div>
+                <div class="col-md-3">
+                    <select name="filter_name" class="select form-input">
+                        <option value="0">456</option>
+                        <option value="1">123</option>
+                        <option value="2">fgh</option>
+                    </select>
+                </div>
+            </div>
             <div class="form-btn justify-content-end">
                 <button class="btn submit" type="submit">
                     <?= Yii::t('app', 'Войти') ?>
