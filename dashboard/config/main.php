@@ -47,7 +47,7 @@ return [
             'showScriptName' => false,
             'rules' => [
             ],
-            'languages' => ['en', 'ru', 'kk'],
+            'languages' => ['ru', 'kk'],
         ],
     ],
     'params' => $params,

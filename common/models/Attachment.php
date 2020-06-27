@@ -56,9 +56,14 @@ class Attachment extends ActiveRecord
     public function delete()
     {
         if ($this->type == AttachmentsEnum::TYPE_IMAGE) {
-            $file = $this->getSource();
+            $file = $this->getLibrarySource();
             if (file_exists($file)) {
                 unlink($file);
+            } else {
+                $file = $this->getArchiveSource();
+                if (file_exists($file)) {
+                    unlink($file);
+                }
             }
         }
         return parent::delete();
@@ -85,14 +90,28 @@ class Attachment extends ActiveRecord
                     $model->delete();
                 }
             }
+            if ($this->relative_type == AttachmentsEnum::RELATION_LITERATURE) {
+                $model = self::find()->where(['relative_type' => $this->relative_type])
+                    ->andWhere(['relative_id' => $this->relative_id])
+                    ->andWhere(['type' => $this->type])
+                    ->one();
+                if ($model) {
+                    $model->delete();
+                }
+            }
         }
 
         return parent::beforeSave($insert);
     }
 
-    public function getSource()
+    public function getLibrarySource()
     {
-        return \Yii::getAlias('@library') . $this->source;
+        return \Yii::getAlias('@library') . '\web' . $this->source;
+    }
+
+    public function getArchiveSource()
+    {
+        return \Yii::getAlias('@archive') . '\web' . $this->source;
     }
 
     public function attributeLabels()

@@ -1,16 +1,10 @@
 <?php
 namespace library\controllers;
 
-use common\forms\LoginForm;
-use common\forms\RegistrationForm;
 use common\models\Feedback;
-use common\models\Publication;
 use common\models\Question;
 use common\models\RenewalApplication;
-use yii\base\Exception;
-use yii\data\ActiveDataProvider;
 use yii\web\BadRequestHttpException;
-use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;
@@ -19,7 +13,7 @@ use yii\web\Response;
 /**
  * Site controller
  */
-class SiteController extends Controller
+class SiteController extends \common\controllers\SiteController
 {
     /**
      * {@inheritdoc}
@@ -69,65 +63,6 @@ class SiteController extends Controller
             'socialLinks' => \Yii::$app->settingService->getSocialLinks(),
             'mapSettings' => \Yii::$app->settingService->getMapSettings(),
         ]);
-    }
-
-    /**
-     * @return string|Response
-     */
-    public function actionAuth()
-    {
-        if (!\Yii::$app->user->isGuest) {
-            return $this->redirect(['index']);
-        }
-        $login = new LoginForm();
-
-        if ($login->load(\Yii::$app->request->post()) && \Yii::$app->user->authorizeUser($login)) {
-            return $this->goBack();
-        }
-
-        return $this->render('auth', [
-            'model' => $login
-        ]);
-    }
-
-    /**
-     * @return string|Response
-     * @throws Exception
-     */
-    public function actionRegistration()
-    {
-        if (!\Yii::$app->user->isGuest) {
-            return $this->redirect(['index']);
-        }
-
-        $model = new RegistrationForm();
-
-        if ($model->load(\Yii::$app->request->post()) && \Yii::$app->user->createNewUser($model)) {
-            \Yii::$app->session->setFlash('success', \Yii::t('app', 'На указанную вами почту отправлено письмо с подтверждением.'));
-            return $this->goBack();
-        }
-
-        return $this->render('registration', [
-            'model' => $model
-        ]);
-    }
-
-    /**
-     * @param $token
-     * @return string
-     * @throws NotFoundHttpException
-     */
-    public function actionVerify($token)
-    {
-        $user = \Yii::$app->user->findUserByToken($token);
-
-        if (!$user) {
-            throw new NotFoundHttpException(\Yii::t('app', 'Страница не найдена'));
-        }
-
-        \Yii::$app->user->verifyEmail($user);
-
-        return $this->render('verify');
     }
 
     /**
@@ -224,12 +159,5 @@ class SiteController extends Controller
         return $this->render('search', [
             'dataProvider' => \Yii::$app->publicationService->searchByQuery($query)->setPageSize(20),
         ]);
-    }
-
-    public function actionLogout()
-    {
-        \Yii::$app->user->logout();
-
-        return $this->goBack();
     }
 }

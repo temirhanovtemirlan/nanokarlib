@@ -13,7 +13,7 @@
 /* @var $renewalApplication common\models\RenewalApplication */
 /* @var $socialLinks common\models\Setting[] */
 
-$this->title = $settings[\common\enums\SettingsEnum::LIBRARY_BRAND_LABEL];
+$this->title = strip_tags($settings[\common\enums\SettingsEnum::LIBRARY_BRAND_LABEL]);
 ?>
 
 <?= $this->render('include/_authorization_block', [

@@ -8,6 +8,7 @@ class AttachmentsEnum extends Enum
 {
     const TYPE_IMAGE = 1;
     const TYPE_VIDEO = 2;
+    const TYPE_PDF = 3;
 
     const RELATION_PUBLICATION = 11;
     const RELATION_SLIDER = 12;
@@ -15,18 +16,21 @@ class AttachmentsEnum extends Enum
     const RELATION_SMART_SPACES_MAP = 14;
     const RELATION_AUTH_BLOCK_BACKGROUND = 15;
     const RELATION_LIBRARY_LOGO = 16;
+    const RELATION_LITERATURE = 17;
 
     public static function labels()
     {
         return [
             self::TYPE_IMAGE => \Yii::t('app', 'Изображение'),
             self::TYPE_VIDEO => \Yii::t('app', 'Видео-материал'),
+            self::TYPE_PDF => \Yii::t('app', 'PDF'),
             self::RELATION_PUBLICATION => \Yii::t('app', 'К публикации'),
             self::RELATION_SLIDER => \Yii::t('app', 'К слайдеру'),
             self::RELATION_SMART_SPACE => \Yii::t('app', 'К смарт-пространству'),
             self::RELATION_SMART_SPACES_MAP =>  \Yii::t('app', 'Карта смарт-пространств'),
             self::RELATION_AUTH_BLOCK_BACKGROUND => \Yii::t('app', 'Фон блока авторизации'),
             self::RELATION_LIBRARY_LOGO => \Yii::t('app', 'Логотип библиотеки'),
+            self::RELATION_LITERATURE => \Yii::t('app', 'К литературе'),
         ];
     }
 
@@ -35,6 +39,7 @@ class AttachmentsEnum extends Enum
         return [
             self::TYPE_IMAGE => \Yii::t('app', 'Изображение'),
             self::TYPE_VIDEO => \Yii::t('app', 'Видео-материал'),
+            self::TYPE_PDF => \Yii::t('app', 'PDF')
         ];
     }
 
@@ -47,6 +52,7 @@ class AttachmentsEnum extends Enum
             self::RELATION_SMART_SPACES_MAP =>  \Yii::t('app', 'Карта смарт-пространств'),
             self::RELATION_AUTH_BLOCK_BACKGROUND => \Yii::t('app', 'Фон блока авторизации'),
             self::RELATION_LIBRARY_LOGO => \Yii::t('app', 'Логотип библиотеки'),
+            self::RELATION_LITERATURE => \Yii::t('app', 'К литературе')
         ];
     }
 }

@@ -1,2 +1,2 @@
 <?php
-echo \library\widgets\Slider::widget();
+echo \common\widgets\Slider::widget();

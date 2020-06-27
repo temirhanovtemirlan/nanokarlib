@@ -37,6 +37,7 @@ class AttachmentsController extends AdminController
         $model->type = \Yii::$app->request->get('t');
         $model->relative_type = \Yii::$app->request->get('rt');
         $model->relative_id = \Yii::$app->request->get('rid') ?? 0;
+        $path = \Yii::$app->request->get('path') ?? 'l';
 
         if ($model->load(\Yii::$app->request->post()) && $this->attachmentService->save($model)) {
             return $this->redirect(\Yii::$app->request->get('rUrl') ?? ['index']);
@@ -44,6 +45,7 @@ class AttachmentsController extends AdminController
 
         return $this->render('create', [
             'model' => $model,
+            'path' => $path
         ]);
     }
 
@@ -88,11 +90,14 @@ class AttachmentsController extends AdminController
         return $this->redirect(['view', 'id' => $id]);
     }
 
-    public function actionUpload()
+    public function actionUpload($p)
     {
         $model = $this->attachmentService->getModel();
         $image = UploadedFile::getInstance($model, 'image');
         $path = \Yii::getAlias('@libraryUploadPath') . '/' . $image->baseName . '.' . $image->extension;
+        if ($p == 'a') {
+            $path = \Yii::getAlias('@archiveUploadPath') . '/' . $image->baseName . '.' . $image->extension;
+        }
         $image->saveAs($path);
 
         return Json::encode([
