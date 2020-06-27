@@ -19,7 +19,7 @@ $this->title = Yii::t('app', 'Авторизация');
             ]
         ]) ?>
 
-        <div class="form-content">
+        <div class="form-content no_pd">
             <div class="form-data">
                 <div class="input-wrap">
                     <?= $form->field($model, 'username')->textInput(['class' => 'input form-input']) ?>
@@ -29,6 +29,18 @@ $this->title = Yii::t('app', 'Авторизация');
                 </div>
                 <div class="input-wrap">
                     <?= $form->field($model, 'rememberMe')->checkbox() ?>
+                </div>
+            </div>
+            <div class="main-filter row">
+                <div class="col-md-9">
+                    <input type="text" placeholder="Поиск" class="input form-input" name="search" />
+                </div>
+                <div class="col-md-3">
+                    <select name="filter_name" class="select form-input">
+                        <option value="0">456</option>
+                        <option value="1">123</option>
+                        <option value="2">fgh</option>
+                    </select>
                 </div>
             </div>
             <div class="form-btn justify-content-end">
