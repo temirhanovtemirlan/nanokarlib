@@ -10,8 +10,7 @@ class MagazinesController extends Controller
     {
         $dataProvider = \Yii::$app->literatureService->getMagazinesProviderBySearch(\Yii::$app->request->queryParams);
         return $this->render('index', [
-            'dataProvider' => $dataProvider,
-            'filter' => \Yii::$app->literatureService->getMagazinesFilter()
+            'dataProvider' => $dataProvider
         ]);
     }
 

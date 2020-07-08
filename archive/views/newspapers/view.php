@@ -1,6 +1,6 @@
 <?php
 /* @var $this yii\web\View */
-/* @var $model common\models\literature\Book */
+/* @var $model common\models\literature\Newspaper */
 
 $this->title = $model->title;
 ?>
@@ -13,7 +13,6 @@ $this->title = $model->title;
         <img src="<?= $model->image->source ?>">
     </div>
     <div>
-        <?= $model->author ?>
         <?= $model->getAttribute('description_'.Yii::$app->language) ?>
     </div>
     <div>
@@ -23,10 +22,10 @@ $this->title = $model->title;
     </div>
     <div>
         <?php if ((\Yii::$app->user->isGuest && $model->readable) || !\Yii::$app->user->isGuest): ?>
-            <a href="#"><?= Yii::t('app', 'Скачать книгу') ?></a>
+            <a href="#"><?= Yii::t('app', 'Читать') ?></a>
         <?php endif; ?>
         <?php if ((\Yii::$app->user->isGuest && $model->downloadable) || !\Yii::$app->user->isGuest): ?>
-            <a href="<?= \yii\helpers\Url::to(['/books/download', 'id' => $model->id]) ?>"><?= Yii::t('app', 'Скачать книгу') ?></a>
+            <a href="<?= \yii\helpers\Url::to(['/newspapers/download', 'id' => $model->id]) ?>"><?= Yii::t('app', 'Скачать газету') ?></a>
         <?php endif; ?>
     </div>
 </section>
