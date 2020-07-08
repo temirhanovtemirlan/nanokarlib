@@ -4,7 +4,8 @@
 /* @var $libraryFond string */
 /* @var $background string */
 ?>
-<section class="main-header main-content">
+<section class="main-header">
+    <?= \library\widgets\Navigation::widget() ?>
     <div class="leading" style="background-image: url('<?= $background ?>')">
         <div class="leading-wrap">
             <div class="leading-row row">
@@ -12,7 +13,7 @@
                     <img class="wow fadeIn" alt="#" src="/images/leading/leading_1.png" data-wow-delay=".6s" data-wow-duration=".6s">
                     <p class="leading-text wow fadeIn" data-wow-delay=".3s" data-wow-duration=".5s">
                         <span class="counter">
-                            <?= $libraryFond ?>+
+                            <?= '200' ?>+
                         </span>
                         <?= Yii::t('app', 'Фонд библиотеки') ?>
                     </p>
@@ -30,7 +31,7 @@
                     <img class="wow fadeIn" alt="#" src="/images/leading/leading_3.png" data-wow-delay=".6s" data-wow-duration=".6s">
                     <p class="leading-text wow fadeIn" data-wow-delay=".3s" data-wow-duration=".5s">
                         <span>
-                            <?= $librarySpace ?> <?= Yii::t('app', 'м') ?><sup><small>2</small></sup>
+                            <?= '40' ?> <?= Yii::t('app', 'м') ?><sup><small>2</small></sup>
                         </span>
                         <?= Yii::t('app', 'Пространства') ?>
                     </p>
