@@ -24,7 +24,6 @@ AppAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
 
-<?= \library\widgets\Navigation::widget() ?>
 <?= Alert::widget() ?>
 <main class="site_content">
     <?= $content ?>
