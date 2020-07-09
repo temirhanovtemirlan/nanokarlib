@@ -13,9 +13,7 @@
                     <img class="wow fadeIn" alt="#" src="/images/leading/leading_1.png" data-wow-delay=".6s" data-wow-duration=".6s">
                     <p class="leading-text wow fadeIn" data-wow-delay=".3s" data-wow-duration=".5s">
                         <span class="counter">
-                            <?= '200'
-//                            $libraryFond
-                            ?>+
+                            <?= $libraryFond ?>+
                         </span>
                         <?= Yii::t('app', 'Фонд библиотеки') ?>
                     </p>
@@ -33,9 +31,7 @@
                     <img class="wow fadeIn" alt="#" src="/images/leading/leading_3.png" data-wow-delay=".6s" data-wow-duration=".6s">
                     <p class="leading-text wow fadeIn" data-wow-delay=".3s" data-wow-duration=".5s">
                         <span>
-                            <?= '40'
-//                            $librarySpace
-                            ?> <?= Yii::t('app', 'м') ?><sup><small>2</small></sup>
+                            <?= $librarySpace ?> <?= Yii::t('app', 'м') ?><sup><small>2</small></sup>
                         </span>
                         <?= Yii::t('app', 'Пространства') ?>
                     </p>
