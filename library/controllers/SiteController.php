@@ -49,6 +49,7 @@ class SiteController extends \common\controllers\SiteController
      */
     public function actionIndex()
     {
+        $this->layout = false;
         return $this->render('index', [
             'title' => \Yii::$app->settingService->getLibraryBrandLabel(),
             'authBlockBackground' => \Yii::$app->attachmentService->getAuthBlockBackground(),
