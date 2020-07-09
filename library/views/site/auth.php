@@ -6,7 +6,6 @@ use yii\bootstrap4\ActiveForm;
 
 $this->title = Yii::t('app', 'Авторизация');
 ?>
-<?= \library\widgets\Navigation::widget() ?>
 <section class="section-auth">
     <header class="section-head ds-flex-align">
         <h3 class="title"><?= Yii::t('app', 'Авторизация') ?></h3>
