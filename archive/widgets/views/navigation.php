@@ -87,7 +87,7 @@ use yii\helpers\Url;
                     </a>
                 </li>
                 <li class="wow fadeIn" data-wow-delay=".3s" data-wow-duration=".5s">
-                    <a href="#">
+                    <a href="<?= Yii::$app->params['libraryUrl'] ?>">
                         <?= Yii::$app->settingService->getLibraryBrandLabel() ?>
                     </a>
                 </li>
@@ -111,19 +111,24 @@ use yii\helpers\Url;
             <a href="/" class="scroll-to"><?= Yii::t('app', 'Главная') ?></a>
         </li>
         <li>
-            <a href="#"><?= Yii::t('app', 'Книги') ?></a>
+            <a href="<?= Url::to(['/books/index']) ?>"><?= Yii::t('app', 'Книги') ?></a>
         </li>
         <li>
-            <a href="#"><?= Yii::t('app', 'Газеты') ?></a>
+            <a href="<?= Url::to(['/newspapers/index']) ?>"><?= Yii::t('app', 'Газеты') ?></a>
         </li>
         <li>
-            <a href="#"><?= Yii::t('app', 'Журналы') ?></a>
+            <a href="<?= Url::to(['/magazines/index']) ?>"><?= Yii::t('app', 'Журналы') ?></a>
         </li>
         <li>
-            <a href="#"  class="scroll-to"><?= Yii::$app->settingService->getLibraryBrandLabel() ?></a>
+            <a href="<?= Yii::$app->params['libraryUrl'] ?>"  class="scroll-to"><?= Yii::$app->settingService->getLibraryBrandLabel() ?></a>
         </li>
+        <?php if (Yii::$app->user->isGranted('ROLE_ADMIN')): ?>
+            <li>
+                <a href="<?= Yii::$app->params['dashboardUrl'] ?>"><?= Yii::t('app', 'Панель администратора') ?></a>
+            </li>
+        <?php endif; ?>
         <li>
-            <a href="#"  class="scroll-to"><?= Yii::t('app', 'Авторизация') ?></a>
+            <a href="<?= Url::to(['/site/auth']) ?>"  class="scroll-to"><?= Yii::t('app', 'Авторизация') ?></a>
         </li>
     </ul>
 </nav>

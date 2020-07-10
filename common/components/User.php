@@ -22,7 +22,7 @@ class User extends \yii\web\User
      */
     public function isGranted($roles, $strict = true)
     {
-        if (!is_array($roles)) {
+        if (!is_array($roles) || is_string($roles)) {
             $roles = [$roles];
         }
 

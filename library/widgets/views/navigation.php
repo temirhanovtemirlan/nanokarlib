@@ -93,7 +93,7 @@ use yii\helpers\Url;
                     </a>
                 </li>
                 <li class="wow fadeIn" data-wow-delay=".3s" data-wow-duration=".5s">
-                    <a href="#">
+                    <a href="<?= Yii::$app->params['archiveUrl'] ?>">
                         <?= Yii::t('app', 'Электронный архив') ?>
                     </a>
                 </li>
@@ -101,6 +101,15 @@ use yii\helpers\Url;
                     <a href="#">
                         <?= Yii::t('app', 'Версия для слабовидящих') ?>
                     </a>
+                </li>
+                <li class="wow fadeIn" data-wow-delay=".3s" data-wow-duration=".5s">
+                    <?php if (Yii::$app->user->isGuest): ?>
+                        <a href="<?= Url::to('/auth') ?>">
+                            <?= Yii::t('app', 'Авторизация') ?>
+                        </a>
+                    <?php else: ?>
+                        <?= \yii\bootstrap4\Html::a(Yii::t('app', 'Выход'), ['/logout'], ['data-method' => 'post']) ?>
+                    <?php endif; ?>
                 </li>
             </ul>
         </nav>
@@ -119,7 +128,7 @@ use yii\helpers\Url;
             </a>
         </li>
         <li>
-            <a href="#"  class="scroll-to">
+            <a href="<?= Yii::$app->params['archiveUrl'] ?>" class="scroll-to">
                 <?= Yii::t('app', 'Электронный архив') ?>
             </a>
         </li>
@@ -127,6 +136,20 @@ use yii\helpers\Url;
             <a href="#"  class="scroll-to">
                 <?= Yii::t('app', 'Версия для слабовидящих') ?>
             </a>
+        </li>
+        <?php if (Yii::$app->user->isGranted('ROLE_ADMIN')): ?>
+            <li>
+                <a href="<?= Yii::$app->params['dashboardUrl'] ?>"><?= Yii::t('app', 'Панель администратора') ?></a>
+            </li>
+        <?php endif; ?>
+        <li>
+            <?php if (Yii::$app->user->isGuest): ?>
+                <a href="<?= Url::to('/auth') ?>">
+                    <?= Yii::t('app', 'Авторизация') ?>
+                </a>
+            <?php else: ?>
+                <?= \yii\bootstrap4\Html::a(Yii::t('app', 'Выход'), ['/logout'], ['data-method' => 'post']) ?>
+            <?php endif; ?>
         </li>
     </ul>
 </nav>

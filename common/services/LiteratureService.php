@@ -79,9 +79,13 @@ class LiteratureService extends Service
         $query = Book::find()
             ->where(['published' => true])
             ->andWhere(['type' => LiteratureEnum::TYPE_BOOK])
-            ->with(['views', 'downloads'])
+            ->with(['views', 'downloads', 'image', 'source'])
             ->limit(10)
-            ->orderBy('ts DESC');
+            ->orderBy([
+                'ts' => SORT_DESC,
+                'recommended' => SORT_DESC,
+                'latest' => SORT_DESC
+            ]);
 
         return $this->getLiteratureProvider($query);
     }
@@ -91,9 +95,12 @@ class LiteratureService extends Service
         $query = Newspaper::find()
             ->where(['published' => true])
             ->andWhere(['type' => LiteratureEnum::TYPE_NEWSPAPER])
-            ->with(['views', 'downloads'])
+            ->with(['views', 'downloads', 'image', 'source'])
             ->limit(10)
-            ->orderBy('ts DESC');
+            ->orderBy([
+                'ts' => SORT_DESC,
+                'publish_date' => SORT_DESC
+            ]);
 
         return $this->getLiteratureProvider($query);
     }
@@ -103,9 +110,12 @@ class LiteratureService extends Service
         $query = Magazine::find()
             ->where(['published' => true])
             ->andWhere(['type' => LiteratureEnum::TYPE_MAGAZINE])
-            ->with(['views', 'downloads'])
+            ->with(['views', 'downloads', 'image', 'source'])
             ->limit(10)
-            ->orderBy('ts DESC');
+            ->orderBy([
+                'ts' => SORT_DESC,
+                'publish_date' => SORT_DESC
+            ]);
 
         return $this->getLiteratureProvider($query);
     }
@@ -244,9 +254,9 @@ class LiteratureService extends Service
     public function getSearchProvider($search)
     {
         $query = Literature::find()
-            ->where(['published' => true])
-            ->andFilterWhere(['ilike', 'title', $search])
-            ->orFilterWhere(['ilike', 'description_'.\Yii::$app->language, $search])
+            ->andFilterWhere(['published' => 1])
+            ->andFilterWhere(['like', 'title', $search])
+            //->orFilterWhere(['ilike', 'description_'.\Yii::$app->language, $search])
             ->with(['image', 'source', 'views', 'downloads']);
 
         return $this->getLiteratureProvider($query);

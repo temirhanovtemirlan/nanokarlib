@@ -51,9 +51,11 @@ class SiteController extends Controller
                 'class' => 'yii\web\ErrorAction',
             ],
         ];
-    } /**
- * @return string|Response
- */
+    }
+
+    /**
+     * @return string|Response
+     */
     public function actionAuth()
     {
         if (!\Yii::$app->user->isGuest) {
