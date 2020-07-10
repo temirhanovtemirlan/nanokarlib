@@ -298,6 +298,7 @@ AppAsset::register($this);
     </footer>
 </div>
 
+<?php /*
 <div class="wrap">
     <?php
     NavBar::begin([
@@ -346,18 +347,14 @@ AppAsset::register($this);
             . Html::endForm()
             . '</li>';
     }
-    echo Nav::widget([
+    Nav::widget([
         'options' => ['class' => 'navbar-nav'],
         'items' => $menuItems,
     ]);
     NavBar::end();
-    ?>
-
-    <div class="container">
-        <!--        --><? //= Alert::widget() ?>
-        <!--        --><? //= $content ?>
-    </div>
+//    ?>
 </div>
+ */ ?>
 
 <?php $this->endBody() ?>
 </body>
