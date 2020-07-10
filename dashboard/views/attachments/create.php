@@ -43,7 +43,7 @@ $this->title = Yii::t('app', 'Новое вложение');
         <?= $form->field($model, 'image')->widget(\kartik\file\FileInput::class, [
             'pluginOptions' => [
                 'theme' => 'fa',
-                'uploadUrl' => '/attachments/upload',
+                'uploadUrl' => '/attachments/upload?p='.$path,
                 'deleteUrl' => '/attachments/remove',
             ],
             'pluginEvents' => [

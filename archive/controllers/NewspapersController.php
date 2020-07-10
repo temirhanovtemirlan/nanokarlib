@@ -11,7 +11,9 @@ class NewspapersController extends Controller
         $dataProvider = \Yii::$app->literatureService->getNewspapersProviderBySearch(\Yii::$app->request->queryParams);
         return $this->render('index', [
             'dataProvider' => $dataProvider,
-            'filter' => \Yii::$app->literatureService->getNewspapersFilter()
+            'title' => \Yii::$app->request->get('title') ?? '',
+            'from' => \Yii::$app->request->get('from') ?? '',
+            'to' => \Yii::$app->request->get('to') ?? ''
         ]);
     }
 

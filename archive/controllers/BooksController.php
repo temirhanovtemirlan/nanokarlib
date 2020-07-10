@@ -10,7 +10,9 @@ class BooksController extends Controller
     {
         $dataProvider = \Yii::$app->literatureService->getBooksProviderBySearch(\Yii::$app->request->queryParams);
         return $this->render('index', [
-            'dataProvider' => $dataProvider
+            'dataProvider' => $dataProvider,
+            'title' => \Yii::$app->request->get('title') ?? '',
+            'sort' => \Yii::$app->request->get('sort') ?? ''
         ]);
     }
 

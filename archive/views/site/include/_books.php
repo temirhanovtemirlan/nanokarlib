@@ -36,7 +36,7 @@ $models = $provider->getModels();
                                 <?= Yii::t('app', 'Загрузок: {count}', ['count' => count($model->downloads)]) ?>
                             </p>
                             <p>
-                                <a href="<?= \yii\helpers\Url::to(['/books/view', 'canonical_title' => $model->canonical_title]) ?>" class="btn leading-link"><?= Yii::t('app', 'Подробнее') ?></a>
+                                <a href="<?= \yii\helpers\Url::to(['/books/view', 'canonical_title' => $model->canonical_title]) ?>" class="btn submit"><?= Yii::t('app', 'Подробнее') ?></a>
                             </p>
                         </div>
                     </div>

@@ -8,6 +8,7 @@ use common\enums\LiteratureEnum;
 use common\models\literature\Book;
 use common\models\literature\Magazine;
 use common\models\literature\Newspaper;
+use yii\helpers\Url;
 
 /**
  * Class Literature
@@ -69,17 +70,30 @@ class Literature extends ActiveRecord
             ->onCondition([
                 'relative_type' => AttachmentsEnum::RELATION_LITERATURE,
                 'type' => AttachmentsEnum::TYPE_IMAGE,
-                'published' => true]
-            );
+                'published' => true
+            ]);
     }
 
     public function getSource()
     {
         return $this->hasOne(Attachment::class, ['relative_id' => 'id'])
-            ->onCondition(['relative_type' => AttachmentsEnum::RELATION_LITERATURE,
+            ->onCondition([
+                'relative_type' => AttachmentsEnum::RELATION_LITERATURE,
                 'type' => AttachmentsEnum::TYPE_PDF,
-                    'published' => true]
-            );
+                'published' => true
+            ]);
+    }
+
+    public function getLink()
+    {
+        switch ($this->type) {
+            case LiteratureEnum::TYPE_BOOK:
+                return Url::to(['/books/view', 'canonical_title' => $this->canonical_title]);
+            case LiteratureEnum::TYPE_NEWSPAPER:
+                return Url::to(['/newspapers/view', 'canonical_title' => $this->canonical_title]);
+            case LiteratureEnum::TYPE_MAGAZINE:
+                return Url::to(['/magazines/view', 'canonical_title' => $this->canonical_title]);
+        }
     }
 
     public function getRecordTemplate()

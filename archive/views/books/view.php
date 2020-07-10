@@ -23,7 +23,7 @@ $this->title = $model->title;
     </div>
     <div>
         <?php if ((\Yii::$app->user->isGuest && $model->readable) || !\Yii::$app->user->isGuest): ?>
-            <a href="#"><?= Yii::t('app', 'Скачать книгу') ?></a>
+            <a href="#"><?= Yii::t('app', 'Читать') ?></a>
         <?php endif; ?>
         <?php if ((\Yii::$app->user->isGuest && $model->downloadable) || !\Yii::$app->user->isGuest): ?>
             <a href="<?= \yii\helpers\Url::to(['/books/download', 'id' => $model->id]) ?>"><?= Yii::t('app', 'Скачать книгу') ?></a>

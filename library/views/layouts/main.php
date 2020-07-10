@@ -39,10 +39,19 @@ AppAsset::register($this);
                     <a href="/"><?= Yii::t('app', 'Главная') ?></a>
                 </li>
                 <li>
-                    <a href="#"><?= Yii::t('app', 'Электронный архив') ?></a>
+                    <a href="<?= Yii::$app->params['archiveUrl'] ?>"><?= Yii::t('app', 'Электронный архив') ?></a>
                 </li>
                 <li>
                     <a href="#"><?= Yii::t('app', 'Версия для слабовидящих') ?></a>
+                </li>
+                <li>
+                    <?php if (Yii::$app->user->isGuest): ?>
+                        <a href="<?= \yii\helpers\Url::to('/auth') ?>">
+                            <?= Yii::t('app', 'Авторизация') ?>
+                        </a>
+                    <?php else: ?>
+                        <?= \yii\bootstrap4\Html::a(Yii::t('app', 'Выход'), ['/logout'], ['data-method' => 'post']) ?>
+                    <?php endif; ?>
                 </li>
             </ul>
         </div>

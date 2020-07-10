@@ -38,10 +38,10 @@ class SiteController extends \common\controllers\SiteController
 
     public function actionSearch()
     {
-        $param = Yii::$app->request->get('search');
+        $search = Yii::$app->request->get('query');
 
         return $this->render('search', [
-            'dataProvider' => Yii::$app->literatureService->getSearchProvider(\Yii::$app->request->get('search'))
+            'dataProvider' => Yii::$app->literatureService->getSearchProvider($search)
         ]);
     }
 }
