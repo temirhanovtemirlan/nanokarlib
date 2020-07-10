@@ -8,7 +8,5 @@ $this->title = Yii::t('app','Добавить новое пространств�
 ?>
 
 <div class="publication-create">
-    <h1><?= \yii\bootstrap4\Html::encode($this->title) ?></h1>
-
     <?= $this->render('_form', ['model' => $model]) ?>
 </div>

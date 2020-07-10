@@ -8,7 +8,6 @@ $this->title = Yii::t('app', 'Публикации');
 ?>
 
 <div class="category-index">
-    <h1><?= Html::encode($this->title) ?></h1>
     <p>
         <?= Html::a(Yii::t('app', 'Создать новую публикацию'), ['create'], ['class' => 'btn btn-primary'])?>
     </p>

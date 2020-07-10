@@ -1,4 +1,5 @@
 <?php
+
 use yii\bootstrap4\Html;
 
 /* @var $this yii\web\View */
@@ -8,27 +9,24 @@ use yii\bootstrap4\Html;
 $this->title = Yii::t('app', 'Категории');
 ?>
 
-<div class="category-index">
-    <h1><?= Html::encode($this->title) ?></h1>
-    <p>
-        <?= Html::a(Yii::t('app', 'Создать новый раздел'), ['create'], ['class' => 'btn btn-primary'])?>
-        <?= Html::a(Yii::t('app', 'Создать новый подраздел'), ['create?child=1'], ['class' => 'btn btn-primary'])?>
-    </p>
+<p>
+    <?= Html::a(Yii::t('app', 'Создать новый раздел'), ['create'], ['class' => 'btn btn-primary']) ?>
+    <?= Html::a(Yii::t('app', 'Создать новый подраздел'), ['create?child=1'], ['class' => 'btn btn-primary']) ?>
+</p>
 
-    <?php \yii\widgets\Pjax::begin(); ?>
+<?php \yii\widgets\Pjax::begin(); ?>
 
-    <?= \yii\grid\GridView::widget([
-        'dataProvider' => $dataProvider,
-        'summary' => false,
-        'columns' => [
-            'id',
-            'name_ru',
-            'name_kk',
-            'name_en',
+<?= \yii\grid\GridView::widget([
+    'dataProvider' => $dataProvider,
+    'summary' => false,
+    'columns' => [
+        'id',
+        'name_ru',
+        'name_kk',
+        'name_en',
 
-            ['class' => 'common\components\ActionColumn']
-        ]
-    ]); ?>
+        ['class' => 'common\components\ActionColumn']
+    ]
+]); ?>
 
-    <?php \yii\widgets\Pjax::end(); ?>
-</div>
+<?php \yii\widgets\Pjax::end(); ?>

@@ -8,7 +8,6 @@ $this->title = Yii::t('app', 'Вложение');
 ?>
 
 <div class="publication-view">
-    <h1><?= Html::encode($this->title) ?></h1>
     <p>
         <?= Html::a(Yii::t('app', 'Удалить'), ['delete', 'id' => $model->id], ['class' => 'btn btn-danger',
             'data-confirm' => \Yii::t('yii', 'Вы уверены, что хотите удалить эту запись?'),

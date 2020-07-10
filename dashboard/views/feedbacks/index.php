@@ -8,8 +8,6 @@ $this->title = Yii::t('app', 'Отзывы');
 ?>
 
 <div class="question-index">
-    <h1><?= Html::encode($this->title) ?></h1>
-
     <?php \yii\widgets\Pjax::begin(); ?>
 
     <?= \yii\grid\GridView::widget([

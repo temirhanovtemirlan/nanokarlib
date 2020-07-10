@@ -1,6 +1,8 @@
 html,
 body {
     height: 100%;
+    font-size: 14px;
+    font-family: "Source Sans Pro";
 }
 
 .wrap {
@@ -118,4 +120,24 @@ a.desc:after {
 
 .nav > li > form > button.logout:focus {
     outline: none;
+}
+
+/* Admin Style Fonts */
+@font-face{
+    font-family:'Source Sans Pro';
+    src:url('../libs/fonts/source-sans-pro.ttf?v=4.2.1') format('truetype');
+    font-weight:normal;
+    font-style:normal
+}
+.field-loginform-rememberme {
+    height: 100%;
+    align-items: center;
+    display: flex;
+    margin-bottom: 0 !important;
+}
+.dashboard-style .custom-control-label::before {
+    background-color: transparent;
+    border-radius: inherit !important;
+    border: 1px solid #D3CFC8;
+    box-shadow: inherit;
 }
