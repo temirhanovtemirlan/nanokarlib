@@ -4,6 +4,7 @@
 /* @var $background string */
 ?>
 <section class="main-header main-content">
+    <?= \archive\widgets\Navigation::widget() ?>
     <div class="leading" style="background-image: url('<?= $background ?>')">
         <div class="leading-wrap">
             <div class="leading-row row">

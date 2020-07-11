@@ -27,6 +27,7 @@ class SiteController extends \common\controllers\SiteController
      */
     public function actionIndex()
     {
+        $this->layout = false;
         return $this->render('index', [
             'authBlock' => Yii::$app->settingService->getLibrarySettings(),
             'authBlockBackground' => Yii::$app->attachmentService->getAuthBlockBackground(),
