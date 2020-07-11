@@ -14,7 +14,7 @@ use common\widgets\Alert;
 use yii\helpers\Url;
 
 AppAsset::register($this);
-//AdminAsset::register($this);
+AdminAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -54,11 +54,6 @@ AppAsset::register($this);
                     <li role="presentation"><a role="menuitem" class="dropdown-item" href="<?= Url::current(['language' => 'ru']) ?>"><?= LanguagesEnum::label('ru') ?></a></li>
                     <li role="presentation"><a role="menuitem" class="dropdown-item" href="<?= Url::current(['language' => 'kk']) ?>"><?= LanguagesEnum::label('kk') ?></a></li>
                 </ul>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-                    <i class="fas fa-th-large"></i>
-                </a>
             </li>
             <li class="nav-item">
                 <?= Html::beginForm(['/site/logout'], 'post') ?>
@@ -285,11 +280,6 @@ AppAsset::register($this);
         </section>
 
     </div>
-
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-        <!-- Control sidebar content goes here -->
-    </aside>
 
     <!-- Main Footer -->
     <footer class="main-footer d-flex justify-content-center flex-wrap">
