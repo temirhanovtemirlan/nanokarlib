@@ -8,7 +8,6 @@ $this->title = Yii::t('app', 'Smart-пространство') . ': ' . $model->
 ?>
 
 <div class="users-view">
-    <h1><?= Html::encode($this->title) ?></h1>
     <p>
         <?= Html::a(Yii::t('app', 'Редактировать'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a(Yii::t('app', 'Удалить'), ['delete', 'id' => $model->id], ['class' => 'btn btn-danger',

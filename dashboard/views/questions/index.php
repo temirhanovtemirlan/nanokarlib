@@ -9,8 +9,6 @@ $this->title = Yii::t('app', 'Вопросы и ответы');
 ?>
 
 <div class="question-index">
-    <h1><?= Html::encode($this->title) ?></h1>
-
     <?php \yii\widgets\Pjax::begin(); ?>
 
     <?= \yii\grid\GridView::widget([

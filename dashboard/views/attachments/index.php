@@ -8,8 +8,6 @@ $this->title = Yii::t('app', 'Вложения');
 ?>
 
 <div class="attachments-index">
-    <h1><?= \yii\bootstrap4\Html::encode($this->title) ?></h1>
-
     <p>
         <a href="<?= \yii\helpers\Url::to(['/attachments/create', 't' => \common\enums\AttachmentsEnum::TYPE_IMAGE, 'rt' => \common\enums\AttachmentsEnum::RELATION_LIBRARY_LOGO]) ?>" class="btn btn-primary"><?= Yii::t('app', 'Логотип библиотеки') ?></a>
         <a href="<?= \yii\helpers\Url::to(['/attachments/create', 't' => \common\enums\AttachmentsEnum::TYPE_IMAGE, 'rt' => \common\enums\AttachmentsEnum::RELATION_SMART_SPACES_MAP]) ?>" class="btn btn-primary"><?= Yii::t('app', 'Карта smart-пространств') ?></a>

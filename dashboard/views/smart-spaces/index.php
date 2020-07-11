@@ -9,8 +9,6 @@ $this->title = Yii::t('app', 'Smart-пространства');
 ?>
 
 <div class="smart-spaces-index">
-    <h1><?= Html::encode($this->title) ?></h1>
-
     <p>
         <?= Html::a(Yii::t('app', 'Добавить новое пространство'), ['create'], ['class' => 'btn btn-primary'])?>
     </p>

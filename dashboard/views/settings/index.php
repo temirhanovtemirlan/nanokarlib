@@ -11,7 +11,6 @@ $models = $dataProvider->getModels();
 ?>
 
 <div class="settings-index">
-    <h1><?= Html::encode($this->title) ?></h1>
     <?php foreach ($models as $setting): ?>
     <div>
         <?php $form = ActiveForm::begin([

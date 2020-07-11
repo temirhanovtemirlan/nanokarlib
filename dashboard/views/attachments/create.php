@@ -12,8 +12,6 @@ $this->title = Yii::t('app', 'Новое вложение');
 ?>
 
 <div class="attachments-create">
-    <h1><?= Html::encode($this->title) ?></h1>
-
     <?php $form = ActiveForm::begin() ?>
 
     <?php if ($model->type == \common\enums\AttachmentsEnum::TYPE_IMAGE): ?>

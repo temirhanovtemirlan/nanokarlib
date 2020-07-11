@@ -76,6 +76,8 @@ class AdminController extends Controller
             return $this->goBack();
         }
 
+        $this->layout = false;
+
         return $this->render('/admin/login', [
             'model' => $login,
         ]);
