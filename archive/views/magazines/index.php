@@ -9,11 +9,11 @@
 $this->title = Yii::t('app', 'Журналы');
 $models = $dataProvider->getModels();
 ?>
-<section class="section_pd main-content">
+<section class="main-content">
     <header class="section-head ds-flex-align">
         <h3 class="title"><?= \yii\bootstrap4\Html::encode($this->title) ?></h3>
     </header>
-    <div class="container">
+    <div class="container content">
         <form action="<?= \yii\helpers\Url::to(['/magazines/index']) ?>" method="get">
             <div class="main-filter row">
                 <div class="col-md-8">
