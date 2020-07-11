@@ -11,12 +11,10 @@ class AdminAsset extends AssetBundle
     public $css = [
     ];
     public $js = [
-        'libs/scripts/demo.min.js',
-        'libs/scripts/mousewheel.min.js',
-        'libs/scripts/dashboard.min.js',
-        'libs/scripts/chart.min.js',
-        'libs/scripts/mapael/mapael.min.js',
-        'libs/scripts/mapael/usa_states.min.js'
+        'scripts/mousewheel.min.js',
+        'scripts/raphael.min.js',
+        'scripts/mapael/mapael.min.js',
+        'scripts/mapael/usa_states.min.js'
     ];
     public $depends = [
         'dashboard\assets\AppAsset'

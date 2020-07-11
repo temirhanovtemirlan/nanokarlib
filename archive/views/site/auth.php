@@ -6,7 +6,7 @@ use yii\bootstrap4\ActiveForm;
 
 $this->title = Yii::t('app', 'Авторизация');
 ?>
-<section class="section_pd main-content">
+<section class="main-content">
     <header class="section-head ds-flex-align">
         <h3 class="title"><?= Yii::t('app', 'Авторизация') ?></h3>
     </header>
@@ -19,7 +19,7 @@ $this->title = Yii::t('app', 'Авторизация');
             ]
         ]) ?>
 
-        <div class="form-content">
+        <div class="form-content no_pd">
             <div class="form-data">
                 <div class="input-wrap">
                     <?= $form->field($model, 'username')->textInput(['class' => 'input form-input']) ?>
