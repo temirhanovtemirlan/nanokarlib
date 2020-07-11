@@ -40,7 +40,7 @@ AppAsset::register($this);
                 <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="#" class="nav-link"><?= \Yii::t('app', 'Перейти на сайт') ?></a>
+                <a href="<?= Yii::$app->params['libraryUrl'] ?>" class="nav-link"><?= \Yii::t('app', 'Перейти на сайт') ?></a>
             </li>
         </ul>
 
@@ -88,7 +88,7 @@ AppAsset::register($this);
                     <img src="/images/profile.png" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
-                    <a href="#" class="d-block"><?= \Yii::t('app', 'Администратор') ?></a>
+                    <a href="<?= Url::to(['/users/view', 'id' => Yii::$app->user->id]) ?>" class="d-block"><?= Yii::$app->user->identity->username ?></a>
                     <a href="#" style="font-size: 12px"><i class="fa fa-xs fa-circle text-success"></i> Online</a>
                 </div>
             </div>
@@ -100,14 +100,14 @@ AppAsset::register($this);
                     <!-- Add icons to the links using the .nav-icon class
                          with font-awesome or any other icon font library -->
                     <li class="nav-item has-treeview">
-                        <a href="<?= Url::to(['users/index']) ?>" class="nav-link active">
+                        <a href="<?= Url::to(['users/index']) ?>" class="nav-link <?= $this->context->id == 'users' ? 'active' : '' ?>">
                             <i class="nav-icon fas fa-users"></i>
                             <p><?= \Yii::t('app', 'Пользователи') ?></p>
                             <span class="badge badge-info right">6</span>
                         </a>
                     </li>
                     <li class="nav-item has-treeview">
-                        <a href="<?= Url::to(['publications/index']) ?>" class="nav-link">
+                        <a href="<?= Url::to(['publications/index']) ?>" class="nav-link <?= $this->context->id == 'publications' ? 'active' : '' ?>">
                             <i class="nav-icon fas fa-copy"></i>
                             <p>
                                 <?= \Yii::t('app', 'Публикации') ?>
@@ -116,19 +116,19 @@ AppAsset::register($this);
                         </a>
                     </li>
                     <li class="nav-item has-treeview">
-                        <a href="<?= Url::to(['smart-spaces/index']) ?>" class="nav-link">
+                        <a href="<?= Url::to(['smart-spaces/index']) ?>" class="nav-link <?= $this->context->id == 'smart-spaces' ? 'active' : '' ?>">
                             <i class="nav-icon fas fa-chart-pie"></i>
                             <p><?= \Yii::t('app', 'Smart-пространства') ?></p>
                         </a>
                     </li>
                     <li class="nav-item has-treeview">
-                        <a href="<?= Url::to(['/literature/books/index']) ?>" class="nav-link">
+                        <a href="<?= Url::to(['/literature/books/index']) ?>" class="nav-link <?= $this->context->id == 'literature/books' ? 'active' : '' ?>">
                             <i class="nav-icon fas fa-book"></i>
                             <p><?= \Yii::t('app', 'Книги') ?></p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="<?= Url::to(['/literature/newspapers/index']) ?>" class="nav-link">
+                        <a href="<?= Url::to(['/literature/newspapers/index']) ?>" class="nav-link <?= $this->context->id == 'literature/newspapers' ? 'active' : '' ?>">
                             <i class="nav-icon fas fa-newspaper-o"></i>
                             <p>
                                 <?= \Yii::t('app', 'Газеты') ?>
@@ -137,19 +137,19 @@ AppAsset::register($this);
                         </a>
                     </li>
                     <li class="nav-item has-treeview">
-                        <a href="<?= Url::to(['/literature/magazines/index']) ?>" class="nav-link">
+                        <a href="<?= Url::to(['/literature/magazines/index']) ?>" class="nav-link <?= $this->context->id == 'literature/magazines' ? 'active' : '' ?>">
                             <i class="nav-icon fas fa-table"></i>
                             <p><?= \Yii::t('app', 'Журналы') ?></p>
                         </a>
                     </li>
                     <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link">
+                        <a href="<?= Url::to(['/feedbacks/index']) ?>" class="nav-link <?= $this->context->id == 'feedbacks' ? 'active' : '' ?>">
                             <i class="nav-icon fas fa-tasks"></i>
                             <p><?= \Yii::t('app', 'Отзывы') ?></p>
                         </a>
                     </li>
                     <li class="nav-item has-treeview">
-                        <a href="javascript:void(0)" class="nav-link">
+                        <a href="javascript:void(0)" class="nav-link <?= $this->context->id == 'categories' ? 'active' : '' ?>">
                             <i class="nav-icon fas fa-th"></i>
                             <p><?= \Yii::t('app','Разделы') ?></p>
                             <i class="fas fa-angle-left right"></i>
@@ -176,7 +176,7 @@ AppAsset::register($this);
                         </ul>
                     </li>
                     <li class="nav-item has-treeview">
-                        <a href="javascript:void(0)" class="nav-link">
+                        <a href="javascript:void(0)" class="nav-link <?= $this->context->id == 'attachments' ? 'active' : '' ?>">
                             <i class="nav-icon fas fa-thumb-tack"></i>
                             <p>
                                 <?= \Yii::t('app', 'Вложения') ?>
@@ -225,13 +225,13 @@ AppAsset::register($this);
 
                     <li class="nav-header"><?= \Yii::t('app', 'Дополнительные') ?></li>
                     <li class="nav-item">
-                        <a href="<?= Url::to(['settings/index']) ?>" class="nav-link">
+                        <a href="<?= Url::to(['settings/index']) ?>" class="nav-link <?= $this->context->id == 'settings' ? 'active' : '' ?>">
                             <i class="nav-icon far fa-plus-square"></i>
                             <p><?= \Yii::t('app', 'Настройки') ?></p>
                         </a>
                     </li>
                     <li class="nav-item has-treeview">
-                        <a href="<?= Url::to(['questions/index']) ?>" class="nav-link">
+                        <a href="<?= Url::to(['questions/index']) ?>" class="nav-link <?= $this->context->id == 'questions' ? 'active' : '' ?>">
                             <i class="nav-icon far fa-envelope"></i>
                             <p>
                                 <?= \Yii::t('app', 'Вопросы и ответы') ?>
@@ -239,7 +239,7 @@ AppAsset::register($this);
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="<?= Url::to(['renewal-applications/index']) ?>" class="nav-link">
+                        <a href="<?= Url::to(['renewal-applications/index']) ?>" class="nav-link <?= $this->context->id == 'renewal-applications' ? 'active' : '' ?>">
                             <i class="nav-icon fas fa-bookmark"></i>
                             <p><?= \Yii::t('app', 'Заявки на продление сроков чтения') ?></p>
                         </a>
@@ -258,7 +258,7 @@ AppAsset::register($this);
         <div class="content-header">
             <div class="container-fluid">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#"><?= \Yii::t('app', 'Главная') ?></a></li>
+                    <li class="breadcrumb-item"><a href="/"><?= \Yii::t('app', 'Главная') ?></a></li>
                     <li class="breadcrumb-item active"><?= $this->title ?></li>
                 </ol>
             </div>
@@ -293,7 +293,7 @@ AppAsset::register($this);
 
     <!-- Main Footer -->
     <footer class="main-footer d-flex justify-content-center flex-wrap">
-        <strong>Copyright &copy; 2020 <a href="#"><?= \Yii::t('app', 'Библиотека') ?></a>.</strong>
+        <strong>Copyright &copy; 2020 <a href="<?= Yii::$app->params['libraryUrl'] ?>"><?= \Yii::t('app', 'Библиотека') ?></a>.</strong>
         <?= \Yii::t('app', 'Все права зашищены.') ?>
     </footer>
 </div>
