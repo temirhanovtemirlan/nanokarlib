@@ -27,6 +27,13 @@ $models = $dataProvider->getModels();
                 </div>
             </div>
         </form>
+        <div class="pt-2">
+            <div class="sample-container">
+                <div class="flip-book-container" src="/uploads/guide.pdf">
+
+                </div>
+            </div>
+        </div>
         <?php if (sizeof($models)): ?>
             <?php foreach ($models as $model): ?>
                 <?= $this->render($model->getRecordTemplate(), ['model' => $model]) ?>
