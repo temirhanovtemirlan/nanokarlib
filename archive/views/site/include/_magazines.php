@@ -15,10 +15,10 @@ $models = $provider->getModels();
                 <?php if ($models): ?>
                     <?php foreach ($models as $model): ?>
                         <div class="review-item d-flex">
-                            <div class="img-responsive">
+                            <div class="img-responsive w-50">
                                 <img src="<?= $model->image->source ?>">
                             </div>
-                            <div>
+                            <div class="w-50">
                                 <div class="text"><?= $model->title ?></div>
                                 <p>
                                     <span class="author"><?= $model->publish_date ?></span>

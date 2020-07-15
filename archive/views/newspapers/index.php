@@ -28,9 +28,11 @@ $models = $dataProvider->getModels();
             </div>
         </form>
         <?php if (sizeof($models)): ?>
-            <?php foreach ($models as $model): ?>
-                <?= $this->render($model->getRecordTemplate(), ['model' => $model]) ?>
-            <?php endforeach; ?>
+            <div class="pt-2">
+                <?php foreach ($models as $model): ?>
+                    <?= $this->render($model->getRecordTemplate(), ['model' => $model]) ?>
+                <?php endforeach; ?>
+            </div>
         <?php endif; ?>
     </div>
 </section>
