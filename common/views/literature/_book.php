@@ -1,7 +1,7 @@
 <?php
 /* @var $model common\models\literature\Book */
 ?>
-<div class="review-item d-flex">
+<div class="review-item d-flex px-4">
     <div class="img-responsive w-50">
         <img src="<?= $model->image->source ?>">
     </div>
