@@ -9458,11 +9458,11 @@ a.text-dark:hover, a.text-dark:focus {
     text-align: center;
     text-transform: uppercase; }
 .review-item .text {
-    font-size: 1.6rem;
+    font-size: 1.2rem;
     word-break: break-word; }
 @media (min-width: 768px) {
     .review-item .text {
-        font-size: 2.25rem; } }
+        font-size: 1.75rem; } }
 .review-item .text:after {
     content: '”'; }
 .review-item .text:before {

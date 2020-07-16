@@ -16,7 +16,6 @@
 
 use yii\helpers\Html;
 use library\assets\AppAsset;
-use common\widgets\Alert;
 
 AppAsset::register($this);
 $this->title = strip_tags($settings[\common\enums\SettingsEnum::LIBRARY_BRAND_LABEL]);
@@ -36,7 +35,6 @@ $this->title = strip_tags($settings[\common\enums\SettingsEnum::LIBRARY_BRAND_LA
 <body>
 <?php $this->beginBody() ?>
 
-<?= Alert::widget() ?>
 <main class="site_content">
     <?= $this->render('include/_authorization_block', [
         'totalUsers' => $totalUsers,

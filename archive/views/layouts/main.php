@@ -8,7 +8,6 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use archive\assets\AppAsset;
-use common\widgets\Alert;
 
 AppAsset::register($this);
 ?>
@@ -28,7 +27,6 @@ AppAsset::register($this);
 <?php $this->beginBody() ?>
 
 <?= \archive\widgets\Navigation::widget() ?>
-<?= Alert::widget() ?>
 <main class="site_content">
     <?= $content ?>
 </main>

@@ -13,7 +13,6 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use archive\assets\AppAsset;
-use common\widgets\Alert;
 
 AppAsset::register($this);
 ?>
@@ -32,7 +31,6 @@ AppAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
 
-<?= Alert::widget() ?>
 <main class="site_content">
     <?= $this->render('include/_authorization_block', [
         'libraryFond' => $authBlock[\common\enums\SettingsEnum::LIBRARY_FOND_INFO],

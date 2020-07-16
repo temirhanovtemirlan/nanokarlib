@@ -5,7 +5,6 @@
 
 use yii\helpers\Html;
 use library\assets\AppAsset;
-use common\widgets\Alert;
 
 AppAsset::register($this);
 ?>
@@ -24,7 +23,6 @@ AppAsset::register($this);
 <?php $this->beginBody() ?>
 
 <?= \library\widgets\Navigation::widget() ?>
-<?= Alert::widget() ?>
 <main class="site_content">
     <?= $content ?>
 </main>
