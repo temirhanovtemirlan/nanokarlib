@@ -94,16 +94,17 @@ class AttachmentsController extends AdminController
     {
         $model = $this->attachmentService->getModel();
         $image = UploadedFile::getInstance($model, 'image');
-        $path = \Yii::getAlias('@libraryUploadPath') . '/' . $image->baseName . '.' . $image->extension;
+        $fileName = $image->baseName . uniqid();
+        $path = \Yii::getAlias('@libraryUploadPath') . '/' . $fileName . '.' . $image->extension;
         if ($p == 'a') {
-            $path = \Yii::getAlias('@archiveUploadPath') . '/' . $image->baseName . '.' . $image->extension;
+            $path = \Yii::getAlias('@archiveUploadPath') . '/' . $fileName . '.' . $image->extension;
         }
         $image->saveAs($path);
 
         return Json::encode([
-            'path' => '/uploads/' . $image->baseName . '.' . $image->extension,
-            'name' => $image->baseName . '.' . $image->extension,
-            'deleteUrl' => 'img-delete?name' . $image->baseName . '.' . $image->extension,
+            'path' => '/uploads/' . $fileName . '.' . $image->extension,
+            'name' => $fileName . '.' . $image->extension,
+            'deleteUrl' => 'img-delete?name' . $fileName . '.' . $image->extension,
         ]);
     }
 
