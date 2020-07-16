@@ -10,7 +10,7 @@ $this->title = Yii::t('app', 'Оставить отзыв');
     </header>
     <div class="container content">
         <?php $form = ActiveForm::begin([
-            'action' => '/site/ask',
+            'action' => '/site/review',
             'method' => 'post',
             'options' => [
                 'class' => 'renewal-form'
