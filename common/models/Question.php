@@ -25,7 +25,7 @@ class Question extends ActiveRecord
     {
         return [
             [['user_id', 'text'], 'required'],
-            ['text', 'string', 'min' => 50],
+            ['text', 'string', 'min' => 10],
             ['answer', 'string', 'min' => 50],
             ['published', 'boolean'],
         ];
