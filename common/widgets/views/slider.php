@@ -13,12 +13,6 @@ $models = $dataProvider->getModels();
                 <?php foreach ($models as $model): ?>
                     <?= $this->render($model->getRenderTemplate(), ['source' => $model->source]) ?>
                 <?php endforeach; ?>
-                <div class="video-item">
-                    <video class="with-video" src="#" poster="/images/video-slide.png"></video>
-                </div>
-                <div class="video-item">
-                    <video class="with-video" src="#" poster="/images/video-slide.png"></video>
-                </div>
             </div>
         </div>
     </div>
