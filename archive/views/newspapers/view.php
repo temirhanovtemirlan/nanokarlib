@@ -12,8 +12,7 @@ $this->title = $model->title;
     <div class="img-responsive w-50">
         <img src="<?= $model->image->source ?>">
     </div>
-    <div class="w-50">
-
+    <div class="pl-3 w-50">
         <div>
             <?= $model->getAttribute('description_'.Yii::$app->language) ?>
         </div>
