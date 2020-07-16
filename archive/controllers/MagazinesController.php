@@ -25,9 +25,4 @@ class MagazinesController extends Controller
             'model' => $model
         ]);
     }
-
-    public function actionDownload($id)
-    {
-
-    }
 }

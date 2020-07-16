@@ -24,9 +24,4 @@ class BooksController extends Controller
             'model' => $model
         ]);
     }
-
-    public function actionDownload($id)
-    {
-
-    }
 }

@@ -9,6 +9,7 @@ use yii\bootstrap4\ActiveForm;
 /* @var $path string */
 
 $this->title = Yii::t('app', 'Новое вложение');
+$uploadUrl = \yii\helpers\Url::to(['/attachments/upload', 'p' => $path]);
 ?>
 
 <div class="attachments-create">
@@ -21,7 +22,7 @@ $this->title = Yii::t('app', 'Новое вложение');
         <?= $form->field($model, 'image')->widget(\kartik\file\FileInput::class, [
             'pluginOptions' => [
                 'theme' => 'fa',
-                'uploadUrl' => '/attachments/upload?p='.$path,
+                'uploadUrl' => $uploadUrl,
                 'deleteUrl' => '/attachments/remove',
             ],
             'pluginEvents' => [
@@ -41,7 +42,7 @@ $this->title = Yii::t('app', 'Новое вложение');
         <?= $form->field($model, 'image')->widget(\kartik\file\FileInput::class, [
             'pluginOptions' => [
                 'theme' => 'fa',
-                'uploadUrl' => '/attachments/upload?p='.$path,
+                'uploadUrl' => $uploadUrl,
                 'deleteUrl' => '/attachments/remove',
             ],
             'pluginEvents' => [

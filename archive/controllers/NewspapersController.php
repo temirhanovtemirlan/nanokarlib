@@ -25,9 +25,4 @@ class NewspapersController extends Controller
             'model' => $model
         ]);
     }
-
-    public function actionDownload($id)
-    {
-
-    }
 }

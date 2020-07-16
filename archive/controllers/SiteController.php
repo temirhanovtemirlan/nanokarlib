@@ -14,6 +14,7 @@ use archive\models\PasswordResetRequestForm;
 use archive\models\ResetPasswordForm;
 use archive\models\SignupForm;
 use archive\models\ContactForm;
+use yii\web\NotFoundHttpException;
 
 /**
  * Site controller
@@ -43,6 +44,17 @@ class SiteController extends \common\controllers\SiteController
 
         return $this->render('search', [
             'dataProvider' => Yii::$app->literatureService->getSearchProvider($search)
+        ]);
+    }
+
+    public function actionRead($filename)
+    {
+        if (!file_exists(Yii::getAlias('@archive') . '/web' . $filename)) {
+            throw new NotFoundHttpException();
+        }
+
+        return $this->render('read', [
+            'source' => $filename
         ]);
     }
 }

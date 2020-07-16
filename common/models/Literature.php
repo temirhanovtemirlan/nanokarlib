@@ -40,7 +40,7 @@ class Literature extends ActiveRecord
     {
         return [
             [['type', 'published', 'readable', 'downloadable', 'recommended', 'latest'], 'integer'],
-            [['image', 'title', 'canonical_title', 'author', 'description_ru', 'description_kk', 'source', 'publish_date', 'rating'], 'string'],
+            [['title', 'canonical_title', 'author', 'description_ru', 'description_kk', 'publish_date', 'rating'], 'string'],
             ['canonical_title', 'unique']
         ];
     }

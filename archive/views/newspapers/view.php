@@ -23,19 +23,10 @@ $this->title = $model->title;
             <span class="fa fa-download"><?= count($model->downloads) ?></span>
         </div>
         <?php if ($model->source && (\Yii::$app->user->isGuest && $model->readable) || !\Yii::$app->user->isGuest): ?>
-            <a data-toggle="modal" data-target="#reader" class="btn submit" href="#"><?= Yii::t('app', 'Читать') ?></a>
+            <a class="btn submit" href="<?= \yii\helpers\Url::to(['/site/read', 'filename' => $model->source->source]) ?>"><?= Yii::t('app', 'Читать') ?></a>
         <?php endif; ?>
         <?php if ((\Yii::$app->user->isGuest && $model->downloadable) || !\Yii::$app->user->isGuest): ?>
-            <a class="btn submit" href="<?= \yii\helpers\Url::to(['/newspapers/download', 'id' => $model->id]) ?>"><?= Yii::t('app', 'Скачать газету') ?></a>
+            <a download class="btn submit" href="<?= $model->source->source ?>"><?= Yii::t('app', 'Скачать газету') ?></a>
         <?php endif; ?>
     </div>
 </section>
-
-<?php \yii\bootstrap4\Modal::begin([
-    'id' => 'reader',
-    'title' => $model->title
-]) ?>
-    <div class="sample-container">
-        <div class="flip-book-container" src="<?= $model->source->source ?>"></div>
-    </div>
-<?php \yii\bootstrap4\Modal::end() ?>

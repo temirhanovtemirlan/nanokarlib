@@ -39,7 +39,7 @@ class AttachmentsController extends AdminController
         $model->relative_id = \Yii::$app->request->get('rid') ?? 0;
         $path = \Yii::$app->request->get('path') ?? 'l';
 
-        if ($model->load(\Yii::$app->request->post()) && $this->attachmentService->save($model)) {
+        if ($model->load(\Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(\Yii::$app->request->get('rUrl') ?? ['index']);
         }
 

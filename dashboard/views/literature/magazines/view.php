@@ -15,7 +15,7 @@ $this->title = Yii::t('app', 'Журнал') . ': ' . $model->title;
             'data-method' => 'post'])
         ?>
         <?= Html::a(Yii::t('app', 'Добавить картинку'), ['/attachments/create', 't' => \common\enums\AttachmentsEnum::TYPE_IMAGE, 'rt' => \common\enums\AttachmentsEnum::RELATION_LITERATURE, 'rid' => $model->id, 'path' => 'a', 'rUrl' => '/literature/literature/view?id='.$model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a(Yii::t('app', 'Добавить PDF'), ['/attachments/create', 't' => \common\enums\AttachmentsEnum::TYPE_PDF, 'rt' => \common\enums\AttachmentsEnum::RELATION_PUBLICATION, 'rid' => $model->id, 'path' => 'a', 'rUrl' => '/literature/literature/view?id='.$model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a(Yii::t('app', 'Добавить PDF'), ['/attachments/create', 't' => \common\enums\AttachmentsEnum::TYPE_PDF, 'rt' => \common\enums\AttachmentsEnum::RELATION_LITERATURE, 'rid' => $model->id, 'path' => 'a', 'rUrl' => '/literature/literature/view?id='.$model->id], ['class' => 'btn btn-primary']) ?>
     </p>
 
     <?= \yii\widgets\DetailView::widget([
